@@ -1,0 +1,204 @@
+@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+
+    string setLang = "";
+    if (HttpContext.Current.Session["Language"] == null)
+    {
+        setLang = "KO";
+    }
+    else
+    {
+        setLang = HttpContext.Current.Session["Language"].ToString();
+    }
+
+    if (string.IsNullOrEmpty(setLang))
+    {
+        setLang = "KO";
+    }
+}
+
+@section Container {
+
+    <section class="section visual">
+
+        <!-- section1 -->
+        <div class="section part1 fp-section fp-table">
+            <div class="fp-tableCell">
+                <div class="inner">
+                    <!-- swiper -->
+                    <div class="swiper skyroadSwiper">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide" @*style="background:url(/Images/visual01.jpg) no-repeat 50% 50%;"*@>
+                                <div class="bg mo" style="background:url(/Images/visual01_m.jpg) no-repeat 50% 50% / cover;"></div>
+                                <div class="bg pc" style="background:url(/Images/visual01.jpg) no-repeat 50% 50% / cover;"></div>
+                                @*<div class="dis_tbl">
+                                    <div class="dis_tblcell">
+                                        <div class="fixed_in type2">
+                                            <div class="company_title">
+                                                <p class="desc">가장 믿음가는 대한민국 물류기업</p>
+                                                <p class="title02"><span class="hidden">Skyroad</span></p>
+                                                <p class="desc eng">The most reliable logistics company, SKYROAD</p>
+                                                <p class="desc_long">항상 고객 입장에서 한발 앞서 생각하겠습니다.</p>
+                                            </div>
+                                            <div class="swiper-button-prev"></div>
+                                            <div class="swiper-button-next"></div>
+                                        </div>
+                                    </div>
+                                </div>*@
+                            </div>
+                            <div class="swiper-slide" @*style="background:url(/Images/visual02.jpg) no-repeat 50% 50%;"*@>
+                                @*<img src="~/Images/visual02.jpg" />*@
+                                <div class="bg mo" style="background:url(/Images/visual02_m.jpg) no-repeat 50% 50% / cover;"></div>
+                                <div class="bg pc" style="background:url(/Images/visual02.jpg) no-repeat 50% 50% / cover;"></div>
+                                @*<div class="dis_tbl">
+                                    <div class="dis_tblcell">
+                                        <div class="fixed_in type2">
+                                            <div class="company_title">
+                                                <p class="desc">가장 믿음가는 대한민국 물류기업</p>
+                                                <p class="title02"><span class="hidden">Skyroad</span></p>
+                                                <p class="desc eng">The most reliable logistics company, SKYROAD</p>
+                                                <p class="desc_long">항상 고객 입장에서 한발 앞서 생각하겠습니다.</p>
+                                            </div>
+                                            <div class="swiper-button-prev"></div>
+                                            <div class="swiper-button-next"></div>
+                                        </div>
+                                    </div>
+                                </div>*@
+                            </div>
+                            <div class="swiper-slide" @*style="background:url(/Images/visual03.jpg) no-repeat 50% 50%;"*@>
+                                @*<img src="~/Images/visual03.jpg" />*@
+                                <div class="bg mo" style="background:url(/Images/visual03_m.jpg) no-repeat 50% 50% / cover;"></div>
+                                <div class="bg pc" style="background:url(/Images/visual03.jpg) no-repeat 50% 0% / cover;"></div>
+                                @*<div class="dis_tbl">
+                                    <div class="dis_tblcell">
+                                        <div class="fixed_in type2">
+                                            <div class="company_title">
+                                                <p class="desc">가장 믿음가는 대한민국 물류기업</p>
+                                                <p class="title02"><span class="hidden">Skyroad</span></p>
+                                                <p class="desc eng">The most reliable logistics company, SKYROAD</p>
+                                                <p class="desc_long">항상 고객 입장에서 한발 앞서 생각하겠습니다.</p>
+                                            </div>
+                                            <div class="swiper-button-prev"></div>
+                                            <div class="swiper-button-next"></div>
+                                        </div>
+                                    </div>
+                                </div>*@
+                            </div>
+                            @*<div class="swiper-button-prev"></div>
+                            <div class="swiper-button-next"></div>*@
+                        </div>
+                    </div>
+                    <!-- swiper -->
+                    
+                    <div class="dis_tbl">
+                        <div class="dis_tblcell">
+                            <div class="fixed_in type2">
+                                <div class="company_title">
+                                    <p class="desc">가장 믿음가는 대한민국 물류기업</p>
+                                    <p class="title02"><span class="hidden">Skyroad</span></p>
+                                    <p class="desc eng">The most reliable logistics company, SKYROAD</p>
+                                    <p class="desc_long">항상 고객 입장에서 한발 앞서 생각하겠습니다.</p>
+                                </div>
+                                <div class="swiper-button-prev"></div>
+                                <div class="swiper-button-next"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- section1 -->
+        <!-- section2 -->
+        <div class="section part2 fp-section fp-table">
+            <div class="fp-tableCell">
+                <div class="inner">
+                    <div class="slogan">
+                        <p>탁월성과 진실성만이 의미있는 결과를 만들 수 있습니다.</p>
+                        @*<p>초심을 잊지 않고 영원히 발전하는 스카이로드가 되겠습니다.</p>*@
+                    </div>
+                    <div class="icon_list">
+                        <div class="icon" onclick="location.href='/Company/greeting'">
+                            <div class="icon_img company"></div>
+                            <div class="icon_desc">
+                                <button type="button">회사소개<span>About Skyroad</span></button>
+                            </div>
+                        </div>
+                        <div class="icon" onclick="location.href='/business'">
+                            <div class="icon_img business"></div>
+                            <div class="icon_desc">
+                                <button type="button">사업영역<span>Business</span></button>
+                            </div>
+                        </div>
+                        <div class="icon" onclick="location.href='/Customer/Support'">
+                            <div class="icon_img customer"></div>
+                            <div class="icon_desc">
+                                <button type="button">고객지원<span>Customer Center</span></button>
+                            </div>
+                        </div>
+                        <div class="icon" @*onclick="alert('현재 준비중입니다!')"*@ onclick="window.open('http://channel.skyrd.co.kr/')">
+                            <div class="icon_img prime"></div>
+                            <div class="icon_desc">
+                                <button type="button">스카이 채널<span>SKY Channel</span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- section2 -->
+        <!-- section3 -->
+        <div class="section part3 fp-section fp-table fp-auto-height">
+            <div class="fp-tableCell">
+                <div class="inner">
+                    <footer id="footer">
+                        <!-- f_info -->
+                        <div class="f_info">
+                            <div class="inner">
+                                <div class="link_list">
+                                    <p><span class="brochure"><a href="~/Files/E_Brochure.pdf" download="E_Brochure.pdf">E-Brochure</a></span> | <span><a href="javascript:void(0)" class="com" name="1">찾아오는 길 Location</a></span></p>
+                                </div>
+                                <div class="addr_list">
+                                    <div class="f_icons">
+                                        <div class="f_icon f_small" onclick="layerPopup('#AEO_Pop')">
+                                            <img src="~/Images/f_aeo.png" />
+                                        </div>
+                                        <div class="f_icon">
+                                            <img src="~/Images/f_iata.png" />
+                                        </div>
+                                        <div class="f_icon">
+                                            <img src="~/Images/f_kiffa.png" />
+                                        </div>
+                                        <div class="f_icon">
+                                            <img src="~/Images/f_celc.png" />
+                                        </div>
+                                        <div class="f_icon">
+                                            <img src="~/Images/f_iso.png" />
+                                        </div>
+                                        <div class="f_icon">
+                                            <img src="~/Images/f_sgs.png" />
+                                        </div>
+                                    </div>
+                                    <div class="addr">
+                                        <p class="accent">(주)스카이로드 | 대표이사 : 김영찬</p>
+                                        <p>서울 강서구 양천로 583, A2101~2호(염창동, 우림블루나인비즈니스센터) 우07547<br class="pc" /><span class="mo"> | </span>고객센터 : 02-3665-1671 | 팩스 : 02-3663-2491</p>
+                                        <p>Copyright ⓒ skyroad. All Rights Reserved.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- //f_info -->
+                    </footer>
+                </div>
+            </div>
+        </div>
+        <!-- section3 -->
+    </section>
+    <!-- //visual -->
+    @Styles.Render("~/Content/API/swiper.css")
+    @Styles.Render("~/Content/API/jquery.fullPage.css")
+    @Scripts.Render("~/Scripts/API/jquery.fullPage.js")
+    <script src="~/Scripts/API/swiper.min.js"></script>
+    @*<script src="~/Scripts/API/jquery.fullPage.js"></script>*@
+    <script src="~/Scripts/js/Home/Index.js"></script>
+}
