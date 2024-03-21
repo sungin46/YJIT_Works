@@ -1,0 +1,1529 @@
+@{
+    ViewBag.Title = "Main";
+}
+
+@section Container {
+    <div class="nav_dim"></div>
+        <!-- container -->
+        <section class="container" id="container">
+            <div class="main_visual">
+                <div class="inner">
+                    <p class="title">All logistics go through <strong>PRIME</strong></p>
+                    <div class="search_zone">
+                        <div class="search_box border-animation">
+                            <input type="text" id="Input_Main_Tracking" class="border-animation__inner" name="" value="" placeholder="B/L No, Container No를 입력하세요." />
+                            <button type="reset" class="btn_delete"><span class="blind">삭제</span></button>
+                            <button type="button" id="btn_Main_Tracking" class="btn_search"><span class="blind">검색</span></button>
+                        </div>
+                    </div>
+                    <p class="title sub">국제물류의 화물 데이터댐 수문을 열다.</p>
+                </div>
+            </div>
+            <div class="tab_area" id="tab_area">
+                <ul class="tab fixed_in type2">
+                    <li class="on"><a href="javascript:void(0)">해운 스케줄 조회</a></li>
+                    <li><a href="javascript:void(0)">항공 스케줄 조회</a></li>
+                    <li class="pc"><a href="javascript:void(0)">화물진행정보</a></li>
+                    <li class="pc"><a href="javascript:void(0)">수출이행내역</a></li>
+                </ul>
+                <ul class="tab type2 mo">
+                    <li class="pc"><a href="javascript:void(0)">해운 스케줄 조회</a></li>
+                    <li class="pc"><a href="javascript:void(0)">항공 스케줄 조회</a></li>
+                    <li class="mo"><a href="javascript:void(0)">화물진행정보</a></li>
+                    <li class="mo"><a href="javascript:void(0)">수출이행내역</a></li>
+                </ul>
+            </div>
+            <div class="tab_border_bottom"></div>
+            <!-- tab_panel -->
+            <div class="tab_panel">
+                <!-- panel - 해운 스케줄 조회-->
+                <div class="panel" id="seaSchedule" style="display: block">
+                    <div class="fixed_in type2">
+                        <!-- search_bar -->
+                        <div class="search_bar">
+                            <div class="col w5">
+                                <!-- int_box -->
+                                <div class="int_box cal_date border-animation">
+                                    <input type="text" value="" class="date border-animation__inner" id="input_SEA_ETD" autocomplete="off" />
+                                    <button type="button" class="btns icon calendar"><i class="fa fa-calendar-check-o"></i><span class="blind">달력</span></button>
+                                </div>
+                            </div>
+                            <div class="col w1">
+                                <!-- int_box -->
+                                <div class="int_box border-animation">
+                                    <input type="text" value="" placeholder="출발지를 선택하세요." id="input_SEA_Departture" autocomplete="off" class="border-animation__inner" />
+                                    <input type="hidden" class="input_hidden" value="" id="input_SEA_POL" />
+                                    <button type="button" class="btns icon delete"><span class="blind">삭제</span></button>
+                                    <button type="button" class="btns icon down" onclick="selectPopOpen('#select_SEA_pop01');"><span class="blind">펼침</span></button>
+                                    <!-- select_pop -->
+                                    <div class="select_pop" id="select_SEA_pop01">
+                                        <h3 class="title03">출발 도시 바로 선택 (한글 또는 영문 검색 가능)</h3>
+                                        <div class="select_location">
+                                            <div class="scrollbar">
+                                                <table class="tbl_option" id="quick_SEA_POLCD">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th>한국</th>
+                                                            <td><button type="button" value="부산(KRPUS) / 대한민국;KRPUS"><span>부산</span></button></td>
+                                                            <td><button type="button" value="인천(KRINC) / 대한민국;KRINC"><span>인천</span></button></td>
+                                                            <td><button type="button" value="평택(KRPTK) / 대한민국;KRPTK"><span>평택</span></button></td>
+                                                            <td><button type="button" value="울산(KRUSN) / 대한민국;KRUSN"><span>울산</span></button></td>
+                                                            <td></td>
+                                                        </tr>
+                                                        <tr class="has_rowspan">
+                                                            <th rowspan="2">중국</th>
+                                                            <td><button type="button" value="상하이(CNPDG) / 중국;CNPDG"><span>상하이</span></button></td>
+                                                            <td><button type="button" value="홍콩(HKHKG) / 홍콩;HKHKG"><span>홍콩</span></button></td>
+                                                            <td><button type="button" value="닝보(CNNGB) / 중국;CNNGB"><span>닝보</span></button></td>
+                                                            <td><button type="button" value="칭따오(CNQIN) / 중국;CNQIN"><span>칭따오</span></button></td>
+                                                            <td><button type="button" value="서코우(CNSHK) / 중국;CNSHK"><span>서코우</span></button></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><button type="button" value="샤먼(CNXMN) / 중국;CNXMN"><span>샤먼</span></button></td>
+                                                            <td><button type="button" value="선전(CNSNZ) / 중국;CNSNZ"><span>선전</span></button></td>
+                                                            <td><button type="button" value="신강(CNXNG) / 중국;CNXNG"><span>신강</span></button></td>
+                                                            <td><button type="button" value="텐진(CNTSN) / 중국;CNTSN"><span>텐진</span></button></td>
+                                                            <td><button type="button" value="웨이하이(CNWEI) / 중국;CNWEI"><span>웨이하이</span></button></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th rowspan="2">동남아</th>
+                                                            <td><button type="button" value="하이퐁(VNHPH) / 베트남;VNHPH"><span>하이퐁</span></button></td>
+                                                            <td><button type="button" value="호치민(VNSGN) / 베트남;VNSGN"><span>호치민</span></button></td>
+                                                            <td><button type="button" value="가오슝(TWKHH) / 대만;TWKHH"><span>가오슝</span></button></td>
+                                                            <td><button type="button" value="지룽(TWKEE) / 대만;TWKEE"><span>지룽</span></button></td>
+                                                            <td><button type="button" value="싱가포르(SGSIN) / 싱가포르;SGSIN"><span>싱가포르</span></button></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><button type="button" value="자카르타(IDJKT) / 인도네시아;IDJKT"><span>자카르타</span></button></td>
+                                                            <td><button type="button" value="방콕(THBKK) / 태국;THBKK"><span>방콕</span></button></td>
+                                                            <td><button type="button" value="람차방(THBKK) / 태국;THBKK"><span>람차방</span></button></td>
+                                                            <td><button type="button" value="양곤(MMRGN) / 미얀마;MMRGN"><span>양곤</span></button></td>
+                                                            <td><button type="button" value="포트클랑(MYPKG) / 말레이시아;MYPKG"><span>포트클랑</span></button></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th rowspan="2">미주</th>
+                                                            <td><button type="button" value="롱비치(USLGB) / 미국;USLGB"><span>롱비치</span></button></td>
+                                                            <td><button type="button" value="뉴욕(USNYC) / 미국;USNYC"><span>뉴욕</span></button></td>
+                                                            <td><button type="button" value="로스엔젤레스(USLAX) / 미국;USLAX"><span>로스엔젤레스</span></button></td>
+                                                            <td><button type="button" value="타코마(USTIW) / 미국;USTIW"><span>타코마</span></button></td>
+                                                            <td><button type="button" value="시애틀(USSEA) / 미국;USSEA"><span>시애틀</span></button></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><button type="button" value="밴쿠버(CAVAN) / 캐나다;CAVAN"><span>밴쿠버</span></button></td>
+                                                            <td><button type="button" value="핼리팩스(CAHAL) / 캐나다;CAHAL"><span>핼리팩스</span></button></td>
+                                                            <td><button type="button" value="사바나(USSAV) / 미국;USSAV"><span>사바나</span></button></td>
+                                                            <td><button type="button" value="휴스턴(USHOU) / 미국;USHOU"><span>휴스턴</span></button></td>
+                                                            <td><button type="button" value="만사니요(MXZLO) / 멕시코;MXZLO"><span>만사니요</span></button></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th rowspan="2">유럽</th>
+                                                            <td><button type="button" value="함부르크(DEHAM) / 독일 ;DEHAM"><span>함부르크</span></button></td>
+                                                            <td><button type="button" value="코페르(SIKOP) / 슬로베니아 ;SIKOP"><span>코페르</span></button></td>
+                                                            <td><button type="button" value="로테르담(NLRTM) / 네덜란드 ;NLRTM"><span>로테르담</span></button></td>
+                                                            <td><button type="button" value="앤트워프(BEANR) / 벨기에 ;BEANR"><span>앤트워프</span></button></td>
+                                                            <td><button type="button" value="르아브르(FRLEH) / 프랑스 ;FRLEH"><span>르아브르</span></button></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><button type="button" value="브레머하펜(DEBRV) / 독일;DEBRV"><span>브레머하펜</span></button></td>
+                                                            <td><button type="button" value="제노바(ITGOA) / 이탈리아;ITGOA"><span>제노바</span></button></td>
+                                                            <td><button type="button" value="펠릭스토(GBFXT) / 영국;GBFXT"><span>펠릭스토</span></button></td>
+                                                            <td><button type="button" value="발렌시아(ESVLC) / 스페인;ESVLC"><span>발렌시아</span></button></td>
+                                                            <td><button type="button" value="바르셀로나(ESBCN) / 스페인;ESBCN"><span>바르셀로나</span></button></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>대양주</th>
+                                                            <td><button type="button" value="애들레이드(AUADL) / 호주;AUADL"><span>애들레이드</span></button></td>
+                                                            <td><button type="button" value="멜버른(AUMEL) / 호주;AUMEL"><span>멜버른</span></button></td>
+                                                            <td><button type="button" value="시드니(AUSYD) / 호주;AUSYD"><span>시드니</span></button></td>
+                                                            <td><button type="button" value="브리즈번(AUBNE) / 호주;AUBNE"><span>브리즈번</span></button></td>
+                                                            <td><button type="button" value="오클랜드(NZAKL) / 뉴질랜드;NZAKL"><span>오클랜드</span></button></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>서남아</th>
+                                                            <td><button type="button" value="나바쉐바(INNSA) / 인도;INNSA"><span>나바쉐바</span></button></td>
+                                                            <td><button type="button" value="첸나이(INMAA) / 인도;INMAA"><span>첸나이</span></button></td>
+                                                            <td><button type="button" value="뭄바이(INBOM) / 인도;INBOM"><span>뭄바이</span></button></td>
+                                                            <td><button type="button" value="치타공(BDCGP) / 방글라데시;BDCGP"><span>치타공</span></button></td>
+                                                            <td><button type="button" value="카라치(PKKHI) / 파키스탄;PKKHI"><span>카라치</span></button></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>중동</th>
+                                                            <td><button type="button" value="반다르아바스(IRBND) / 이란;IRBND"><span>반다르아바스</span></button></td>
+                                                            <td><button type="button" value="이스탄불(TRIST) / 터키;TRIST"><span>이스탄불</span></button></td>
+                                                            <td><button type="button" value="제벨 알리(AEJEA) / 아랍에미리트 연합;AEJEA"><span>제벨 알리</span></button></td>
+                                                            <td><button type="button" value="제다(SAJED) / 사우디아라비아;SAJED"><span>제다</span></button></td>
+                                                            <td><button type="button" value="알렉산드리아(EGALY) / 이집트;EGALY"><span>알렉산드리아</span></button></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>일본</th>
+                                                            <td><button type="button" value="고베(JPUKB) / 일본;JPUKB"><span>고베</span></button></td>
+                                                            <td><button type="button" value="오사카(JPOSA) / 일본;JPOSA"><span>오사카</span></button></td>
+                                                            <td><button type="button" value="도쿄(JPTYO) / 일본;JPTYO"><span>도쿄</span></button></td>
+                                                            <td><button type="button" value="요코하마(JPYOK) / 일본;JPYOK"><span>요코하마</span></button></td>
+                                                            <td><button type="button" value="나고야(JPNGO) / 일본;JPNGO"><span>나고야</span></button></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <button type="button" class="btns icon close" onclick="selectPopClose('#select_SEA_pop01');"><span class="blind">닫기</span></button>
+                                    </div>
+                                    <!-- select_pop -->
+                                </div>
+                            </div>
+                            <div class="col w1">
+                                <!-- int_box -->
+                                <div class="int_box border-animation">
+                                    <input type="text" value="" placeholder="도착지를 입력하세요." id="input_SEA_Arrival" class="border-animation__inner" autocomplete="off" />
+                                    <input type="hidden" class="input_hidden" value="" id="input_SEA_POD" />
+                                    <button type="button" class="btns icon delete"><span class="blind">삭제</span></button>
+                                    <button type="button" class="btns icon down" onclick="selectPopOpen('#select_SEA_pop02');"><span class="blind">펼침</span></button>
+                                    <!-- select_pop -->
+                                    <div class="select_pop" id="select_SEA_pop02">
+                                        <h3 class="title03">도착 도시 바로 선택 (한글 또는 영문 검색 가능)</h3>
+                                        <div class="select_location">
+                                            <div class="scrollbar">
+                                                <table class="tbl_option" id="quick_SEA_PODCD">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th>한국</th>
+                                                            <td><button type="button" value="부산(KRPUS) / 대한민국;KRPUS"><span>부산</span></button></td>
+                                                            <td><button type="button" value="인천(KRINC) / 대한민국;KRINC"><span>인천</span></button></td>
+                                                            <td><button type="button" value="평택(KRPTK) / 대한민국;KRPTK"><span>평택</span></button></td>
+                                                            <td><button type="button" value="울산(KRUSN) / 대한민국;KRUSN"><span>울산</span></button></td>
+                                                            <td></td>
+                                                        </tr>
+                                                        <tr class="has_rowspan">
+                                                            <th rowspan="2">중국</th>
+                                                            <td><button type="button" value="상하이(CNPDG) / 중국;CNPDG"><span>상하이</span></button></td>
+                                                            <td><button type="button" value="홍콩(HKHKG) / 홍콩;HKHKG"><span>홍콩</span></button></td>
+                                                            <td><button type="button" value="닝보(CNNGB) / 중국;CNNGB"><span>닝보</span></button></td>
+                                                            <td><button type="button" value="칭따오(CNQIN) / 중국;CNQIN"><span>칭따오</span></button></td>
+                                                            <td><button type="button" value="서코우(CNSHK) / 중국;CNSHK"><span>서코우</span></button></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><button type="button" value="샤먼(CNXMN) / 중국;CNXMN"><span>샤먼</span></button></td>
+                                                            <td><button type="button" value="선전(CNSNZ) / 중국;CNSNZ"><span>선전</span></button></td>
+                                                            <td><button type="button" value="신강(CNXNG) / 중국;CNXNG"><span>신강</span></button></td>
+                                                            <td><button type="button" value="텐진(CNTSN) / 중국;CNTSN"><span>텐진</span></button></td>
+                                                            <td><button type="button" value="웨이하이(CNWEI) / 중국;CNWEI"><span>웨이하이</span></button></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th rowspan="2">동남아</th>
+                                                            <td><button type="button" value="하이퐁(VNHPH) / 베트남;VNHPH"><span>하이퐁</span></button></td>
+                                                            <td><button type="button" value="호치민(VNSGN) / 베트남;VNSGN"><span>호치민</span></button></td>
+                                                            <td><button type="button" value="가오슝(TWKHH) / 대만;TWKHH"><span>가오슝</span></button></td>
+                                                            <td><button type="button" value="지룽(TWKEE) / 대만;TWKEE"><span>지룽</span></button></td>
+                                                            <td><button type="button" value="싱가포르(SGSIN) / 싱가포르;SGSIN"><span>싱가포르</span></button></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><button type="button" value="자카르타(IDJKT) / 인도네시아;IDJKT"><span>자카르타</span></button></td>
+                                                            <td><button type="button" value="방콕(THBKK) / 태국;THBKK"><span>방콕</span></button></td>
+                                                            <td><button type="button" value="람차방(THBKK) / 태국;THBKK"><span>람차방</span></button></td>
+                                                            <td><button type="button" value="양곤(MMRGN) / 미얀마;MMRGN"><span>양곤</span></button></td>
+                                                            <td><button type="button" value="포트클랑(MYPKG) / 말레이시아;MYPKG"><span>포트클랑</span></button></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th rowspan="2">미주</th>
+                                                            <td><button type="button" value="롱비치(USLGB) / 미국;USLGB"><span>롱비치</span></button></td>
+                                                            <td><button type="button" value="뉴욕(USNYC) / 미국;USNYC"><span>뉴욕</span></button></td>
+                                                            <td><button type="button" value="로스엔젤레스(USLAX) / 미국;USLAX"><span>로스엔젤레스</span></button></td>
+                                                            <td><button type="button" value="타코마(USTIW) / 미국;USTIW"><span>타코마</span></button></td>
+                                                            <td><button type="button" value="시애틀(USSEA) / 미국;USSEA"><span>시애틀</span></button></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><button type="button" value="밴쿠버(CAVAN) / 캐나다;CAVAN"><span>밴쿠버</span></button></td>
+                                                            <td><button type="button" value="핼리팩스(CAHAL) / 캐나다;CAHAL"><span>핼리팩스</span></button></td>
+                                                            <td><button type="button" value="사바나(USSAV) / 미국;USSAV"><span>사바나</span></button></td>
+                                                            <td><button type="button" value="휴스턴(USHOU) / 미국;USHOU"><span>휴스턴</span></button></td>
+                                                            <td><button type="button" value="만사니요(MXZLO) / 멕시코;MXZLO"><span>만사니요</span></button></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th rowspan="2">유럽</th>
+                                                            <td><button type="button" value="함부르크(DEHAM) / 독일 ;DEHAM"><span>함부르크</span></button></td>
+                                                            <td><button type="button" value="코페르(SIKOP) / 슬로베니아 ;SIKOP"><span>코페르</span></button></td>
+                                                            <td><button type="button" value="로테르담(NLRTM) / 네덜란드 ;NLRTM"><span>로테르담</span></button></td>
+                                                            <td><button type="button" value="앤트워프(BEANR) / 벨기에 ;BEANR"><span>앤트워프</span></button></td>
+                                                            <td><button type="button" value="르아브르(FRLEH) / 프랑스 ;FRLEH"><span>르아브르</span></button></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><button type="button" value="브레머하펜(DEBRV) / 독일;DEBRV"><span>브레머하펜</span></button></td>
+                                                            <td><button type="button" value="제노바(ITGOA) / 이탈리아;ITGOA"><span>제노바</span></button></td>
+                                                            <td><button type="button" value="펠릭스토(GBFXT) / 영국;GBFXT"><span>펠릭스토</span></button></td>
+                                                            <td><button type="button" value="발렌시아(ESVLC) / 스페인;ESVLC"><span>발렌시아</span></button></td>
+                                                            <td><button type="button" value="바르셀로나(ESBCN) / 스페인;ESBCN"><span>바르셀로나</span></button></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>대양주</th>
+                                                            <td><button type="button" value="애들레이드(AUADL) / 호주;AUADL"><span>애들레이드</span></button></td>
+                                                            <td><button type="button" value="멜버른(AUMEL) / 호주;AUMEL"><span>멜버른</span></button></td>
+                                                            <td><button type="button" value="시드니(AUSYD) / 호주;AUSYD"><span>시드니</span></button></td>
+                                                            <td><button type="button" value="브리즈번(AUBNE) / 호주;AUBNE"><span>브리즈번</span></button></td>
+                                                            <td><button type="button" value="오클랜드(NZAKL) / 뉴질랜드;NZAKL"><span>오클랜드</span></button></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>서남아</th>
+                                                            <td><button type="button" value="나바쉐바(INNSA) / 인도;INNSA"><span>나바쉐바</span></button></td>
+                                                            <td><button type="button" value="첸나이(INMAA) / 인도;INMAA"><span>첸나이</span></button></td>
+                                                            <td><button type="button" value="뭄바이(INBOM) / 인도;INBOM"><span>뭄바이</span></button></td>
+                                                            <td><button type="button" value="치타공(BDCGP) / 방글라데시;BDCGP"><span>치타공</span></button></td>
+                                                            <td><button type="button" value="카라치(PKKHI) / 파키스탄;PKKHI"><span>카라치</span></button></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>중동</th>
+                                                            <td><button type="button" value="반다르아바스(IRBND) / 이란;IRBND"><span>반다르아바스</span></button></td>
+                                                            <td><button type="button" value="이스탄불(TRIST) / 터키;TRIST"><span>이스탄불</span></button></td>
+                                                            <td><button type="button" value="제벨 알리(AEJEA) / 아랍에미리트 연합;AEJEA"><span>제벨 알리</span></button></td>
+                                                            <td><button type="button" value="제다(SAJED) / 사우디아라비아;SAJED"><span>제다</span></button></td>
+                                                            <td><button type="button" value="알렉산드리아(EGALY) / 이집트;EGALY"><span>알렉산드리아</span></button></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>일본</th>
+                                                            <td><button type="button" value="고베(JPUKB) / 일본;JPUKB"><span>고베</span></button></td>
+                                                            <td><button type="button" value="오사카(JPOSA) / 일본;JPOSA"><span>오사카</span></button></td>
+                                                            <td><button type="button" value="도쿄(JPTYO) / 일본;JPTYO"><span>도쿄</span></button></td>
+                                                            <td><button type="button" value="요코하마(JPYOK) / 일본;JPYOK"><span>요코하마</span></button></td>
+                                                            <td><button type="button" value="나고야(JPNGO) / 일본;JPNGO"><span>나고야</span></button></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <button type="button" class="btns icon close" onclick="selectPopClose('#select_SEA_pop02');"><span class="blind">닫기</span></button>
+                                    </div>
+                                    <!-- select_pop -->
+                                </div>
+                            </div>
+                            <div class="col w2">
+                                <button type="submit" class="btn_type1 search" id="btn_SEASchdule_Search" onclick="fnMovePage('tab_area')"><span class="blind">검색</span></button>
+                            </div>
+                        </div>
+                        <!-- //search_bar -->
+                        <!-- search_detail -->
+                        <div class="search_detail" name="Main_search_detail" id="Main_SEA_Search_detail" style="display:none">
+                            <div class="no_data">
+                                <span>No Data</span>
+                            </div>
+                        </div>
+                        <!-- //search_detail -->
+                        <!-- list_type1 -->
+                        <table class="list_type1" name="Main_SEATable_List">
+                            <colgroup class="pc">
+                                <col />
+                                <col />
+                                <col />
+                                <col />
+                                <col />
+                                <col />
+                                <col class="w1" />
+                                <col class="w1" />
+                                <col class="w5" />
+                                <col class="w7" />
+                            </colgroup>
+                            <thead class="head">
+                                <tr class="row">
+                                    <th><button type="button">Carrier</button></th>
+                                    <th><button type="button" class="desc">Vessel</button></th>
+                                    <th><button type="button" class="desc">Departure</button></th>
+                                    <th><button type="button">Arrival</button></th>
+                                    <th><button type="button">Doc Closing</button></th>
+                                    <th><button type="button">Cargo Closing</button></th>
+                                    <th><button type="button">T/time</button></th>
+                                    <th><button type="button">T/S</button></th>
+                                    <th>Booking</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody id="SEA_Schedule_AREA"></tbody>
+                        </table>
+                        <!-- //list_type1 -->
+                        <div class="center_area" id="Btn_SEAScheduleMore" style="display:none">
+                            <button type="button" class="btn_type4"><span>더보기</span></button>
+                        </div>
+                    </div>
+                </div>
+                <!-- //panel -->
+                <!-- panel - 항공 스케줄 조회-->
+                <div class="panel" id="airSchedule">
+                    <div class="fixed_in type2">
+                        <!-- search_bar -->
+                        <div class="search_bar">
+                            <!--</div>-->
+                            <div class="col w5">
+                                <!-- int_box -->
+                                <div class="int_box cal_date2 border-animation">
+                                    <input type="text" value="" class="date border-animation__inner" id="input_AIR_ETD" autocomplete="off" />
+                                    <button type="button" class="btns icon calendar"><i class="fa fa-calendar-check-o"></i><span class="blind">달력</span></button>
+                                </div>
+                            </div>
+                            <div class="col w1">
+                                <!-- int_box -->
+                                <div class="int_box border-animation">
+                                    <input type="text" value="" placeholder="출발지를 입력하세요." id="input_AIR_Departture" class="border-animation__inner" autocomplete="off" />
+                                    <input type="hidden" class="input_hidden" value="" id="input_AIR_POL" />
+                                    <button type="button" class="btns icon delete"><span class="blind">삭제</span></button>
+                                    <button type="button" class="btns icon down" onclick="selectPopOpen('#select_AIR_pop01');"><span class="blind">펼침</span></button>
+                                    <!-- select_pop -->
+                                    <div class="select_pop" id="select_AIR_pop01">
+                                        <h3 class="title03">출발 도시 바로 선택 (한글 또는 영문 검색 가능)</h3>
+                                        <div class="select_location">
+                                            <div class="scrollbar">
+                                                <table class="tbl_option" id="quick_AIR_POLCD">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th>한국</th>
+                                                            <td><button type="button" value="인천 국제공항(ICN) / 대한민국;ICN"><span>인천</span></button></td>
+                                                            <td><button type="button" value="김포 국제공항(GMP) / 대한민국;GMP"><span>김포</span></button></td>
+                                                            <td><button type="button" value="김해 국제공항(PUS) / 대한민국;PUS"><span>김포</span></button></td>
+                                                            <td><button type="button" value="제주 국제공항(CJU) / 대한민국;CJU"><span>제주</span></button></td>
+                                                            <td><button type="button" value="대구 국제공항(TAE) / 대한민국;TAE"><span>대구</span></button></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>중국</th>
+                                                            <td><button type="button" value="홍콩 국제공항(HKG) / 홍콩;HKG"><span>홍콩</span></button></td>
+                                                            <td><button type="button" value="푸동 공항(PVG) / 중국;PVG"><span>상하이(푸동)</span></button></td>
+                                                            <td><button type="button" value="광저우 바이윤 공항(CAN) / 중국;CAN"><span>광저우</span></button></td>
+                                                            <td><button type="button" value="텐진 빈하이 국제공항(TSN) / 중국;TSN"><span>텐진</span></button></td>
+                                                            <td><button type="button" value="베이징 캐피탈 공항(PEK) /중국;PEK"><span>베이징</span></button></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>일본</th>
+                                                            <td><button type="button" value="나리타 공항(NRT) / 일본;NRT"><span>도쿄(나리타)</span></button></td>
+                                                            <td><button type="button" value="동경국제공항 (하네다 공항)(HND) / 일본;HND"><span>도쿄(하네다)</span></button></td>
+                                                            <td><button type="button" value="오사카 간사이 국제공항 (KIX) / 일본;KIX"><span>오사카</span></button></td>
+                                                            <td><button type="button" value="후쿠오카 공항(FUK) / 일본;FUK"><span>후쿠오카</span></button></td>
+                                                            <td><button type="button" value="나고야 주부 센트에어 국제공항(NGO) / 일본"><span>나고야</span></button></td>
+                                                        </tr>
+                                                        <tr class="has_rowspan">
+                                                            <th rowspan="2">동남아</th>
+                                                            <td><button type="button" value="하노이 노이 바이 공항(HAN) / 베트남;HAN"><span>하노이</span></button></td>
+                                                            <td><button type="button" value="싱가포르 창이 공항 (SIN) / 싱가포르;SIN"><span>싱가포르</span></button></td>
+                                                            <td><button type="button" value="방콕 수완나푸미 국제공항(BKK) / 태국;BKK"><span>방콕</span></button></td>
+                                                            <td><button type="button" value="타이완 타오유완 국제공항(TPE) / 대만;TPE"><span>타이페이</span></button></td>
+                                                            <td><button type="button" value="호치민 탄손낫 국제 공항 (SGN) / 베트남;SGN"><span>호치민</span></button></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><button type="button" value="니노이 아퀴노 국제공항(MNL) / 필리핀;MNL"><span>마닐라</span></button></td>
+                                                            <td><button type="button" value="쿠알라룸푸르 국제공항(KUL) / 말레이시아;KUL"><span>쿠알라룸푸르</span></button></td>
+                                                            <td><button type="button" value="자카르타 소엑카르노하타 국제공항(CGK) / 인도네시아;CGK"><span>자카르타</span></button></td>
+                                                            <td><button type="button" value="다낭 국제공항(DAD) / 베트남;DAD"><span>다낭</span></button></td>
+                                                            <td><button type="button" value="세부 막탄 국제공항 (CEB) / 필리핀;CEB"><span>세부</span></button></td>
+                                                        </tr>
+                                                        <tr class="has_rowspan">
+                                                            <th rowspan="2">미주</th>
+                                                            <td><button type="button" value="로스앤젤레스 국제공항(LAX) / 미국;LAX"><span>로스앤젤레스</span></button></td>
+                                                            <td><button type="button" value="샌프란시스코 국제공항(SFO) / 미국;SFO"><span>샌프란시스코</span></button></td>
+                                                            <td><button type="button" value="시카고 오헤어 국제공항(ORD) / 미국;ORD"><span>시카고</span></button></td>
+                                                            <td><button type="button" value="뉴욕 존 F.케네디 국제공항(JFK) / 미국;JFK"><span>뉴욕</span></button></td>
+                                                            <td><button type="button" value="시애틀 타코마 국제공항(SEA) / 미국;SEA"><span>시애틀</span></button></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><button type="button" value="하츠필드 잭슨 애틀랜타 국제공항(ATL) / 미국;ATL"><span>애틀란타</span></button></td>
+                                                            <td><button type="button" value="테드 스티븐스 국제공항 (앵커리지 국제공항)(ANC) / 미국;ANC"><span>앵커리지</span></button></td>
+                                                            <td><button type="button" value="댈러스 포츠워스 국제공항(DFW) / 미국;DFW"><span>달라스</span></button></td>
+                                                            <td><button type="button" value="밴쿠버 국제공항(YVR) / 캐나다;YVR"><span>벤쿠버</span></button></td>
+                                                            <td><button type="button" value="토론토 피어슨 국제공항(YYZ) / 캐나다;YYZ"><span>토론토</span></button></td>
+                                                        </tr>
+                                                        <tr class="has_rowspan">
+                                                            <th rowspan="2">유럽</th>
+                                                            <td><button type="button" value="프랑크푸르트 국제공항(라인 마인)(FRA) / 독일;FRA"><span>프랑크푸르트</span></button></td>
+                                                            <td><button type="button" value="파리 샤를드골 공항(CDG) / 프랑스;CDG"><span>파리</span></button></td>
+                                                            <td><button type="button" value="모스코바 세레메티에포 국제공항(SVO) / 러시아;SVO"><span>모스크바</span></button></td>
+                                                            <td><button type="button" value="암스테르담 스키폴 공항(AMS) / 네덜란드;AMS"><span>암스테르담</span></button></td>
+                                                            <td><button type="button" value="비엔나 국제공항(VIE) / 오스트리아;VIE"><span>비앤나</span></button></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><button type="button" value="헬싱키 반타 공항(HEL) / 핀란드;HEL"><span>헬싱키</span></button></td>
+                                                            <td><button type="button" value="도하 국제공항(DOH) / 카타르;DOH"><span>도하</span></button></td>
+                                                            <td><button type="button" value="이스탄불 아타투르크 공항(IST) / 터키;IST"><span>이스탄불</span></button></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>대양주</th>
+                                                            <td><button type="button" value="브리즈번 국제공항(BNE) / 호주;BNE"><span>브리즈번</span></button></td>
+                                                            <td><button type="button" value="킹스포트 스미스 공항(시드니 국제공항)(SYD) / 호주;SYD"><span>시드니</span></button></td>
+                                                            <td><button type="button" value="오클랜드 국제공항(AKL) / 뉴질랜드;AKL"><span>오클랜드</span></button></td>
+                                                            <td><button type="button" value="괌 안토니오 보르냐 원팟 국제공항(GUM) / 괌;GUM"><span>괌</span></button></td>
+                                                            <td><button type="button" value="팔라우 코로르 공항(ROR) / 팔라우;ROR"><span>팔라우</span></button></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>서남아</th>
+                                                            <td><button type="button" value="델리 인디라 간디 국제공항(DEL) / 인도(인디아);DEL"><span>델리</span></button></td>
+                                                            <td><button type="button" value="뭄바이 채해트라피티 시버지 국제공항(BOM) / 인도(인디아);BOM"><span>뭄바이</span></button></td>
+                                                            <td><button type="button" value="콜롬보 밴다라나이크 국제공항(CMB) / 스리랑카;CMB"><span>콜롬보</span></button></td>
+                                                            <td><button type="button" value="말레 국제공항(MLE) / 몰디브;MLE"><span>말레</span></button></td>
+                                                            <td><button type="button" value="카트만두 트리부반 공항(KTM) / 네팔;KTM"><span>카트만두</span></button></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <button type="button" class="btns icon close" onclick="selectPopClose('#select_AIR_pop01');"><span class="blind">닫기</span></button>
+                                    </div>
+                                    <!-- select_pop -->
+                                </div>
+                            </div>
+                            <div class="col w1">
+                                <!-- int_box -->
+                                <div class="int_box border-animation">
+                                    <input type="text" value="" placeholder="도착지를 입력하세요." id="input_AIR_Arrival" class="border-animation__inner" autocomplete="off" />
+                                    <input type="hidden" class="input_hidden" value="" id="input_AIR_POD" />
+                                    <button type="button" class="btns icon delete"><span class="blind">삭제</span></button>
+                                    <button type="button" class="btns icon down" onclick="selectPopOpen('#select_AIR_pop02');"><span class="blind">펼침</span></button>
+                                    <!-- select_pop -->
+                                    <div class="select_pop" id="select_AIR_pop02">
+                                        <h3 class="title03">출발 도시 바로 선택 (한글 또는 영문 검색 가능)</h3>
+                                        <div class="select_location">
+                                            <div class="scrollbar">
+                                                <table class="tbl_option" id="quick_AIR_PODCD">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th>한국</th>
+                                                            <td><button type="button" value="인천 국제공항(ICN) / 대한민국;ICN"><span>인천</span></button></td>
+                                                            <td><button type="button" value="김포 국제공항(GMP) / 대한민국;GMP"><span>김포</span></button></td>
+                                                            <td><button type="button" value="김해 국제공항(PUS) / 대한민국;PUS"><span>김포</span></button></td>
+                                                            <td><button type="button" value="제주 국제공항(CJU) / 대한민국;CJU"><span>제주</span></button></td>
+                                                            <td><button type="button" value="대구 국제공항(TAE) / 대한민국;TAE"><span>대구</span></button></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>중국</th>
+                                                            <td><button type="button" value="홍콩 국제공항(HKG) / 홍콩;HKG"><span>홍콩</span></button></td>
+                                                            <td><button type="button" value="푸동 공항(PVG) / 중국;PVG"><span>상하이(푸동)</span></button></td>
+                                                            <td><button type="button" value="광저우 바이윤 공항(CAN) / 중국;CAN"><span>광저우</span></button></td>
+                                                            <td><button type="button" value="텐진 빈하이 국제공항(TSN) / 중국;TSN"><span>텐진</span></button></td>
+                                                            <td><button type="button" value="베이징 캐피탈 공항(PEK) /중국;PEK"><span>베이징</span></button></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>일본</th>
+                                                            <td><button type="button" value="나리타 공항(NRT) / 일본;NRT"><span>도쿄(나리타)</span></button></td>
+                                                            <td><button type="button" value="동경국제공항 (하네다 공항)(HND) / 일본;HND"><span>도쿄(하네다)</span></button></td>
+                                                            <td><button type="button" value="오사카 간사이 국제공항 (KIX) / 일본;KIX"><span>오사카</span></button></td>
+                                                            <td><button type="button" value="후쿠오카 공항(FUK) / 일본;FUK"><span>후쿠오카</span></button></td>
+                                                            <td><button type="button" value="나고야 주부 센트에어 국제공항(NGO) / 일본"><span>나고야</span></button></td>
+                                                        </tr>
+                                                        <tr class="has_rowspan">
+                                                            <th rowspan="2">동남아</th>
+                                                            <td><button type="button" value="하노이 노이 바이 공항(HAN) / 베트남;HAN"><span>하노이</span></button></td>
+                                                            <td><button type="button" value="싱가포르 창이 공항 (SIN) / 싱가포르;SIN"><span>싱가포르</span></button></td>
+                                                            <td><button type="button" value="방콕 수완나푸미 국제공항(BKK) / 태국;BKK"><span>방콕</span></button></td>
+                                                            <td><button type="button" value="타이완 타오유완 국제공항(TPE) / 대만;TPE"><span>타이페이</span></button></td>
+                                                            <td><button type="button" value="호치민 탄손낫 국제 공항 (SGN) / 베트남;SGN"><span>호치민</span></button></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><button type="button" value="니노이 아퀴노 국제공항(MNL) / 필리핀;MNL"><span>마닐라</span></button></td>
+                                                            <td><button type="button" value="쿠알라룸푸르 국제공항(KUL) / 말레이시아;KUL"><span>쿠알라룸푸르</span></button></td>
+                                                            <td><button type="button" value="자카르타 소엑카르노하타 국제공항(CGK) / 인도네시아;CGK"><span>자카르타</span></button></td>
+                                                            <td><button type="button" value="다낭 국제공항(DAD) / 베트남;DAD"><span>다낭</span></button></td>
+                                                            <td><button type="button" value="세부 막탄 국제공항 (CEB) / 필리핀;CEB"><span>세부</span></button></td>
+                                                        </tr>
+                                                        <tr class="has_rowspan">
+                                                            <th rowspan="2">미주</th>
+                                                            <td><button type="button" value="로스앤젤레스 국제공항(LAX) / 미국;LAX"><span>로스앤젤레스</span></button></td>
+                                                            <td><button type="button" value="샌프란시스코 국제공항(SFO) / 미국;SFO"><span>샌프란시스코</span></button></td>
+                                                            <td><button type="button" value="시카고 오헤어 국제공항(ORD) / 미국;ORD"><span>시카고</span></button></td>
+                                                            <td><button type="button" value="뉴욕 존 F.케네디 국제공항(JFK) / 미국;JFK"><span>뉴욕</span></button></td>
+                                                            <td><button type="button" value="시애틀 타코마 국제공항(SEA) / 미국;SEA"><span>시애틀</span></button></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><button type="button" value="하츠필드 잭슨 애틀랜타 국제공항(ATL) / 미국;ATL"><span>애틀란타</span></button></td>
+                                                            <td><button type="button" value="테드 스티븐스 국제공항 (앵커리지 국제공항)(ANC) / 미국;ANC"><span>앵커리지</span></button></td>
+                                                            <td><button type="button" value="댈러스 포츠워스 국제공항(DFW) / 미국;DFW"><span>달라스</span></button></td>
+                                                            <td><button type="button" value="밴쿠버 국제공항(YVR) / 캐나다;YVR"><span>벤쿠버</span></button></td>
+                                                            <td><button type="button" value="토론토 피어슨 국제공항(YYZ) / 캐나다;YYZ"><span>토론토</span></button></td>
+                                                        </tr>
+                                                        <tr class="has_rowspan">
+                                                            <th rowspan="2">유럽</th>
+                                                            <td><button type="button" value="프랑크푸르트 국제공항(라인 마인)(FRA) / 독일;FRA"><span>프랑크푸르트</span></button></td>
+                                                            <td><button type="button" value="파리 샤를드골 공항(CDG) / 프랑스;CDG"><span>파리</span></button></td>
+                                                            <td><button type="button" value="모스코바 세레메티에포 국제공항(SVO) / 러시아;SVO"><span>모스크바</span></button></td>
+                                                            <td><button type="button" value="암스테르담 스키폴 공항(AMS) / 네덜란드;AMS"><span>암스테르담</span></button></td>
+                                                            <td><button type="button" value="비엔나 국제공항(VIE) / 오스트리아;VIE"><span>비앤나</span></button></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><button type="button" value="헬싱키 반타 공항(HEL) / 핀란드;HEL"><span>헬싱키</span></button></td>
+                                                            <td><button type="button" value="도하 국제공항(DOH) / 카타르;DOH"><span>도하</span></button></td>
+                                                            <td><button type="button" value="이스탄불 아타투르크 공항(IST) / 터키;IST"><span>이스탄불</span></button></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>대양주</th>
+                                                            <td><button type="button" value="브리즈번 국제공항(BNE) / 호주;BNE"><span>브리즈번</span></button></td>
+                                                            <td><button type="button" value="킹스포트 스미스 공항(시드니 국제공항)(SYD) / 호주;SYD"><span>시드니</span></button></td>
+                                                            <td><button type="button" value="오클랜드 국제공항(AKL) / 뉴질랜드;AKL"><span>오클랜드</span></button></td>
+                                                            <td><button type="button" value="괌 안토니오 보르냐 원팟 국제공항(GUM) / 괌;GUM"><span>괌</span></button></td>
+                                                            <td><button type="button" value="팔라우 코로르 공항(ROR) / 팔라우;ROR"><span>팔라우</span></button></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>서남아</th>
+                                                            <td><button type="button" value="델리 인디라 간디 국제공항(DEL) / 인도(인디아);DEL"><span>델리</span></button></td>
+                                                            <td><button type="button" value="뭄바이 채해트라피티 시버지 국제공항(BOM) / 인도(인디아);BOM"><span>뭄바이</span></button></td>
+                                                            <td><button type="button" value="콜롬보 밴다라나이크 국제공항(CMB) / 스리랑카;CMB"><span>콜롬보</span></button></td>
+                                                            <td><button type="button" value="말레 국제공항(MLE) / 몰디브;MLE"><span>말레</span></button></td>
+                                                            <td><button type="button" value="카트만두 트리부반 공항(KTM) / 네팔;KTM"><span>카트만두</span></button></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <button type="button" class="btns icon close" onclick="selectPopClose('#select_AIR_pop02');"><span class="blind">닫기</span></button>
+                                    </div>
+                                    <!-- select_pop -->
+                                </div>
+                            </div>
+                            <div class="col w2">
+                                <button type="submit" class="btn_type1 search" id="btn_AIRSchedule_Search" onclick="fnMovePage('tab_area')"><span class="blind">검색</span></button>
+                            </div>
+                        </div>
+                        <!-- //search_bar -->
+                        <!-- search_detail -->
+                        <div class="search_detail" name="Main_search_detail" id="Main_AIR_Search_detail" style="display:none">
+                            <div class="no_data">
+                                <span>No Data</span>
+                            </div>
+                        </div>
+                        <!-- //search_detail -->
+                        <!-- list_type1 -->
+                        <table class="list_type1" id="Main_AIRTable_List">
+                            <colgroup class="pc">
+                                <col />
+                                <col class="w3" />
+                                <col />
+                                <col />
+                                <col class="w3" />
+                                <col class="w3" />
+                                <col class="w5" />
+                                <col class="w7" />
+                            </colgroup>
+                            <thead class="head">
+                                <tr class="row">
+                                    <th><button type="button">Carrier</button></th>
+                                    <th><button type="button" class="desc">Flight No</button></th>
+                                    <th><button type="button" class="desc">Departure</button></th>
+                                    <th><button type="button">Arrival</button></th>
+                                    <th><button type="button">T/time</button></th>
+                                    <th><button type="button">T/S</button></th>
+                                    <th>Booking</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody id="AIR_Schedule_AREA">
+                            </tbody>
+                        </table>
+                        <!-- //list_type1 -->
+                        <div class="center_area" id="Btn_AIRScheduleMore" style="display:none">
+                            <button type="button" class="btn_type4"><span>더보기</span></button>
+                        </div>
+                    </div>
+                </div>
+                <!-- panel - 화물진행정보 -->
+                <div class="panel" id="containerUnipass">
+                    <div class="fixed_in type2">
+                        <div class="unipass_area">
+                            <div class="search_bar">
+                                <div class="col w1">
+                                    <input type="radio" name="cargo" id="cargo01" value="BL" checked="checked" />
+                                    <label for="cargo01" class="switch_label">M B/L - H B/L</label>
+                                </div>
+                                <div class="col w1">
+                                    <input type="radio" name="cargo" id="cargo02" value="MTNO" />
+                                    <label for="cargo02" class="switch_label">화물관리번호</label>
+                                </div>
+                                <div class="col w3">
+                                    <!-- grid_fluid -->
+                                    <div class="grid_fluid type1" name="Cargo_Express_Input_Box">
+                                        <div class="grid_col">
+                                            <div class="int_box border-animation">
+                                                <input type="text" value="" placeholder="M B/L" class="inputMasterBLNum border-animation__inner" id="input_UniCargoMBL">
+                                                <button type="button" class="btns icon delete" style="display: none;"><span class="blind">삭제</span></button>
+                                            </div>
+                                        </div>
+                                        <div class="grid_col">
+                                            <div class="int_box border-animation">
+                                                <input type="text" value="" placeholder="H B/L" class="inputHouseBLNum border-animation__inner" id="input_UniCargoHBL">
+                                                <button type="button" class="btns icon delete" style="display: none;"><span class="blind">삭제</span></button>
+                                            </div>
+                                        </div>
+                                        <div class="grid_col w2">
+                                            <div class="label_col int_box border-animation">
+                                                <select id="select_UniCargoYear" class="select border-animation__inner">
+                                                    <option value="2021">2021년</option>
+                                                    <option value="2020" selected="">2020년</option>
+                                                    <option value="2019">2019년</option>
+                                                    <option value="2018">2018년</option>
+                                                    <option value="2017">2017년</option>
+                                                    <option value="2016">2016년</option>
+                                                    <option value="2015">2015년</option>
+                                                    <option value="2014">2014년</option>
+                                                    <option value="2013">2013년</option>
+                                                    <option value="2012">2012년</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- //grid_fluid -->
+                                    <!-- grid_fluid -->
+                                    <div class="grid_fluid type1" name="Cargo_Express_Input_Box" style="display:none;">
+                                        <div class="grid_col">
+                                            <div class="int_box border-animation">
+                                                <input type="text" placeholder="화물관리번호를 입력하세요." class="inputCargoManageNum border-animation__inner" id="input_UniCargoMtno">
+                                                <button type="button" class="btns icon delete" style="display: none;"><span class="blind">삭제</span></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- //grid_fluid -->
+                                </div>
+                                <div class="col w2">
+                                    <div class="grid_fluid type1" style="">
+                                        <div class="grid_col">
+                                            <button type="submit" class="btn_type1 search" id="btn_Cargo_Search" onclick="fnMovePage('tab_area')"><span class="blind">검색</span></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="unipass_output" id="div_UniCargoArea">
+                                <div class="unipass_table type1" id="div_UniCargoFirst1">
+                                    <table>
+                                        <colgroup class="mo">
+                                            <col class="w1">
+                                            <col>
+                                            <col class="w1">
+                                            <col>
+                                        </colgroup>
+                                        <colgroup class="pc">
+                                            <col class="w1">
+                                            <col>
+                                            <col class="w1">
+                                            <col>
+                                            <col class="w1">
+                                            <col>
+                                            <col class="w1">
+                                            <col>
+                                        </colgroup>
+                                        <tbody>
+                                            <tr>
+                                                <th>화물관리번호</th>
+                                                <td>00ANLU083N59007001</td>
+                                                <th>진행상태</th>
+                                                <td>반출완료</td>
+                                                <th class="pc">선사/항공사</th>
+                                                <td colspan="3" class="pc">호주국립해운(주)</td>
+                                            </tr>
+                                            <tr>
+                                                <th>M B/L-H B/L</th>
+                                                <td>HDMUASWB0106072-7003478001</td>
+                                                <th>화물구분</th>
+                                                <td></td>
+                                                <th class="pc">선박/항공편명</th>
+                                                <td colspan="3" class="pc">AUSTRALIA ENDEAV</td>
+                                            </tr>
+                                            <tr>
+                                                <th>통관진행상태</th>
+                                                <td>수입신고수리</td>
+                                                <th>처리일시</th>
+                                                <td>20001117172404</td>
+                                                <th class="pc">선박국적</th>
+                                                <td class="pc">호주</td>
+                                                <th class="pc">선박대리점</th>
+                                                <td class="pc">ANL CONTAINER LINE LTD.</td>
+                                            </tr>
+                                            <tr>
+                                                <th>품명</th>
+                                                <td colspan="3">CRYOVAN PLAIN CURVED END SEAL BB4L BAGS STRAIGHT  END SEAL AND ETC</td>
+                                                <th class="pc">적재항</th>
+                                                <td colspan="3" class="pc">AUMEL : Melbourne, AU</td>
+                                            </tr>
+                                            <tr>
+                                                <th>포장개수</th>
+                                                <td> GT</td>
+                                                <th>총 중량</th>
+                                                <td> KG</td>
+                                                <th class="pc">양륙항</th>
+                                                <td class="pc">KRPUS : 부산항</td>
+                                                <th class="pc">입항세관</th>
+                                                <td class="pc">부산세관</td>
+                                            </tr>
+                                            <tr>
+                                                <th>용적</th>
+                                                <td></td>
+                                                <th>B/L유형</th>
+                                                <td></td>
+                                                <th class="pc">입항일</th>
+                                                <td class="pc">20001114</td>
+                                                <th class="pc">항차</th>
+                                                <td class="pc">83N</td>
+                                            </tr>
+                                            <tr>
+                                                <th>관리대상지정여부</th>
+                                                <td></td>
+                                                <th>컨테이너개수</th>
+                                                <td></td>
+                                                <th class="pc">반출의무과태료</th>
+                                                <td class="pc">20001114</td>
+                                                <th class="pc">신고지연가산세</th>
+                                                <td class="pc">83N</td>
+                                            </tr>
+                                            <tr class="pc">
+                                                <th>특수화물코드</th>
+                                                <td></td>
+                                                <th>컨테이너번호</th>
+                                                <td colspan="5">HDMU2197204</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="unipass_table type2" id="div_UniCargoFirst2">
+                                    <table class="mo">
+                                        <colgroup>
+                                            <col class="w1">
+                                            <col>
+                                            <col class="w1">
+                                            <col>
+                                        </colgroup>
+                                        <tbody>
+                                            <tr>
+                                                <th>선사/항공사</th>
+                                                <td colspan="3">호주국립해운(주)</td>
+                                            </tr>
+                                            <tr>
+                                                <th>선박/항공편명</th>
+                                                <td colspan="3">AUSTRALIA ENDEAV</td>
+                                            </tr>
+                                            <tr>
+                                                <th>선박국적</th>
+                                                <td>호주</td>
+                                                <th>선박대리점</th>
+                                                <td>ANL CONTAINER LINE LTD.</td>
+                                            </tr>
+                                            <tr>
+                                                <th>적재항</th>
+                                                <td colspan="3">AUMEL : Melbourne, AU</td>
+                                            </tr>
+                                            <tr>
+                                                <th>양륙항</th>
+                                                <td>KRPUS : 부산항</td>
+                                                <th>입항세관</th>
+                                                <td>부산세관</td>
+                                            </tr>
+                                            <tr>
+                                                <th>입항일</th>
+                                                <td>20001114</td>
+                                                <th>항차</th>
+                                                <td>83N</td>
+                                            </tr>
+                                            <tr>
+                                                <th>반출의무과태료</th>
+                                                <td>20001114</td>
+                                                <th>신고지연가산세</th>
+                                                <td>83N</td>
+                                            </tr>
+                                            <tr class="mo">
+                                                <th>특수화물코드</th>
+                                                <td></td>
+                                                <th>컨테이너번호</th>
+                                                <td>HDMU2197204</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="btn_right"></div>
+                                <div class="notice_box">
+                                    위 이미지는 가장 일반적인 절차를 기준으로 제공되므로 상황에 따라 실제 업무 절차와 일치하지 않을 수 있습니다. 반드시 아래의 <span class="red">"처리단계"</span>를 참조하시어 업무 진행하시기 바랍니다.
+                                </div>
+                                <div class="cnt_box">
+                                    <span class="cnt" id="span_UniCount">
+                                        전체 <em>9</em>건
+                                    </span>
+                                </div>
+                                <div class="unipass_table type1" id="div_UniCargoSecond">
+                                    <table>
+                                        <colgroup>
+                                            <col style="width: 10%">
+                                            <col style="width: 18%">
+                                            <col style="width: 18%">
+                                            <col style="width: 18%">
+                                            <col style="width: 18%">
+                                            <col style="width: 18%">
+                                        </colgroup>
+                                        <thead>
+                                            <tr>
+                                                <th rowspan="2">No</th>
+                                                <th>처리단계</th>
+                                                <th>장치장/장치위치</th>
+                                                <th>포장개수</th>
+                                                <th>반출입(처리)일시</th>
+                                                <th>신고번호</th>
+                                            </tr>
+                                            <tr>
+                                                <th>처리일시</th>
+                                                <th>장치장명</th>
+                                                <th>중량</th>
+                                                <th>반출입(처리)내용</th>
+                                                <th>반출입근거번호</th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                                <div class="unipass_table type1" id="div_UniCargoSecond2">
+                                    <div class="scrollbar">
+                                        <table>
+                                            <colgroup>
+                                                <col style="width: 10%">
+                                                <col style="width: 18%">
+                                                <col style="width: 18%">
+                                                <col style="width: 18%">
+                                                <col style="width: 18%">
+                                                <col style="width: 18%">
+                                            </colgroup>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="a_center" rowspan="2">9</td>
+                                                    <td class="a_center">반출신고</td>
+                                                    <td>03012240</td>
+                                                    <td class="a_right">18 CT</td>
+                                                    <td class="a_center">2000-11-17 17:13:23</td>
+                                                    <td class="a_center">0301224000048587</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="a_center">2000-11-17 17:24:04</td>
+                                                    <td>한국허치슨터미널(주)부산컨테</td>
+                                                    <td class="a_right">8,230 KG</td>
+                                                    <td class="a_center">보세운송 반출</td>
+                                                    <td class="a_center">03010010002000012648</td>
+                                                </tr>
+                                                <tr style="background: #fafafa;">
+                                                    <td class="a_center" rowspan="2">8</td>
+                                                    <td class="a_center">반출신고</td>
+                                                    <td>03911095</td>
+                                                    <td class="a_right">18 GT</td>
+                                                    <td class="a_center">2000-11-16 13:54:30</td>
+                                                    <td class="a_center">0391109500909850</td>
+                                                </tr>
+                                                <tr style="background: #fafafa;">
+                                                    <td class="a_center">2000-11-16 14:27:23</td>
+                                                    <td>동방보세창고</td>
+                                                    <td class="a_right">8,230 KG</td>
+                                                    <td class="a_center">수입신고 수리후 반출</td>
+                                                    <td class="a_center">20375001103374</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="a_center" rowspan="2">7</td>
+                                                    <td class="a_center">수입신고수리</td>
+                                                    <td>03911095</td>
+                                                    <td class="a_right">18 CT</td>
+                                                    <td class="a_center"></td>
+                                                    <td class="a_center">20375001103374</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="a_center">2000-11-16 13:37:53</td>
+                                                    <td>동방보세창고</td>
+                                                    <td class="a_right">8,230 KG</td>
+                                                    <td class="a_center"></td>
+                                                    <td class="a_center"></td>
+                                                </tr>
+                                                <tr style="background: #fafafa;">
+                                                    <td class="a_center" rowspan="2">6</td>
+                                                    <td class="a_center">수입신고</td>
+                                                    <td>03911095</td>
+                                                    <td class="a_right">18 CT</td>
+                                                    <td class="a_center"></td>
+                                                    <td class="a_center">20375001103374</td>
+                                                </tr>
+                                                <tr style="background: #fafafa;">
+                                                    <td class="a_center">2000-11-16 10:28:11</td>
+                                                    <td>동방보세창고</td>
+                                                    <td class="a_right">8,230 KG</td>
+                                                    <td class="a_center"></td>
+                                                    <td class="a_center">수정합동관세사무소</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="a_center" rowspan="2">5</td>
+                                                    <td class="a_center">반입신고</td>
+                                                    <td>03911095/2-1</td>
+                                                    <td class="a_right">18 GT</td>
+                                                    <td class="a_center">2000-11-15 09:44:13</td>
+                                                    <td class="a_center">0391109500009397</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="a_center">2000-11-16 09:46:31</td>
+                                                    <td>동방보세창고</td>
+                                                    <td class="a_right">8,230 KG</td>
+                                                    <td class="a_center">보세운송 반입</td>
+                                                    <td class="a_center">03010010002000012648</td>
+                                                </tr>
+                                                <tr style="background: #fafafa;">
+                                                    <td class="a_center" rowspan="2">4</td>
+                                                    <td class="a_center">보세운송 신고 수리</td>
+                                                    <td>03012240</td>
+                                                    <td class="a_right">18 GT</td>
+                                                    <td class="a_center">(도)03911095 동방창</td>
+                                                    <td class="a_center">03010010002000012648</td>
+                                                </tr>
+                                                <tr style="background: #fafafa;">
+                                                    <td class="a_center">2000-11-15 15:59:59</td>
+                                                    <td>한국허치슨터미널(주)부산컨테</td>
+                                                    <td class="a_right">8,230 KG</td>
+                                                    <td class="a_center"></td>
+                                                    <td class="a_center">(주)국보</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="a_center" rowspan="2">3</td>
+                                                    <td class="a_center">반입신고</td>
+                                                    <td>03012240</td>
+                                                    <td class="a_right">18 CT</td>
+                                                    <td class="a_center">2000-11-15 14:06:00</td>
+                                                    <td class="a_center">0301224000037486</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="a_center">2000-11-15 15:07:12</td>
+                                                    <td>한국허치슨터미널(주)부산컨테</td>
+                                                    <td class="a_right">8,230 KG</td>
+                                                    <td class="a_center">입항 반입</td>
+                                                    <td class="a_center"></td>
+                                                </tr>
+                                                <tr style="background: #fafafa;">
+                                                    <td class="a_center" rowspan="2">2</td>
+                                                    <td class="a_center">하선신고 수리</td>
+                                                    <td>03012240</td>
+                                                    <td class="a_right">18 GT</td>
+                                                    <td class="a_center"></td>
+                                                    <td class="a_center">00030151513</td>
+                                                </tr>
+                                                <tr style="background: #fafafa;">
+                                                    <td class="a_center">2000-11-14 09:58:47</td>
+                                                    <td>한국허치슨터미널(주)부산컨테</td>
+                                                    <td class="a_right">8,230 KG</td>
+                                                    <td class="a_center"></td>
+                                                    <td class="a_center"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="a_center" rowspan="2">1</td>
+                                                    <td class="a_center">입항적하목록 심사완료</td>
+                                                    <td>03911095</td>
+                                                    <td class="a_right">18 GT</td>
+                                                    <td class="a_center"></td>
+                                                    <td class="a_center"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="a_center">2000-11-14 09:58:17</td>
+                                                    <td>동방보세창고</td>
+                                                    <td class="a_right">8,230 KG</td>
+                                                    <td class="a_center"></td>
+                                                    <td class="a_center"></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- //panel -->
+                <!-- panel - 수출이행내역 -->
+                <div class="panel" id="exportUnipass">
+                    <div class="fixed_in type2">
+                        <div class="unipass_area">
+                            <div class="search_bar">
+                                <div class="col w1">
+                                    <input type="radio" name="export" id="export01" value="OUTBOUND" checked="checked" />
+                                    <label for="export01" class="switch_label">수출신고번호</label>
+                                </div>
+                                <div class="col w1">
+                                    <input type="radio" name="export" id="export02" value="BL" />
+                                    <label for="export02" class="switch_label">B/L</label>
+                                </div>
+                                <div class="col w4">
+                                    <!-- grid_fluid -->
+                                    <div class="grid_fluid type1" name="UniPass_Export_Box">
+                                        <div class="grid_col">
+                                            <div class="grid_col">
+                                                <div class="int_box border-animation">
+                                                    <input type="text" id="input_UniOBnum" value="" placeholder="수출신고번호를 입력하세요." class="inputExportReportNum border-animation__inner">
+                                                    <button type="button" class="btns icon delete" style="display: none;"><span class="blind">삭제</span></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="grid_fluid type1" name="UniPass_Export_Box" style="display:none;">
+                                        <div class="grid_col">
+                                            <div class="grid_col">
+                                                <div class="int_box border-animation">
+                                                    <input type="text" id="input_UniOBbl" value="" placeholder="B/L 번호를 입력하세요." class="inputBLNum border-animation__inner">
+                                                    <button type="button" class="btns icon delete" style="display: none;"><span class="blind">삭제</span></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- //grid_fluid -->
+                                </div>
+                                <div class="col w2">
+                                    <div class="grid_col">
+                                        <button type="submit" class="btn_type1 search" id="btn_Outbound_Search" onclick="fnMovePage('tab_area')"><span class="blind">검색</span></button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 수출이행내역 조회 결과 -->
+                            <div class="unipass_output" id="div_UniOB_NumArea" @*style="display:none"*@>
+                                <div class="unipass_table type1" id="div_UniOB_NumFirst">
+                                    <table>
+                                        <colgroup>
+                                            <col class="w1">
+                                            <col>
+                                            <col class="w1">
+                                            <col>
+                                        </colgroup>
+                                        <tbody>
+                                            <tr>
+                                                <th>수출화주/대행자</th>
+                                                <td>티지에스파이프(주)</td>
+                                                <th>제조자</th>
+                                                <td>티지에스파이프(주)</td>
+                                            </tr>
+                                            <tr>
+                                                <th>적재의무기한</th>
+                                                <td>2010-01-28</td>
+                                                <th>수리일자</th>
+                                                <td>2009-12-29</td>
+                                            </tr>
+                                            <tr>
+                                                <th>통관포장개수</th>
+                                                <td>61 BE</td>
+                                                <th>통관중량(KG)</th>
+                                                <td>60,678</td>
+                                            </tr>
+                                            <tr>
+                                                <th>선기적완료여부</th>
+                                                <td>Y</td>
+                                                <th>선박/편명</th>
+                                                <td>OCEAN HOPE</td>
+                                            </tr>
+                                            <tr>
+                                                <th>선기적포장개수</th>
+                                                <td>61 GT</td>
+                                                <th>선기적중량(KG)</th>
+                                                <td>60,678</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="cnt_box">
+                                    <span class="cnt" id="span_UniOB_NumCount">전체 <em>1</em>건</span>
+                                </div>
+                                <div class="unipass_table type3" id="div_UniOB_NumSecond">
+                                    <table>
+                                        <colgroup>
+                                            <col style="width: 25%">
+                                            <col style="width: 25%">
+                                            <col style="width: 25%">
+                                            <col style="width: 25%">
+                                        </colgroup>
+                                        <thead>
+                                            <tr>
+                                                <th>B/L 번호</th>
+                                                <th>선적일자</th>
+                                                <th>선기적포장개수</th>
+                                                <th>선기적중량(KG)</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="a_center">HDMUPGOHS9311600</td>
+                                                <td class="a_center">2010-01-07</td>
+                                                <td class="a_right">61GT</td>
+                                                <td class="a_right">60,678</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <!-- 수출이행내역 조회 결과 -->
+                            <div class="unipass_output" id="div_UniOB_BLArea" @*style="display:none"*@>
+                                <div class="cnt_box">
+                                    <span class="cnt" id="span_UniOB_BlCount">전체 <em>1</em>건</span>
+                                </div>
+                                <div class="unipass_table type1" id="div_UniOB_BlFirst">
+                                    <table>
+                                        <colgroup>
+                                            <col style="width: 15%">
+                                            <col style="width: 10%">
+                                            <col style="width: 10%">
+                                            <col style="width: 15%">
+                                            <col style="width: 10%">
+                                            <col style="width: 10%">
+                                            <col style="width: 10%">
+                                        </colgroup>
+                                        <thead>
+                                            <tr>
+                                                <th colspan="3">통관사항</th>
+                                                <th colspan="4">선적사항</th>
+                                            </tr>
+                                            <tr>
+                                                <th>수출자</th>
+                                                <th>수리일자</th>
+                                                <th>통관포장개수</th>
+                                                <th rowspan="2">적하목록관리번호</th>
+                                                <th>선기적지</th>
+                                                <th>선기적포장개수</th>
+                                                <th>분할회수</th>
+                                            </tr>
+                                            <tr>
+                                                <th>수출신고번호</th>
+                                                <th>적재의무기한</th>
+                                                <th>통관중량(KG)</th>
+                                                <th>출항일자</th>
+                                                <th>선기적중량(KG)</th>
+                                                <th>선기적완료여부</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="a_center">티지에스파이프(주)</td>
+                                                <td class="a_center">2009-12-29</td>
+                                                <td class="a_right">61 BE</td>
+                                                <td class="a_center" rowspan="2">10HDMUGG018</td>
+                                                <td class="a_center">포항항</td>
+                                                <td class="a_right">61 GT	</td>
+                                                <td class="a_center">0</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="a_center">12210-09-00340033</td>
+                                                <td class="a_center">2010-01-28</td>
+                                                <td class="a_right">60,678</td>
+                                                <td class="a_center">2010-01-07</td>
+                                                <td class="a_right">60,678</td>
+                                                <td class="a_center">Y</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- //panel -->
+            </div>
+
+        </section>
+        <div class="border_mid"></div>
+        <div class="board_area" id="boardPage">
+            <div class="board_back">
+                <!-- col -->
+                <div class="col youtube">
+                    <div class="box youtube" id="div_Movie_Area">
+                        <div class="youtube_box">
+                            <a class="youtube_a">
+                                
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- //col -->
+                <!-- col -->
+                <div class="col notice">
+                    <div class="box notice" id="div_Notice_Area">
+                        <h2 class="title02 board">공지사항</h2>
+                        <ul>
+                            <li>
+                                <span class="date">2020-12-09</span>
+                                <a href="javascript:void(0);">[공지] 회계 - 전표 개선 사항 안내</a>
+                            </li>
+                            <li>
+                                <span class="date">2020-11-13</span>
+                                <a href="javascript:void(0);">[공지] EBMS 서버 OS 업그레이드 작업</a>
+                            </li>
+                            <li>
+                                <span class=" date">2020-11-12</span>
+                                <a href="javascript:void(0);">[이벤트] 양재아이티 신년 다이어리 이벤트 </a>
+                            </li>
+                            <li>
+                                <span class="date">2020-11-11</span>
+                                <a href="javascript:void(0);">[공지] 양재아이티 – ELVIS CHAIN VMTOOL UPGRADE 작업안내</a>
+                            </li>
+                            <li>
+                                <span class=" date">2020-11-06</span>
+                                <a href="javascript:void(0);">[이벤트] 양재아이티 신년 다이어리 이벤트 </a>
+                            </li>
+                            <li>
+                                <span class=" date">2020-11-06</span>
+                                <a href="javascript:void(0);">[이벤트] 양재아이티 신년 다이어리 이벤트 </a>
+                            </li>
+                        </ul>
+                        <a href="/CustomerSupport/HP_CustomerSupport" class="more"><span class="blind">더보기</span></a>
+                    </div>
+                </div>
+                <!-- //col -->
+            </div>
+        </div>
+        <div class="inquiry_area" id="inquiryPage">
+            <h2 class="title02 contact">도입문의</h2>
+            <!-- col -->
+            <div class="col inputInfo">
+                <div class="box" id="div_Input_Info_Area">
+                    <table>
+                        <colgroup>
+                            <col class="w1" />
+                            <col class="w2" />
+                            <col class="w3" />
+                            <col class="w1" />
+                            <col class="w2" />
+                            <col class="w2" />
+                        </colgroup>
+                        <tbody class="pc">
+                            <tr>
+                                <th>
+                                    <span class="required">*</span>회사명
+                                </th>
+                                <td colspan="5">
+                                    <div class="int_box border-animation">
+                                        <input type="text" class="border-animation__inner" />
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    <span class="required">*</span>고객명
+                                </th>
+                                <td colspan="2">
+                                    <div class="int_box border-animation">
+                                        <input type="text" class="border-animation__inner" />
+                                    </div>
+                                </td>
+                                <th>
+                                    <span class="required">*</span>연락처
+                                </th>
+                                <td colspan="2">
+                                    <div class="int_box border-animation">
+                                        <input type="text" class="border-animation__inner" />
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>이메일</th>
+                                <td>
+                                    <div class="int_box border-animation">
+                                        <input type="text" class="border-animation__inner" />
+                                    </div>
+                                </td>
+                                <td>
+                                    <span>@@</span>
+                                </td>
+                                <td colspan="2">
+                                    <div class="int_box border-animation">
+                                        <input type="text" class="border-animation__inner" />
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="int_box border-animation">
+                                        <select class="select border-animation__inner" id="select_OnlineRS_EmailList">
+                                            <option value="">직접입력</option>
+                                            <option value="naver.com">naver.com</option>
+                                            <option value="hanmail.net">hanmail.net</option>
+                                            <option value="hotmail.com">hotmail.com</option>
+                                            <option value="nate.com">nate.com</option>
+                                            <option value="korea.com">korea.com</option>
+                                            <option value="gmail.com">gmail.com</option>
+                                        </select>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>제목</th>
+                                <td colspan="5">
+                                    <div class="int_box border-animation">
+                                        <input type="text" class="border-animation__inner" />
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    <span class="required">*</span>내용
+                                </th>
+                                <td colspan="5">
+                                    <div class="int_box border-animation">
+                                        <textarea type="textarea" class="textarea border-animation__inner" name="OnlineRS_Content" id="textarea_OnlineRS_Content" data-index="OnlineRS7" style=""></textarea>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="6">
+                                    <div id="recaptcha" class="recaptcha">
+
+                                    </div>
+                                    <button type="button" onclick="sendEmail()" class="sendMessage">Send Message</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tbody class="mo">
+                            <tr>
+                                <th colspan="6">
+                                    <span class="required">*</span>회사명
+                                </th>
+                            </tr>
+                            <tr>
+                                <td colspan="6">
+                                    <div class="int_box border-animation">
+                                        <input type="text" class="border-animation__inner" />
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th colspan="6">
+                                    <span class="required">*</span>고객명
+                                </th>
+                            </tr>
+                            <tr>
+                                <td colspan="6">
+                                    <div class="int_box border-animation">
+                                        <input type="text" class="border-animation__inner" />
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th colspan="6">
+                                    <span class="required">*</span>연락처
+                                </th>
+                            </tr>
+                            <tr>
+                                <td colspan="6">
+                                    <div class="int_box border-animation">
+                                        <input type="text" class="border-animation__inner" />
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th colspan="6">이메일</th>
+                            </tr>
+                            <tr>
+                                <td colspan="3">
+                                    <div class="int_box border-animation">
+                                        <input type="text" class="border-animation__inner" />
+                                    </div>
+                                </td>
+                                <td colspan="3">
+                                    <span>@@</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="3">
+                                    <div class="int_box border-animation">
+                                        <input type="text" class="border-animation__inner" />
+                                    </div>
+                                </td>
+                                <td colspan="3">
+                                    <div class="int_box border-animation">
+                                        <select class="select border-animation__inner" id="select_OnlineRS_EmailList">
+                                            <option value="">직접입력</option>
+                                            <option value="naver.com">naver.com</option>
+                                            <option value="hanmail.net">hanmail.net</option>
+                                            <option value="hotmail.com">hotmail.com</option>
+                                            <option value="nate.com">nate.com</option>
+                                            <option value="korea.com">korea.com</option>
+                                            <option value="gmail.com">gmail.com</option>
+                                        </select>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th colspan="6">제목</th>
+                            </tr>
+                            <tr>
+                                <td colspan="6">
+                                    <div class="int_box border-animation">
+                                        <input type="text" class="border-animation__inner" />
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th colspan="6">
+                                    <span class="required">*</span>내용
+                                </th>
+                            </tr>
+                            <tr>
+                                <td colspan="6">
+                                    <div class="int_box border-animation">
+                                        <textarea type="textarea" class="textarea border-animation__inner" name="OnlineRS_Content" id="textarea_OnlineRS_Content" data-index="OnlineRS7" style=""></textarea>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="6">
+                                    <div id="recaptcha" class="recaptcha">
+
+                                    </div>
+                                    <button type="button" onclick="sendEmail()" class="sendMessage">Send Message</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- //col -->
+        </div>
+        <div class="contact_area" id="contactPage">
+            <div class="contact_container">
+                <div class="event_location">
+                    <div class="office_address">
+                        <h2 class="office">Office Address</h2>
+                        <p class="txt_kor">
+                            서울특별시 금천구 가산디지털2로 123, 313호 양재아이티
+                        </p>
+                        <p class="txt_eng">
+                            Yangjae IT, No. 313, 123, Gasan Digital 2, Geumcheon-gu, Seoul
+                        </p>
+                    </div>
+                    <div class="office_address">
+                        <h2 class="office">Contact Info</h2>
+                        <p><a href="mailto:sales@yjit.co.kr">sales@yjit.co.kr</a></p>
+                    </div>
+                    <div class="social">
+                        <a href="https://blog.naver.com/yjitelvis" target="_blank" class="blog_icon">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    
+    <!-- //tab_panel -->
+        <div class="navi_tab" id="navi_tab">
+            <ul>
+                <li class="navi_list on">
+                    <button type="button" class="schedule_sea" onclick="fnMovePage('tab_area')">
+                        <span>해운<br />스케줄</span>
+                        <span class="box_tag">해운 스케줄 조회</span>
+                    </button>
+                </li>
+                <li class="navi_list">
+                    <button type="button" class="schedule_air" onclick="fnMovePage('tab_area')">
+                        <span>항공<br />스케줄</span>
+                        <span class="box_tag">항공 스케줄 조회</span>
+                    </button>
+                </li>
+                <li class="navi_list">
+                    <button type="button" class="cargo_info" onclick="fnMovePage('tab_area')">
+                        <span>화물<br />진행</span>
+                        <span class="box_tag">화물진행정보</span>
+                    </button>
+                </li>
+                <li class="navi_list">
+                    <button type="button" class="export_info" onclick="fnMovePage('tab_area')">
+                        <span>수출<br />이행</span>
+                        <span class="box_tag">수출이행내역</span>
+                    </button>
+                </li>
+            </ul>
+        </div>
+    <div class="navigation">
+        <button type="button" class="btn_top">TOP</button>
+    </div>
+    <!-- //container -->
+
+    @Scripts.Render("~/Scripts/js/Main/Main.js")
+    @Scripts.Render("~/Scripts/js/Main/Sea.js")
+    @Scripts.Render("~/Scripts/js/Main/Air.js")
+    @Scripts.Render("~/Scripts/js/Main/Unipass.js")
+}
