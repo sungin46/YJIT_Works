@@ -1,0 +1,695 @@
+﻿@{ // Main 언어 설정
+	string setLang = "";
+	if (HttpContext.Current.Session["Language"] == null)
+	{
+		setLang = "KO";
+	}
+	else
+	{
+		setLang = HttpContext.Current.Session["Language"].ToString();
+	}
+
+	if (string.IsNullOrEmpty(setLang))
+	{
+		setLang = "KO";
+	}
+}
+
+<!DOCTYPE html>
+@if (setLang.Equals("EN"))  //언어 설정이 영어 일 경우
+{
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <title>HANSAENG EXPRESS</title>
+    <link href="~/Content/css/media.css" rel="stylesheet">
+    <link href="~/Content/PagedList.css" rel="stylesheet">
+    <link href="~/Content/loading.css" rel="stylesheet">
+    <script src="~/Scripts/js/jquery-2.2.3.min.js"></script>
+    <script src="~/Scripts/js/slick.min.js"></script>
+    <script src="~/Scripts/js/waypoints.min.js"></script>
+    <script src="~/Scripts/js/common.js"></script>
+    <script src="~/Scripts/js/Common/Comm.js"></script>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    @*<script src="~/Scripts/API/c3.min.js"></script>*@
+</head>
+    <body>
+        <!-- wrap -->
+        <div id="wrap">
+            <!-- header -->
+            <header id="header" class="sub">
+                <div id="navi_bg"></div>
+                <input type="hidden" id="sub_id" value="@ViewBag.Title" />
+                <input type="hidden" id="sub_title_id" value="@ViewBag.Sub" />
+
+                <div class="inner sub_inner">
+                    <div class="header_logo_area">
+                        <h1 class="logo2"><a href="/"><span class="hidden">HANSAENG EXPRESS</span></a></h1>
+                        @*<h1 class="logo2"><a href="javascript:void(0)" onclick="layerPopup('#Management_Policy');"><span class="hidden">HEUNG-A LOGISTICS</span></a></h1>*@
+                    </div>
+                    <ul class="lnb">
+                        <li>
+                            <a href="@Url.Action("greeting", "Company")"><span>COMPANY</span></a>
+                            <div class="depth">
+                                <div class="sub_in">
+                                    <ul>
+                                        <li><a href="@Url.Action("greeting", "Company")"><span>Greeting</span></a></li>
+                                        <li><a href="@Url.Action("contact", "Company")"><span>Contact</span></a></li>
+                                        <li><a href="@Url.Action("location", "Company")"><span>Location</span></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Index", "business")"><span>Business</span></a>
+                            <div class="depth">
+                                <div class="sub_in">
+                                    <ul>
+                                        <li><a href="@Url.Action("Index", "business")"><span>Business</span></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="http://cs.hansaeng.co.kr" target="_blank"><span>E-SERVICE</span></a>
+                            <div class="depth">
+                                <div class="sub_in">
+                                    <ul>
+                                        <li><a href="http://cs.hansaeng.co.kr" target="_blank"><span>E-SERVICE</span></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <a href="javascript:void(0)" id="hamberger"><span class="btn_total"></span></a>
+                    <a href="@Url.Action("SetLang", "Language", new { Controller = "Language", strLang = "KO" })" id="hamberger2">
+                        <span>KOR</span>
+                    </a>
+                    <!-- total_menu -->
+                    <nav class="total_menu">
+                        <div class="dim"></div>
+                        <div class="total_nav" id="total_nav">
+                            <div class="nav_tit">
+                                <a href="/" class="nav_logo2"><span class="hidden">SAMYOUNG EXPRESS</span></a>
+                                <button type="button" class="close"><span class="blind">Close</span></button>
+                            </div>
+                            <ul class="menu">
+                                <li>
+                                    <a href="@Url.Action("greeting", "Company")"><span>Company</span></a>
+                                    <div class="sub_depth">
+                                        <div class="sub_in">
+                                            <ul>
+                                                <li><a href="@Url.Action("greeting", "Company")"><span>Greeting</span></a></li>
+                                                <li><a href="@Url.Action("contact", "Company")"><span>Contact</span></a></li>
+                                                <li><a href="@Url.Action("location", "Company")"><span>Location</span></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("Index", "business")"><span>Business</span></a>
+                                    <div class="sub_depth">
+                                        <div class="sub_in">
+                                            <ul>
+                                                <li><a href="@Url.Action("Index", "business")"><span>Business</span></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <a href="http://cs.hansaeng.co.kr" target="_blank"><span>E-SERVICE</span></a>
+                                    <div class="sub_depth">
+                                        <div class="sub_in">
+                                            <ul>
+                                                <li><a href="http://cs.hansaeng.co.kr" target="_blank"><span>E-SERVICE</span></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <a href=@Url.Action("SetLang", "Language", new { Controller = "Language", strLang = "KO" })><span>KOR</span></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                    <!-- //total_menu -->
+                </div>
+            </header>
+            <!-- //header -->
+            <script>
+                var sub_id = $("#sub_id").val();
+                //alert(sub_id);
+                switch (sub_id) {
+                    case "company":
+                        lock(0, 0);
+                        break;
+                    case "business":
+                        lock(1, 0);
+                        break;
+                    case "Eservice":
+                        lock(2, 0);
+                        break;
+                }
+            </script>
+
+            <!-- sub_visual -->
+            @{
+                string Title = ViewBag.Title;
+                string subTitle = ViewBag.Sub;
+
+                switch (Title)
+                {
+                    case "company":
+                        <div class="sub_visual" id="@ViewBag.Title">
+                            <div class="inner">
+                                <p class="pc"><img src="/Images/cont/sub_title_en.png" alt="sub_title_area" class="sub_img_title"></p>
+                                <p class="mo"><img src="/Images/cont/sub_title_en_m.png" alt="sub_title_area"></p>
+                            </div>
+                        </div>
+                        break;
+                    case "business":
+                        <div class="sub_visual" id="@ViewBag.Title">
+                            <div class="inner">
+                                <p class="pc"><img src="/Images/cont/sub_title_en.png" alt="sub_title_area" class="sub_img_title"></p>
+                                <p class="mo"><img src="/Images/cont/sub_title_en_m.png" alt="sub_title_area"></p>
+                            </div>
+                        </div>
+                        break;
+                    case "Eservice":
+                        <div class="sub_visual" id="@ViewBag.Title">
+                            <div class="inner">
+                                <p class="pc"><img src="/Images/cont/sub_title_en.png" alt="sub_title_area" class="sub_img_title"></p>
+                                <p class="mo"><img src="/Images/cont/sub_title_en_m.png" alt="sub_title_area"></p>
+                            </div>
+                        </div>
+                        break;
+                }
+            }
+
+            <!-- //sub_visual -->
+            <!-- location -->
+            <div class="location">
+                <div class="inner">
+                    <a href="/" class="home"><span class="blind">Home</span></a>
+                    <div class="depth">
+                        @{ Title = ViewBag.Title;
+                            switch (Title)
+                            {
+                                case "company":
+                                    <a href="javascript:void(0)"><span>Company</span></a>
+                                    break;
+                                case "business":
+                                    <a href="javascript:void(0)"><span>Business</span></a>
+                                    break;
+                                case "community":
+                                    <a href="javascript:void(0)"><span>E-SERVICE</span></a>
+                                    break;
+                            }
+                        }
+                        <div class="sub_list">
+                            <ul>
+                                @{ if (ViewBag.Title != "company")
+                                    {
+                                        <li><a href="@Url.Action("greeting", "company")"><span>Company</span></a></li>
+                                    }
+                                }
+                                @{ if (ViewBag.Title != "business")
+                                    {
+                                        <li><a href="@Url.Action("Index", "business" )"><span>Business</span></a></li>
+                                    }
+                                }
+                                @{ if (ViewBag.Title != "Eservice")
+                                    {
+                                        <li><a href="http://cs.hansaeng.co.kr" target="_blank"><span>E-SERVICE</span></a></li>
+                                    }
+                                }
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="depth now">
+                        @{
+                            subTitle = ViewBag.Sub;
+                            switch (Title)
+                            {
+                                case "company":
+                                    switch (subTitle)
+                                    {
+                                        case "greeting":<a href="javascript:void(0)"><span>Greeting</span></a>break;
+                                        case "contact":<a href="javascript:void(0)"><span>Contact</span></a>break;
+                                        case "location":<a href="javascript:void(0)"><span>Location</span></a>break;
+                                    }
+                                    <div class="sub_list">
+                                        <ul>
+                                            @{ if (ViewBag.Sub != "greeting")
+                                                {
+                                                    <li><a href="@Url.Action("greeting", "company")"><span>Greeting</span></a></li>
+                                                }}
+                                            @{ if (ViewBag.Sub != "contact")
+                                                {
+                                                    <li><a href="@Url.Action("contact", "company")"><span>Contact</span></a></li>
+                                                }}
+                                            @{ if (ViewBag.Sub != "location")
+                                                {
+                                                    <li><a href="@Url.Action("location", "company")"><span>Location</span></a></li>
+                                                }}
+                                        </ul>
+                                    </div>
+                                    break;
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+            <!-- //location -->
+            <!-- container -->
+            @RenderSection("container", required: false)
+            <!-- //container -->
+
+            <footer id="footer_en">
+                <!-- fnb_w -->
+                <div class="fnb_w">
+                    <div class="inner">
+                        <ul class="fnb">
+                            @*<li><a href="javascript:void(0)" onclick="layerPopup('#Management_Policy');"><span>AEO</span></a></li>*@
+                            <li>
+                                @*<div class="fnb_image_area" onclick="layerPopup('#Management_Policy');">*@
+                                <div class="fnb_image_area">
+                                    <img src="~/Images/aeo.png" class="fnb_image" />
+                                </div>
+                            </li>
+                            <li>
+                                @*<a href="~/data/E-Catalog_ko.pdf" download><span>E-카달로그</span></a>*@
+                                <div class="fnb_image_area">
+                                    <img src="~/Images/FIATA.png" class="fnb_image" />
+                                </div>
+                            </li>
+                            <li>
+                                @*<a href="~/data/E-Catalog_ko.pdf" download><span>E-카달로그</span></a>*@
+                                <div class="fnb_image_area">
+                                    <img src="~/Images/IATA.png" class="fnb_image" />
+                                </div>
+                            </li>
+                            <li>
+                                @*<a href="~/data/E-Catalog_ko.pdf" download><span>E-카달로그</span></a>*@
+                                <div class="fnb_image_area">
+                                    <img src="~/Images/GFG.png" class="fnb_image" />
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- //fnb_w -->
+                <!-- f_info -->
+                <div class="f_info">
+                    <div class="inner">
+                        <div class="col pc">
+                            <div class="footer_logo_area">
+                                <!-- 로고 영역 -->
+                                <div class="footer_img_en"><a><span> </span></a></div>
+                            </div>
+                            <div class="footer_content_area">
+                                <span style="line-height: 27px;">
+                                    Hansaeng Express Co.,Ltd. <br />
+                                    42, Gangnam-daero 37-gil, Seocho-gu, Seoul<br />
+                                    Tel(Rep.) : 02-3474-6451  <span class="bar">|</span>  Fax : 02-3474-2674 <br />
+                                    Copyright 2020 Hansaeng Express Co., Ltd.
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="col addr mo">
+                            <div class="footer_logo_area_mo">
+                                <!-- 로고 영역 -->
+                                <div class="footer_img_en"><a><span> </span></a></div>
+                                @*<img src="~/Images/logo_ft.png" alt="한생 footer 로고" />*@
+                            </div>
+                            <address>
+                                <span class="item01">Hansaeng Express Co.,Ltd.</span> <br class="mo" />
+                                <span class="item03">42, Gangnam-daero 37-gil, Seocho-gu, Seoul</span><br class="mo" />
+                                <span class="item04">Tel(Rep.) : 02-3474-6451  <span class="bar">|</span>  Fax : 02-3474-2674</span><br class="mo" />
+                                <span class="item05">Copyright 2020 Hansaeng Express Co., Ltd.</span>
+                            </address>
+                        </div>
+                    </div>
+                </div>
+                <!-- //f_info -->
+                <!-- copy -->
+                <div class="copy">
+                    <div class="inner">
+                        ⓒ 2020 HANSAENG EXPRESS Corporation
+                        <button type="button" class="top"><span class="blind">TOP</span></button>
+                    </div>
+                </div>
+                <!-- //copy -->
+            </footer>
+        </div>
+    </body>
+</html>
+}
+else
+{
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <title>SKYROAD EXPRESS</title>
+    <link href="~/Content/css/media.css" rel="stylesheet">
+    <link href="~/Content/PagedList.css" rel="stylesheet">
+    <link href="~/Content/loading.css" rel="stylesheet">
+    <script src="~/Scripts/js/jquery-2.2.3.min.js"></script>
+    <script src="~/Scripts/js/slick.min.js"></script>
+    <script src="~/Scripts/js/waypoints.min.js"></script>
+    <script src="~/Scripts/js/common.js"></script>
+    <script src="~/Scripts/js/Common/Comm.js"></script>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    @Scripts.Render("~/Scripts/API/jquery.scrollbar.min.js")
+    @Scripts.Render("~/Scripts/API/jquery.slimscroll.min.js")
+    @*<script src="~/Scripts/API/c3.min.js"></script>*@
+
+    <script type="text/javascript">
+        $(function () {
+            $(".com").click(function () {
+                var id = this.name;
+                location.replace("/Customer/Support?seq=" + id);
+            })
+        })
+    </script>
+</head>
+    <body>
+        <!-- wrap -->
+        <div id="wrap">
+            <!-- header -->
+            <header id="header" class="sub">
+                <div id="navi_bg"></div>
+                <input type="hidden" id="sub_id" value="@ViewBag.Title" />
+                <input type="hidden" id="sub_title_id" value="@ViewBag.Sub" />
+
+                <div class="inner sub_inner">
+                    <div class="header_logo_area">
+                        <h1 class="logo"><a href="/"><span class="hidden">Skyroad Express, Inc.</span></a></h1>
+                    </div>
+                    <ul class="lnb">
+                        <li>
+                            <a href="@Url.Action("greeting", "Company")"><p><span>회사소개</span></p><span class="eng_header">About Skyroad</span></a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Index", "business")"><p><span>사업영역</span></p><span class="eng_header">Business</span></a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Support", "Customer")"><p><span>고객지원</span></p><span class="eng_header">Customer Center</span></a>
+                        </li>
+                        <li>
+                            <a href="http://channel.skyrd.co.kr/" target="_blank"><p><span class="prime">SKY Channel</span></p><span class="eng_header">&nbsp;</span></a>
+                        </li>
+                    </ul>
+                    <a href="javascript:void(0)" id="hamberger"><span class="btn_total"></span></a>
+                    <!-- total_menu -->
+                    <nav class="total_menu">
+                        <div class="dim"></div>
+                        <div class="total_nav" id="total_nav">
+                            <div class="nav_tit">
+                                <a href="/" class="nav_logo"><span class="hidden">HANSAENG EXPRESS</span></a>
+                                <button type="button" class="close"><span class="blind">닫기</span></button>
+                            </div>
+                            <ul class="menu">
+                                <li>
+                                    <a href="@Url.Action("greeting", "Company")">회사소개 <span>About Skyroad</span></a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("Index", "business")">사업영역 <span>Business</span></a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("Support", "Customer")">고객지원 <span>Customer Center</span></a>
+                                </li>
+                                <li>
+                                    <a href="http://channel.skyrd.co.kr/" class="prime" target="_blank" @*onclick="alert('현재 준비중입니다!')"*@>SKY Channel</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                    <!-- //total_menu -->
+                </div>
+            </header>
+            <!-- //header -->
+            <script>
+                var sub_id = $("#sub_id").val();
+                //alert(sub_id);
+                switch (sub_id) {
+                    case "company":
+                        lock(0, 0);
+                        break;
+                    case "business":
+                        lock(1, 0);
+                        break;
+                    case "Eservice":
+                        lock(2, 0);
+                        break;
+                }
+            </script>
+
+            <!-- sub_visual -->
+            @{
+                string Title = ViewBag.Title;
+                string subTitle = ViewBag.Sub;
+
+                switch (Title)
+                {
+                    case "company":
+                        <div class="sub_visual" id="@ViewBag.Title">
+                            <div class="inner">
+                                @*<p class="pc">회사소개<span>About Skyroad</span></p>
+                                <p class="mo">회사소개<span>About Skyroad</span></p>*@
+                            </div>
+                        </div>
+                        break;
+                    case "business":
+                        <div class="sub_visual" id="@ViewBag.Title">
+                            <div class="inner">
+                                @*<p class="pc">사업영역<span>Business</span></p>
+                                <p class="mo">사업영역<span>Business</span></p>*@
+                            </div>
+                        </div>
+                        break;
+                    case "Customer":
+                        <div class="sub_visual" id="@ViewBag.Title">
+                            <div class="inner">
+                                @*<p class="pc">고객지원<span>Customer Center</span></p>
+                                <p class="mo">고객지원<span>Customer Center</span></p>*@
+                            </div>
+                        </div>
+                        break;
+                }
+            }
+
+            <!-- //sub_visual -->
+            <!-- container -->
+            @RenderSection("container", required: false)
+            <!-- //container -->
+
+            <footer id="footer">
+                <!-- f_info -->
+                <div class="f_info">
+                    <div class="inner">
+                        <div class="link_list">
+                            <p><span class="brochure"><a href="~/Files/E_Brochure.pdf" download="E_Brochure.pdf">E-Brochure</a></span> | <span><a href="javascript:void(0)" class="com" name="1">찾아오는 길 Location</a></span></p>
+                        </div>
+                        <div class="addr_list">
+                            <div class="f_icons">
+                                <div class="f_icon f_small" onclick="layerPopup('#AEO_Pop')">
+                                    <img src="~/Images/f_aeo.png" />
+                                </div>
+                                <div class="f_icon">
+                                    <img src="~/Images/f_iata.png" />
+                                </div>
+                                <div class="f_icon">
+                                    <img src="~/Images/f_kiffa.png" />
+                                </div>
+                                <div class="f_icon">
+                                    <img src="~/Images/f_celc.png" />
+                                </div>
+                                <div class="f_icon">
+                                    <img src="~/Images/f_iso.png" />
+                                </div>
+                                <div class="f_icon">
+                                    <img src="~/Images/f_sgs.png" />
+                                </div>
+                            </div>
+                            <div class="addr">
+                                <p class="accent">(주)스카이로드 | 대표이사 : 김영찬</p>
+                                <p>서울 강서구 양천로 583, A2101~2호(염창동, 우림블루나인비즈니스센터) 우07547<br class="pc" /><span class="mo"> | </span>고객센터 : 02-3665-1671 | 팩스 : 02-3663-2491</p>
+                                <p>Copyright ⓒ skyroad. All Rights Reserved.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- //f_info -->
+            </footer>
+        </div>
+        <!-- aeo_pop -->
+        <div class="layer_zone_edemo" id="AEO_Pop">
+            <div class="layer_wrap_edemo layer_wrap_policy">
+                <div class="layer_inwrap_edemo">
+                    <article class="layer_cont_edemo">
+                        <!-- alert_cont -->
+                        <div class="alert_cont_edemo">
+                            <div class="terminner layer_wrap_Content_Height" style="text-align:left">
+                                <!-- container -->
+                                <div class="container" style="padding-bottom:0">
+                                    <div class="tab_area" id="tab_area">
+                                        <ul class="tab aeo_pop fixed_in type2">
+                                            <li class="on" value="PROGRAM"><a href="javascript:void(0)">부정방지프로그램</a></li>
+                                            <li value="CYBER"><a href="javascript:void(0)">사이버제보실</a></li>
+                                            <li value="ETHICS"><a href="javascript:void(0)">윤리규범실천지침</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="scrollbar_aeo">
+                                        <div class="tab_panel aeo_pop">
+                                            <!-- panel - 공지사항-->
+                                            <div class="panel" id="program" style="display: block">
+                                                <div class="aeo_cover">
+                                                    <h1 class="title">부정방지프로그램</h1>
+                                                    <div class="desc_cover">
+                                                        <p class="desc_bold"><span class="corp">㈜</span>스카이로드는 건실하고 신뢰받는 기업으로서 사회적 책임과 구성원으로서의 역할을 다하기 위해 임직원 각자가 지켜야 할 윤리규범 실천지침 및 행동강령을 만들어 지속적으로 교육을 시행하며, 내외부고발제도의 운영으로 임직원의 청렴성을 유지하겠습니다.</p>
+                                                    </div>
+                                                    <div class="desc_cover">
+                                                        <p class="desc_bold">행동강령</p>
+                                                        <p>모든 임직원이 지켜야 할 올바른 행동과 가치판단의 기준은 다음과 같다.</p>
+                                                    </div>
+                                                    <div class="desc_cover">
+                                                        <p><span class="corp">㈜</span>스카이로드 및 임직원은 고객의 만족을 목표로 고객을 존중하고 고객이 감동하는 가치를 제공하여 고객의 신뢰를 확보한다.</p>
+                                                        <p><span class="corp">㈜</span>스카이로드 및 임직원은 관련법규 등을 준수하여 회사와 협력사 및 고객에게 손실과 피해가 되지 않도록 한다.</p>
+                                                        <p><span class="corp">㈜</span>스카이로드 및 임직원은 융화를 통한 상호의 업무를 존중함으로서 아름다운 회사를 만든다.</p>
+                                                        <p><span class="corp">㈜</span>스카이로드 및 임직원은 회사의 재산을 사리로 사용하지 않으며, 이해관계자에게도 어떠한 형태의 금전적, 비금전적 요구를 하지 않는다.(불공정한 리베이트)</p>
+                                                        <p><span class="corp">㈜</span>스카이로드 및 임직원은 업무상 취득한 고객사 및 협력업체의 정보나 비밀을 누설하지 않는다.</p>
+                                                        <p><span class="corp">㈜</span>스카이로드 및 임직원은 성별, 학력, 출신사항, 연령, 종교 등에 어떠한 차별도 하지 않으며 상호 존중의 자세로 보람된 직장이 되도록 한다.</p>
+                                                        <p><span class="corp">㈜</span>스카이로드 및 임직원은 불건전한 사생활 및 성희롱 등과 같은 불미스러운 일이 발생되지 않도록 모범적 사회구성원으로서 책임을 다한다.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- //panel -->
+                                            <!-- panel - 인재상-->
+                                            <div class="panel" id="cyber">
+                                                <div class="aeo_cover">
+                                                    <h1 class="title">사이버제보실</h1>
+                                                    <div class="desc_cover">
+                                                        <p class="desc_bold">임직원의 부당한 요구 및 당사의 경영방침, 안전관리, 법규준수, 윤리경영방침 및 윤리규범실천지침(행동강령)을 위반하는 사항을 알고 계시면 제보해주십시오. <span class="corp">㈜</span>스카이로드는 신고 및 제보를 해주신 분들께서 어떠한 불이익을 받지 않도록 모든 조치와 노력을 다하고 있으며 신고자의 실명을 철저히 익명으로 관리하고 있습니다.</p>
+                                                    </div>
+                                                    <div class="desc_cover">
+                                                        <p class="desc_bold">임직원의 의무</p>
+                                                        <p><span class="corp">㈜</span>스카이로드의 전 임직원은 업무를 수행함에 있어 자신의 역할을 이해하고 당사의 경영방침, 안전관리, 법규준수, 윤리경영방침 및 윤리규범실천지침(행동강령)을 숙지하여야 하며, 지침을 준수하고 정도경영을 실천해야 한다.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- //panel -->
+                                            <!-- panel - 오시는 길-->
+                                            <div class="panel" id="Ethics">
+                                                <div class="aeo_cover">
+                                                    <h1 class="title">윤리규범실천지침</h1>
+                                                    <div class="desc_cover">
+                                                        <p class="desc_bold">건실하고 신뢰받는 기업으로서 사회적 책임과 구성원으로서의 역할을 다하기 위해 <span class="corp">㈜</span>스카이로드의 전 임직원 각자가 지켜야 할 바람직한 행동과 가치판단의 기준을 정립하는데 목적이 있다.</p>
+                                                    </div>
+                                                    <div class="desc_cover">
+                                                        <p class="desc_bold">1. 고객존중</p>
+                                                        <p>고객의 의견에 항상 귀를 기울이고, 윤리적 테두리 안에서 고객의 진정한 요구는 항상 옳다고 생각하며, 고객만족을 목표로 고객이 감동하는 가치를 제공한다.</p>
+                                                    </div>
+                                                    <div class="desc_cover">
+                                                        <p class="desc_bold">2. 신뢰</p>
+                                                        <p>고객의 발전이 곧 우리의 발전이라는 인식 하에 합리적인 가격으로 최고 품질의 서비스를 제공하며, 성실하고, 안전한 기업으로서 고객에게 진실만을 제공하며 고객과의 약속은 반드시 지킨다.</p>
+                                                    </div>
+                                                    <div class="desc_cover">
+                                                        <p class="desc_bold">3. 공정한 거래</p>
+                                                        <p>회사의 전 임직원은 자유경쟁의 원칙에 따라 시장경제 질서를 존중하며, 대한민국을 비롯하여 전 세계에 걸쳐있는 경쟁사들과의 사업 활동에서도 해당지역의 관련법규를 준수하며, 정당한 방법을 통하여 경쟁의 우위를 확보한다.</p>
+                                                        <p class="desc_light">1) 법규의 준수<br /><span>회사의 전 임직원은 국내 및 해외에서의 모든 물류활동에서 회사가 지켜야 할 해당국가의 제반 법규를 준수하고 거래의 관습을 존중하여 수행한다.</span></p>
+                                                        <p class="desc_light">2) 공정한 거래절차<br /><span>회사의 전 임직원은 당사와의 모든 거래업체와 상호 대등한 위치에서 공정하게 거래한다. 또한, 당사의 거래업체 선정 절차를 숙지하고 이에 맞는 업체를 공정하게 등록하며, 거래조건 및 거래절차에 대한 사항에 있어 충분한 협의와 보고를 거친다.</span></p>
+                                                    </div>
+                                                    <div class="desc_cover">
+                                                        <p class="desc_bold">4. 임직원의 기본윤리</p>
+                                                        <p>회사의 전 임직원은 정직과 공정의 신념으로 융화를 통한 상호업무를 존중하여 구성원으로서 올바른 가치관을 확립하고, 내부통제시스템을 준수하여 끊임없는 자기개발과 공정한 직무수행을 통해 주어진 사명을 완수한다.</p>
+                                                        <p class="desc_light">
+                                                            1) 사명의 완수<br />
+                                                            <span>회사의 전 임직원은 회사의 비전과 방침에 따라 각자의 사명을 성실히 수행한다.</span>
+                                                            <span>회사의 전 임직원은 각자의 주어진 직무에 있어 최선을 다해 정당한 방법으로 수행하며 제반 관련법규를 준수한다.</span>
+                                                            <span>회사의 전 임직원은 동료 및 관계 부서간에 적극적인 협조와 원활한 의사소통으로 업무의 효율을 높인다.</span>
+                                                            <span>회사의 전 임직원은 모든 직무를 정직하고 공정하게 수행하며, 건전한 기업문화를 조성하기 위해 항상 노력한다.</span>
+                                                        </p>
+                                                        <p class="desc_light">
+                                                            2) 공정한 직무수행<br />
+                                                            <span>회사의 전 임직원은 직무와 관련하여 판단의 공정성을 저해할 수 있는 어떠한 형태의 금전적 이익도 이해 관계자로부터 취하지 않는다.</span>
+                                                            <span>회사의 전 임직원은 직무와 관련하여 판단의 공정성을 저해할 수 있는 어떠한 형태의 금전적 비금전적 행위를 제공하지 않는다.</span>
+                                                            <span>회사의 전 임직원은 일상생활 및 직무와 관련하여 사회로부터 지탄 받을 수 있는 비도덕적, 비윤리적 행위를 하지 않는다.</span>
+                                                        </p>
+                                                        <p class="desc_light">
+                                                            3) 회사자산 및 정보의 보호와 적절한 사용<br />
+                                                            <span>회사의 전 임직원 및 구성원은 회사의 유·무형자산을 보호하고 정당하게 사용하여야 한다. 회사의 예산을 개인적인 용도로 사용하지 않으며, 회사가 정한 목적에 맞게 지출하고 회계장부에 정확하게 기록하여야 한다. 또한 회사와 개인의 이해가 상층되는 어떠한 행위나 관계도 회피한다.</span>
+                                                            <span>회사의 전 임직원은 PC, 인터넷, 전화, 팩스, 법인카드 및 차량 등의 회사자산을 개인적인 용도로 사용하여서는 아니된다.</span>
+                                                            <span>회사의 전 임직원은 회사의 영업권, 상표권, 저작권, 기타 자산가치가 존재하는 정보 등의 지적재산권을 적극적으로 보호하여야 한다. 또한 타인 또는 타사의 지적재산권도 동일하게 보호하여야 하며, 특히 불법 소프트웨어를 사용해서는 아니 된다.</span>
+                                                            <span>회사의 전 임직원은 사업정보를 포함한 회사의 정보자산을 철저하게 기밀로 유지한다. 정보자산의 공개여부 및 범위 또한 사전에 회사의 승인을 받는다.</span>
+                                                            <span>회사의 전 임직원은 모든 기밀정보를 회사와 그 고객의 독점적 재산임을 인지하여 회사의 사전에 동의 없이 기밀정보를 검색, 유출하지 않는다.</span>
+                                                            <span>회사의 전 임직원은 회사의 요구가 있을 시 그 정보를 즉시 반환가능한 형태로 반환해야 한다.</span>
+                                                            <span>회사의 전 임직원은 회사의 사전허가 없이는 직원이 아닌 자를 근무장소나 회사 시설내로 들어오게 하여서는 아니 된다.</span>
+                                                            <span>회사의 전 임직원은 불법 또는 불성실한 행위로 인하여 회사에 손해를 입혔을 경우 그에 상응하는 손해배상을 하여야 한다.</span>
+                                                        </p>
+                                                        <p class="desc_light">
+                                                            4) 자기개발<br />
+                                                            <span>회사의 전 임직원은 바람직한 인재상을 스스로 정립하고, 지속적인 자기개발을 통해 회사의 인재상에 부합 되도록 꾸준히 노력한다.</span>
+                                                        </p>
+                                                        <p class="desc_light">
+                                                            5) 내부통제시스템의 준수<br />
+                                                            <span>회사의 전 임직원은 회사의 내부통제시스템을 통해 회사 운영상 적영되는 법과 규정을 확인하고 준수하여야 하며, 회사는 법과 규정을 위반하거나 비윤리적 행위를 통한 업무 수행을 허용하지 않는다.</span>
+                                                        </p>
+                                                    </div>
+                                                    <div class="desc_cover">
+                                                        <p class="desc_bold">5. 임직원에 대한 사명감</p>
+                                                        <p>
+                                                            1) <span class="corp">㈜</span>스카이로드는 회사의 전 임직원에 대한 상호 대등한 믿음과 진정한 애정을 갖고 임직원 한 사람 한 사람을 독립된 인격으로 대한다.<br />
+                                                            또한 객관적인 인사정책을 위해 내부통제시스템의 평가 프로그램 안에서 성과위주 인사시스템을 도입 공정한 인사체계를 구축한다.<br />
+                                                            또한 임직원이 주인의식을 바탕으로 일을 통해 긍지와 보람을 성취할 수 있도록 제도의 확립과 교육·지도 등 필요한 조치를 강구한다.
+                                                        </p>
+                                                        <p>2) 회사는 임직원 개개인의 정보를 보호하며, 개인정보를 유출하지 않는다.</p>
+                                                    </div>
+                                                    <div class="desc_cover">
+                                                        <p class="desc_bold">6. 사회에 대한 책임</p>
+                                                        <p>1) 사회발전에 기여</p>
+                                                        <p class="desc_light"><span class="corp">㈜</span>스카이로드는 고용의 창출과 조세의 성실한 납부로 국가발전에 기여하고 복지사업을 통해 사회발전에 공헌한다.</p>
+                                                        <p>2) 환경의 보호</p>
+                                                        <p class="desc_light"><span class="corp">㈜</span>스카이로드는 깨끗한 환경의 보전을 위해 에너지 절약과 환경오염의 방지 및 자연보호에 최선의 노력을 경주한다.</p>
+                                                    </div>
+                                                    <div class="desc_cover">
+                                                        <p class="desc_bold">7. 주주가치제고</p>
+                                                        <p><span class="corp">㈜</span>스카이로드는 합리적인 사업전개를 통해 건실한 기업으로 성장함으로서 주주의 이익을 보호한다.</p>
+                                                        <p class="desc_light">
+                                                            1) 합리적 사업전개<br />
+                                                            <span>국내외를 막론하고 해당지역의 사회적 가치관을 존중하여 사업을 수행한다.</span>
+                                                            <span>회사의 안정적 성장의 바탕 위에서 사업의 확대를 도모한다.</span>
+                                                        </p>
+                                                        <p class="desc_light">
+                                                            1) 주주 이익의 보호<br />
+                                                            <span>효율적인 경영을 통하여 건전한 이익을 실현함으로서 주주의 수익을 성실하게 보호한다.</span>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- //panel -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- //container -->
+                                <button type="button" class="btn_close close_edemo" onclick="layerClose('#AEO_Pop');"><span class="blind">닫기</span></button>
+                            </div>
+                        </div>
+                        <!-- //alert_cont -->
+                    </article>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+}
+
+

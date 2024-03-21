@@ -1,0 +1,294 @@
+﻿@{
+    ViewBag.Title = "Customer";
+    ViewBag.Sub = "Support";
+
+    Layout = "~/Views/Shared/_subLayout.cshtml";
+
+    string strIndex = "";
+
+    var getNoticeSeq = Request["seq"];
+
+    if (Request.QueryString["index"] != null)
+    {
+        strIndex = Request.QueryString["index"].ToString();
+    }
+
+    string setLang = "";
+    if (HttpContext.Current.Session["Language"] == null)
+    {
+        setLang = "KO";
+    }
+    else
+    {
+        setLang = HttpContext.Current.Session["Language"].ToString();
+    }
+
+    if (string.IsNullOrEmpty(setLang))
+    {
+        setLang = "KO";
+    }
+}
+
+@model PagedList.IPagedList<SREX_ELVISPRIME_HOME.Models.NoticeModel>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+@section Container {
+    @Scripts.Render("~/Scripts/Notice.js")
+    <div class="container">
+        <input type="hidden" id="hid_Seq" name="hid_Seq" value="@getNoticeSeq" />
+        <!-- 여기 안에서 작업-->
+        <div class="greeting support">
+            <div class="greeting_title">
+                <img class="pc" src="~/Images/grt_hd.png" />
+                <img class="mo" src="~/Images/grt_hd_mo.png" />
+            </div>
+            <div class="greeting_box" style="border-bottom-left-radius: 0px; border-bottom-right-radius: 0px;">
+                <div class="greeting_cont on">
+                    <div class="greeting_info" id="Vision">
+                        <h2 class="sub_title">공지사항<span>Notice</span></h2>
+                        <div class="img_cover">
+                            <img src="~/Images/sup_title01.png" />
+                        </div>
+                        <img src="~/Images/btn_plus.png" class="btn_plus" />
+                        <img src="~/Images/btn_minus.png" class="btn_minus" />
+                    </div>
+                    <div class="greeting_desc grt show">
+                        <div class="part1 support">
+                            <h2 class="sub_title">공지사항<span>Notice</span></h2>
+                            <div class="notice">
+                                <ul class="notice_list" id="notice_list2">
+                                </ul>
+                                <div class="base_paging">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="greeting_cont">
+                    <div class="greeting_info" id="Sales">
+                        <h2 class="sub_title">인재상<span>Type of Talent</span></h2>
+                        <div class="img_cover">
+                            <img src="~/Images/sup_title02.png" class="pd_bt0" />
+                        </div>
+                        <img src="~/Images/btn_plus.png" class="btn_plus" />
+                        <img src="~/Images/btn_minus.png" class="btn_minus" />
+                    </div>
+                    <div class="greeting_desc grt">
+                        <div class="part1 support">
+                            <h2 class="sub_title">인재상<span>Type of Talent</span></h2>
+                            <div class="talent">
+                                <div class="talent_desc">
+                                    <p><span>㈜</span>스카이로드는 1997년 창사 이래로 꾸준히 성장하며 현재까지 달려왔습니다.</p>
+                                    <p>그 동안 힘든 시기도 있었지만 모두가 한 마음으로 도전하고 시도한 결과 계속 발전하는 스카이로드가 될 수 있었습니다.</p>
+                                    <p>살얼음판과도 같은 국내 물류 시장에서 단단히 자리잡을 수 있게 된 것은 모두 임직원 분들의 남다른 도전정신 덕분에 가능했습니다.</p>
+                                </div>
+                                <h2 class="g_title">성장하는 스카이로드와 더 큰 꿈을 함께 이룰 인재를 모십니다.</h2>
+                                <p class="recruit">학력제한은 없습니다. 열정과 태도를 아주 중요하게 생각합니다.</p>
+                                <div class="growth">
+                                    <div class="g_icon">
+                                        <div class="g_icon_box">
+                                            <p>01</p>
+                                        </div>
+                                        <p class="g_title02">자주 실패하는 사람</p>
+                                    </div>
+                                    <div class="g_icon">
+                                        <div class="g_icon_box">
+                                            <p>02</p>
+                                        </div>
+                                        <p class="g_title02">변화를 두려워하지<br />않는 사람</p>
+                                    </div>
+                                    <div class="g_icon">
+                                        <div class="g_icon_box">
+                                            <p>03</p>
+                                        </div>
+                                        <p class="g_title02">자율적인 회사 분위기를<br />선호하는 사람</p>
+                                    </div>
+                                    <div class="g_icon">
+                                        <div class="g_icon_box">
+                                            <p>04</p>
+                                        </div>
+                                        <p class="g_title02">책임과 권한을 두려워하지<br />않는 사람</p>
+                                    </div>
+                                    <div class="g_icon">
+                                        <div class="g_icon_box">
+                                            <p>05</p>
+                                        </div>
+                                        <p class="g_title02">성과급 수령을<br />즐길줄 아는 사람</p>
+                                    </div>
+                                    <div class="g_icon">
+                                        <div class="g_icon_box">
+                                            <p>06</p>
+                                        </div>
+                                        <p class="g_title02">모두를 위한 결정을<br />하는 사람</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="greeting_cont">
+                    <div class="greeting_info" id="History">
+                        <h2 class="sub_title">오시는 길<span>Directions</span></h2>
+                        <div class="img_cover">
+                            <img src="~/Images/sup_title03.png" />
+                        </div>
+                        <img src="~/Images/btn_plus.png" class="btn_plus" />
+                        <img src="~/Images/btn_minus.png" class="btn_minus" />
+                    </div>
+                    <div class="greeting_desc grt">
+                        <div class="part1 support">
+                            <h2 class="sub_title">오시는 길<span>Directions</span></h2>
+                            <div class="map">
+                                <select class="sel map_sel" id="MapSelect">
+                                    <option>서울</option>
+                                    <option>인천</option>
+                                    <option>부산</option>
+                                    <option>홍콩</option>
+                                </select>
+                                <div class="map_panel" style="display:block;">
+                                    <p class="map_title">서울 강서구 양천로 583, A2101~2호 (염창동, 우림블루나인비즈니스센터) 우07547</p>
+                                    <div class="map_box">
+                                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3162.921892330104!2d126.86210141568363!3d37.556903979799735!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357c9c03df67c117%3A0xc705c1965dd2c5c4!2z7ISc7Jq47Yq567OE7IucIOqwleyEnOq1rCDslpHsspzroZwgNTgz!5e0!3m2!1sko!2skr!4v1639706622862!5m2!1sko!2skr" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                                    </div>
+                                </div>
+                                <div class="map_panel">
+                                    <p class="map_title">인천 중구 공항동로 296번길 98-114 인천공항물류단지 A203 (사무실, 창고, 내륙운송지점)</p>
+                                    <div class="map_box">
+                                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3166.282352511618!2d126.47943471568178!3d37.47766287981465!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357b9b2ab71699ab%3A0x1bbbb3f2d6ecdaaf!2z7J247LKc6rWt7KCc66y866WY7IS87YSw!5e0!3m2!1sko!2skr!4v1639706696818!5m2!1sko!2skr" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                                    </div>
+                                </div>
+                                <div class="map_panel">
+                                    <p class="map_title">부산광역시 중구 충장대로 11, 1407호 (중앙동4가, 무역회관빌딩)</p>
+                                    <div class="map_box">
+                                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3264.0371798418155!2d129.03557481562743!3d35.105782480332465!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3568e9705ce96e7f%3A0x5092c017e3f218dc!2z67aA7IKw6rSR7Jet7IucIOykkeq1rCDstqnsnqXrjIDroZwgMTEgMTQwN-2YuA!5e0!3m2!1sko!2skr!4v1639706738996!5m2!1sko!2skr" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                                    </div>
+                                </div>
+                                <div class="map_panel">
+                                    <p class="map_title">510 Laford Centre, 838 Lai Chi Kok Road, Kowloon, Hongkong</p>
+                                    <div class="map_box">
+                                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3690.476831608177!2d114.14532311538969!3d22.33561738530532!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34040754daf0a45d%3A0x4198e5e88ed2c84c!2sLaford%20Centre%2C%20838%20Lai%20Chi%20Kok%20Rd%2C%20Cheung%20Sha%20Wan%2C%20%ED%99%8D%EC%BD%A9!5e0!3m2!1sko!2skr!4v1639706776298!5m2!1sko!2skr" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pc">
+                <!-- greeting_desc -->
+                <div class="greeting_desc grt_pc show">
+                    <div class="part1 support">
+                        <h2 class="sub_title">공지사항<span>Notice</span></h2>
+                        <div class="notice">
+                            <ul class="notice_list" id="notice_list">
+                            </ul>
+                            <div class="base_paging">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- greeting_desc -->
+                <div class="greeting_desc grt_pc">
+                    <div class="part1 support">
+                        <h2 class="sub_title">인재상<span>Type of Talent</span></h2>
+                        <div class="talent">
+                            <div class="talent_desc">
+                                <p><span>㈜</span>스카이로드는 1997년 창사 이래로 꾸준히 성장하며 현재까지 달려왔습니다.</p>
+                                <p>그 동안 힘든 시기도 있었지만 모두가 한 마음으로 도전하고 시도한 결과 계속 발전하는 스카이로드가 될 수 있었습니다.</p>
+                                <p>살얼음판과도 같은 국내 물류 시장에서 단단히 자리잡을 수 있게 된 것은 모두 임직원 분들의 남다른 도전정신 덕분에 가능했습니다.</p>
+                            </div>
+                            <h2 class="g_title">성장하는 스카이로드와 더 큰 꿈을 함께 이룰 인재를 모십니다.</h2>
+                            <p class="recruit">학력제한은 없습니다. 열정과 태도를 아주 중요하게 생각합니다.</p>
+                            <div class="growth">
+                                <div class="g_icon">
+                                    <div class="g_icon_box">
+                                        <p>01</p>
+                                    </div>
+                                    <p class="g_title02">자주 실패하는 사람</p>
+                                </div>
+                                <div class="g_icon">
+                                    <div class="g_icon_box">
+                                        <p>02</p>
+                                    </div>
+                                    <p class="g_title02">변화를 두려워하지<br />않는 사람</p>
+                                </div>
+                                <div class="g_icon">
+                                    <div class="g_icon_box">
+                                        <p>03</p>
+                                    </div>
+                                    <p class="g_title02">자율적인 회사 분위기를<br />선호하는 사람</p>
+                                </div>
+                                <div class="g_icon">
+                                    <div class="g_icon_box">
+                                        <p>04</p>
+                                    </div>
+                                    <p class="g_title02">책임과 권한을 두려워하지<br />않는 사람</p>
+                                </div>
+                                <div class="g_icon">
+                                    <div class="g_icon_box">
+                                        <p>05</p>
+                                    </div>
+                                    <p class="g_title02">성과급 수령을<br />즐길줄 아는 사람</p>
+                                </div>
+                                <div class="g_icon">
+                                    <div class="g_icon_box">
+                                        <p>06</p>
+                                    </div>
+                                    <p class="g_title02">모두를 위한 결정을<br />하는 사람</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- greeting_desc -->
+                <div class="greeting_desc grt_pc">
+                    <div class="part1 support">
+                        <h2 class="sub_title">오시는 길<span>Direction</span></h2>
+                        <div class="map">
+                            <select class="sel map_sel" id="MapSelect2">
+                                <option>서울</option>
+                                <option>인천</option>
+                                <option>부산</option>
+                                <option>홍콩</option>
+                            </select>
+                            <div class="map_panel" style="display:block;">
+                                <p class="map_title">서울 강서구 양천로 583, A2101~2호 (염창동, 우림블루나인비즈니스센터) 우07547</p>
+                                <div class="map_box">
+                                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3162.9217118216934!2d126.8621014156479!3d37.55690823243631!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357c9c03df67c117%3A0xc705c1965dd2c5c4!2z7ISc7Jq47Yq567OE7IucIOqwleyEnOq1rCDsl7zssL3rj5kg7JaR7LKc66GcIDU4Mw!5e0!3m2!1sko!2skr!4v1631175045593!5m2!1sko!2skr" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                                </div>
+                            </div>
+                            <div class="map_panel">
+                                <p class="map_title">인천 중구 공항동로 296번길 98-114 인천공항물류단지 A203 (사무실, 창고, 내륙운송지점)</p>
+                                <div class="map_box">
+                                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3166.2821721366086!2d126.47943471558656!3d37.47766713696972!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357b9b2ab71699ab%3A0x1bbbb3f2d6ecdaaf!2z7J247LKc6rWt7KCc66y866WY7IS87YSw!5e0!3m2!1sko!2skr!4v1634871579403!5m2!1sko!2skr" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                                </div>
+                            </div>
+                            <div class="map_panel">
+                                <p class="map_title">부산광역시 중구 충장대로 11, 1407호 (중앙동4가, 무역회관빌딩)</p>
+                                <div class="map_box">
+                                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3264.0370040941225!2d129.03557481553983!3d35.105786868921896!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3568e9705ce96e7f%3A0x5092c017e3f218dc!2z67aA7IKw6rSR7Jet7IucIOykkeq1rCDspJHslZnrj5k06rCAIOy2qeyepeuMgOuhnCAxMSAxNDA37Zi4!5e0!3m2!1sko!2skr!4v1634875275888!5m2!1sko!2skr" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                                </div>
+                            </div>
+                            <div class="map_panel">
+                                <p class="map_title">510 Laford Centre, 838 Lai Chi Kok Road, Kowloon, Hongkong</p>
+                                <div class="map_box">
+                                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3690.4767002968492!2d114.14532311534616!3d22.335622347255107!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34040754daf0a45d%3A0x4198e5e88ed2c84c!2sLaford%20Centre%2C%20838%20Lai%20Chi%20Kok%20Rd%2C%20Cheung%20Sha%20Wan%2C%20%ED%99%8D%EC%BD%A9!5e0!3m2!1sko!2skr!4v1634875354987!5m2!1sko!2skr" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- greeting_desc -->
+            </div>
+        </div>
+        <!-- 여기 안에서 작업-->
+    </div>
+    @if (strIndex != "")
+    {
+        <input type="hidden" name="Business_index" value="@strIndex" />
+    }
+    @Scripts.Render("~/Scripts/js/Customer/Support.js")
+
+}
