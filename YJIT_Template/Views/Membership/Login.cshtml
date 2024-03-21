@@ -1,0 +1,57 @@
+﻿
+@{
+    ViewBag.Title = "Membership";
+    ViewBag.Sub = "Login";
+}
+
+@section Container {
+    <section class="container" id="container">
+        <div class="fixed_in type2">
+            <div class="sub_visual">
+                <h2 class="subtitle">로그인</h2>
+            </div>
+            <!-- login_form -->
+            <div class="login_form">
+                <div class="cell">
+                    <input type="text" value="" class="int login" id="email" maxlength="50" placeholder="이메일을 입력하세요.">
+                    <div id="Email_Warning">
+                        <p class="incorrect_login Span_Warning">이메일을 적어주세요.</p>
+                    </div>
+                </div>
+                <div class="cell">
+                    <input type="password" value="" class="int" id="password" maxlength="16" placeholder="비밀번호를 입력하세요.">
+                    <div id="Password_Warning">
+                        <p class="incorrect_login Span_Warning">비밀번호를 입력 하세요.</p>
+                    </div>
+                </div>
+                <button type="button" class="btn_type1" id="Login_btn">로그인</button>
+                <!-- login_link -->
+                <div class="login_link">
+                    <div class="link">
+                        <a href="#none">아이디 찾기</a>
+                        <span class="bar"></span>
+                        <a href="#none">비밀번호 찾기</a>
+                    </div>
+                    <div class="chk">
+                        <span class="check type1">
+                            <input type="checkbox" id="login_keep" name="login_keep" class="chk">
+                            <label for="login_keep">아이디 저장</label>
+                        </span>
+                    </div>
+                </div>
+                <!-- //login_link -->
+                <!-- join_link -->
+                <div class="join_link">
+                    <div class="txt">
+                        <strong>아직 회원이 아니신가요?</strong>
+                        <p>회원가입을 통해 다양한 혜택을 누리세요!</p>
+                    </div>
+                    <a href="javascript:void(0)" class="btn_type6 blue">회원가입 하기</a>
+                </div>
+                <!-- //join_link -->
+            </div>
+            <!-- //login_form -->
+        </div>
+    </section>
+    @Scripts.Render("~/Scripts/js/Main/Main.js")
+}

@@ -1,0 +1,483 @@
+﻿
+@{
+    ViewBag.Title = "Tracking";
+    ViewBag.Sub = "Tracking";
+}
+
+@section Container {
+    <div class="container" id="container">
+        <div class="sub_visual">
+            <h2 class="subtitle">화물 추적</h2>
+        </div>
+        <div class="panel" style="display: block">
+            <div class="fixed_in type2">
+
+                <div class="search_area mo_detail">
+                    <!-- search_bar -->
+                    <div class="search_bar tracking">
+                        <div class="col w4">
+                            <input type="radio" name="vehicle" id="vehicle01" checked="checked">
+                            <label for="vehicle01" class="switch_label">해운</label>
+                        </div>
+                        <div class="col w4">
+                            <input type="radio" name="vehicle" id="vehicle02">
+                            <label for="vehicle02" class="switch_label">항공</label>
+                        </div>
+                        <div class="col w1">
+                            <!-- int_box -->
+                            <div class="int_box type1 border-animation">
+                                <input type="text" class="border-animation__inner" value="" placeholder="Master B/L No, House B/L No, Container No. 를 입력해 주세요">
+                                <button type="button" class="btns icon delete"><span class="blind">삭제</span></button>
+                            </div>
+                            <!-- //int_box -->
+                        </div>
+                        <div class="col">
+                            <div class="int_box border-animation">
+                                <select class="select border-animation__inner" required="">
+                                    <option value="" default="">Port to Port</option>
+                                    <option value="">Door to Door</option>
+                                    <option value="">End to End</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col w2">
+                            <button type="submit" class="btn_type1 search"><span class="blind">검색</span></button>
+                        </div>
+                    </div>
+                    <!-- //search_bar -->
+                    <!-- delivery_status -->
+                    <div class="search_detail ds">
+                        <ul class="delivery_step export">
+                            <li class="on">
+                                <div class="step_box">
+                                    <div class="col">
+                                        <div class="pc">
+                                            <em class="step">공 컨테이너 반출</em>
+                                        </div>
+                                        <div class="mo">
+                                            <strong class="location">Hanjin Busan New Port<br>Busan, Korea</strong>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <span class="icn blue"><i class="img01"><i class="rounding"></i></i></span>
+                                        <div class="mo">
+                                            <em class="step">공 컨테이너 반출</em>
+                                        </div>
+                                        <div class="pc">
+                                            <strong class="location">Hanjin Busan New Port<br>Busan, Korea</strong>
+                                        </div>
+                                        <p class="date">2020-09-16 <span>10:44</span></p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="on now">
+                                <div class="step_box">
+                                    <div class="col">
+                                        <div class="pc">
+                                            <em class="step">터미널 반입</em>
+                                        </div>
+                                        <div class="mo">
+                                            <strong class="location">Hanjin Busan New Port<br>Busan, Korea</strong>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <span class="icn blue"><i class="img02"><i class="rounding"></i></i></span>
+                                        <div class="mo">
+                                            <em class="step">터미널 반입</em>
+                                        </div>
+                                        <div class="pc">
+                                            <strong class="location">Hanjin Busan New Port<br>Busan, Korea</strong>
+                                        </div>
+                                        <p class="date">2020-09-20 <span>09:12</span></p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="step_box">
+                                    <div class="col">
+                                        <div class="pc">
+                                            <em class="step">선적</em>
+                                        </div>
+                                        <div class="mo">
+                                            <strong class="location">Hanjin Busan New Port<br>Busan, Korea</strong>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <span class="icn red"><i class="img03"><i class="rounding rounding_blue blinkcss"></i></i></span>
+                                        <div class="mo">
+                                            <em class="step">선적</em>
+                                        </div>
+                                        <div class="pc">
+                                            <strong class="location">Hanjin Busan New Port<br>Busan, Korea</strong>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="step_box">
+                                    <div class="col">
+                                        <div class="pc">
+                                            <em class="step">출항</em>
+                                        </div>
+                                        <div class="mo">
+                                            <strong class="location">Busan, Korea</strong>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <span class="icn"><i class="img04"><i class="rounding"></i></i></span>
+                                        <div class="mo">
+                                            <em class="step">출항</em>
+                                        </div>
+                                        <div class="pc">
+                                            <strong class="location">Busan, Korea</strong>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="step_box">
+                                    <div class="col">
+                                        <div class="pc">
+                                            <em class="step">도착</em>
+                                        </div>
+                                        <div class="mo">
+                                            <strong class="location">Gdansk, Poland</strong>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <span class="icn"><i class="img05"><i class="rounding"></i></i></span>
+                                        <div class="mo">
+                                            <em class="step">도착</em>
+                                        </div>
+                                        <div class="pc">
+                                            <strong class="location">Gdansk, Poland</strong>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- //delivery_status -->
+                </div>
+                <!-- list_type1 -->
+                <div class="layer_list tracking">
+                    <table class="list_type1">
+                        <colgroup class="pc">
+                            <col>
+                            <col>
+                            <col>
+                            <col>
+                            <col class="w8">
+                            <col class="w1">
+                        </colgroup>
+                        <thead class="head">
+                            <tr class="row">
+                                <th><button type="button">House B/L</button></th>
+                                <th><button type="button">Container No</button></th>
+                                <th><button type="button">Master B/L</button></th>
+                                <th>Status</th>
+                                <th><button type="button">Last Location</button></th>
+                                <th><button type="button">Doc</button></th>
+                            </tr>
+                        </thead>
+                    </table>
+                    <div class="scrollbar">
+                        <table class="list_type2">
+                            <colgroup class="pc">
+                                <col>
+                                <col>
+                                <col>
+                                <col>
+                                <col class="w8">
+                                <col class="w1">
+                            </colgroup>
+                            <tbody>
+                                <tr class="row" data-row="row_1">
+                                    <td>YJS201000002</td>
+                                    <td>CNTR20200001</td>
+                                    <td>MAEU9111951</td>
+                                    <td>공컨테이너 반출</td>
+                                    <td>
+                                        Hanjin Busan New Port, Busan, Korea<br>
+                                        2020-11-17 14:00
+                                    </td>
+                                    <td>
+                                        <button type="button" class="file" onclick="layerPopup('#file_pop');"><img src="~/Images/icn_file.png" class="첨부파일"><span class="num">1</span></button>
+                                    </td>
+                                    <!-- mobile_layout -->
+                                    <td class="mobile_layout" colspan="6">
+                                        <div class="layout_type5">
+                                            <div class="row s1">
+                                                <div class="col w1">House B/L :</div>
+                                                <div class="col">YJS201000002</div>
+                                            </div>
+                                            <div class="row s2">
+                                                <table>
+                                                    <tbody>
+                                                        <tr>
+                                                            <th>Container No :</th>
+                                                            <td>CNTR20200001</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Status :</th>
+                                                            <td>공컨반출</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Last Location :</th>
+                                                            <td>
+                                                                Hanjin Busan New Port, <br>
+                                                                Busan, Korea<br>
+                                                                2020-11-17 14:00
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Doc :</th>
+                                                            <td><button type="button" class="file" onclick="layerPopup('#file_pop');"><img src="~/Images/icn_file.png" class="첨부파일"><span class="num">1</span></button></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <button type="button" class="btn_type1">상세</button>
+                                        </div>
+                                    </td>
+                                    <!-- //mobile_layout -->
+                                </tr>
+                                <tr class="related_info" id="row_1">
+                                    <td colspan="6">
+                                        <ul class="etc_info">
+                                            <li class="item">
+                                                <em>반입지 :</em>
+                                                인터지스7부두
+                                            </li>
+                                            <li class="item">
+                                                <em>담당자</em>
+                                                김성은 부장
+                                            </li>
+                                            <li class="item">
+                                                <em>비고</em>
+                                                출항 전 보고 제도 시행으로 인해 Closing 연장불가
+                                            </li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr class="row" data-row="row_2">
+                                    <td>YJS201000003</td>
+                                    <td>CNTR20200002</td>
+                                    <td>MAEU9111951</td>
+                                    <td>터미널 반입</td>
+                                    <td>
+                                        Hanjin Busan New Port, Busan, Korea<br>
+                                        2020-11-17 18:00
+                                    </td>
+                                    <td>
+                                        <button type="button" class="file" onclick="layerPopup('#file_pop');"><img src="~/Images/icn_file.png" class="첨부파일"><span class="num">1</span></button>
+                                    </td>
+                                    <!-- mobile_layout -->
+                                    <td class="mobile_layout" colspan="6">
+                                        <div class="layout_type5">
+                                            <div class="row s1">
+                                                <div class="col w1">House B/L :</div>
+                                                <div class="col">YJS201000002</div>
+                                            </div>
+                                            <div class="row s2">
+                                                <table>
+                                                    <tbody>
+                                                        <tr>
+                                                            <th>Container No :</th>
+                                                            <td>CNTR20200001</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Status :</th>
+                                                            <td>공컨반출</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Last Location :</th>
+                                                            <td>
+                                                                Hanjin Busan New Port, <br>
+                                                                Busan, Korea<br>
+                                                                2020-11-17 14:00
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Doc :</th>
+                                                            <td><button type="button" class="file" onclick="layerPopup('#file_pop');"><img src="~/Images/icn_file.png" class="첨부파일"><span class="num">1</span></button></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <button type="button" class="btn_type1">상세</button>
+                                        </div>
+                                    </td>
+                                    <!-- //mobile_layout -->
+                                </tr>
+                                <tr class="related_info" id="row_2">
+                                    <td colspan="6">
+                                        <ul class="etc_info">
+                                            <li class="item">
+                                                <em>반입지 :</em>
+                                                인터지스7부두
+                                            </li>
+                                            <li class="item">
+                                                <em>담당자</em>
+                                                김성은 부장
+                                            </li>
+                                            <li class="item">
+                                                <em>비고</em>
+                                                출항 전 보고 제도 시행으로 인해 Closing 연장불가
+                                            </li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr class="row" data-row="row_3">
+                                    <td>YJS201000004</td>
+                                    <td>CNTR20200003</td>
+                                    <td>MAEU9111951</td>
+                                    <td>선적</td>
+                                    <td>
+                                        Hanjin Busan New Port, Busan, Korea<br>
+                                        2020-11-17 19:00
+                                    </td>
+                                    <td>
+                                        <button type="button" class="file" onclick="layerPopup('#file_pop');"><img src="~/Images/icn_file.png" class="첨부파일"></button>
+                                    </td>
+                                    <!-- mobile_layout -->
+                                    <td class="mobile_layout" colspan="6">
+                                        <div class="layout_type5">
+                                            <div class="row s1">
+                                                <div class="col w1">House B/L :</div>
+                                                <div class="col">YJS201000002</div>
+                                            </div>
+                                            <div class="row s2">
+                                                <table>
+                                                    <tbody>
+                                                        <tr>
+                                                            <th>Container No :</th>
+                                                            <td>CNTR20200001</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Status :</th>
+                                                            <td>공컨반출</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Last Location :</th>
+                                                            <td>
+                                                                Hanjin Busan New Port, <br>
+                                                                Busan, Korea<br>
+                                                                2020-11-17 14:00
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Doc :</th>
+                                                            <td><button type="button" class="file" onclick="layerPopup('#file_pop');"><img src="~/Images/icn_file.png" class="첨부파일"><span class="num">1</span></button></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <button type="button" class="btn_type1">상세</button>
+                                        </div>
+                                    </td>
+                                    <!-- //mobile_layout -->
+                                </tr>
+                                <tr class="related_info" id="row_3">
+                                    <td colspan="6">
+                                        <ul class="etc_info">
+                                            <li class="item">
+                                                <em>반입지 :</em>
+                                                인터지스7부두
+                                            </li>
+                                            <li class="item">
+                                                <em>담당자</em>
+                                                김성은 부장
+                                            </li>
+                                            <li class="item">
+                                                <em>비고</em>
+                                                출항 전 보고 제도 시행으로 인해 Closing 연장불가
+                                            </li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- //list_type1 -->
+                <!-- layer_zone -->
+                <div class="layer_zone file_pop" id="file_pop">
+                    <div class="layer_wrap">
+                        <div class="layer_inwrap">
+                            <article class="layer_cont">
+                                <table class="tbl_type1">
+                                    <tbody>
+                                        <tr>
+                                            <th>Location :</th>
+                                            <td>Hanjin Busan New Port Busan, Korea</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Status :</th>
+                                            <td>공컨테이너 반출</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <table class="tbl_type2">
+                                    <colgroup>
+                                        <col>
+                                        <col>
+                                        <col class="w1">
+                                    </colgroup>
+                                    <thead>
+                                        <tr>
+                                            <th>File Name</th>
+                                            <th>비고</th>
+                                            <th>등록일자</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                                <div class="file_area">
+                                    <div class="scrollbar">
+                                        <table class="tbl_type2">
+                                            <colgroup>
+                                                <col>
+                                                <col>
+                                                <col class="w1">
+                                            </colgroup>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="a_left"><a href="#none" class="btn_down">컨테이너 이미지.jpg</a></td>
+                                                    <td>40 ft HC 이미지 입니다</td>
+                                                    <td>2020.11.16 <br class="mo">14:38</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="a_left"><a href="#none" class="btn_down">컨테이너 이미지.jpg</a></td>
+                                                    <td>컨테이너 반출 시작 이미지 입니다</td>
+                                                    <td>2020.11.16 <br class="mo">14:39</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="a_left"><a href="#none" class="btn_down">컨테이너 이미지.jpg</a></td>
+                                                    <td>40 ft HC 이미지 입니다</td>
+                                                    <td>2020.11.16 <br class="mo">14:38</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="a_left"><a href="#none" class="btn_down">컨테이너 이미지.jpg</a></td>
+                                                    <td>컨테이너 반출 시작 이미지 입니다</td>
+                                                    <td>2020.11.16 <br class="mo">14:39</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="a_left"><a href="#none" class="btn_down">컨테이너 이미지.jpg</a></td>
+                                                    <td>컨테이너 반출 시작 이미지 입니다</td>
+                                                    <td>2020.11.16 <br class="mo">14:39</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <button type="button" class="btns icon close type2"><span class="blind">검색 닫기</span></button>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+                <!-- //layer_zone -->
+            </div>
+        </div>
+    </div>
+    @Scripts.Render("~/Scripts/js/Main/Main.js")
+}

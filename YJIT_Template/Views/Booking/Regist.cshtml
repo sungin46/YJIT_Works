@@ -1,0 +1,1307 @@
+﻿
+@{
+    ViewBag.Title = "Booking";
+    ViewBag.Sub = "Regist";
+}
+
+@section Container {
+    <section class="container booking" id="container">
+        <div class="sub_visual">
+            <h2 class="subtitle">부킹등록</h2>
+        </div>
+        <div class="fixed_in type2">
+            <div class="search_area">
+                <!-- search_bar -->
+                <div class="search_bar booking" id="search_bar">
+                    <div class="col w4">
+                        <input type="radio" name="vehicle" id="vehicle01" checked="checked">
+                        <label for="vehicle01" class="switch_label">해운</label>
+                    </div>
+                    <div class="col w4">
+                        <input type="radio" name="vehicle" id="vehicle02">
+                        <label for="vehicle02" class="switch_label">항공</label>
+                    </div>
+                    <div class="col w5">
+                        <h4 class="title02 mo">Date</h4>
+                        <!-- int_box -->
+                        <div class="int_box cal_date border-animation">
+                            <input type="text" value="" placeholder="XXXX-XX-XX" class="date border-animation__inner">
+                            <button type="button" class="btns icon calendar"><i class="fa fa-calendar-check-o"></i><span class="blind">달력</span></button>
+                        </div>
+                        <!-- //int_box -->
+                    </div>
+                    <div class="col w1">
+                        <h4 class="title02 mo">Departure</h4>
+                        <!-- int_box -->
+                        <div class="int_box border-animation">
+                            <input type="text" class="border-animation__inner" value="" placeholder="Departure" onclick="selectPopOpen('#select_SEA_pop01');">
+                            <button type="button" class="btns icon delete"><span class="blind">삭제</span></button>
+                            <button type="button" class="btns icon down" onclick="selectPopOpen('#select_SEA_pop01');"><span class="blind">펼침</span></button>
+                            <!-- select_pop -->
+                            <div class="select_pop" id="select_SEA_pop01">
+                                <h3 class="title03">출발 도시 바로 선택 (한글 또는 영문 검색 가능)</h3>
+                                <div class="select_location">
+                                    <div class="scrollbar">
+                                        <table class="tbl_option" id="quick_SEA_POLCD">
+                                            <tbody>
+                                                <tr>
+                                                    <th>한국</th>
+                                                    <td><button type="button" value="부산(KRPUS) / 대한민국;KRPUS"><span>부산</span></button></td>
+                                                    <td><button type="button" value="인천(KRINC) / 대한민국;KRINC"><span>인천</span></button></td>
+                                                    <td><button type="button" value="평택(KRPTK) / 대한민국;KRPTK"><span>평택</span></button></td>
+                                                    <td><button type="button" value="울산(KRUSN) / 대한민국;KRUSN"><span>울산</span></button></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr class="has_rowspan">
+                                                    <th rowspan="2">중국</th>
+                                                    <td><button type="button" value="상하이(CNPDG) / 중국;CNPDG"><span>상하이</span></button></td>
+                                                    <td><button type="button" value="홍콩(HKHKG) / 홍콩;HKHKG"><span>홍콩</span></button></td>
+                                                    <td><button type="button" value="닝보(CNNGB) / 중국;CNNGB"><span>닝보</span></button></td>
+                                                    <td><button type="button" value="칭따오(CNQIN) / 중국;CNQIN"><span>칭따오</span></button></td>
+                                                    <td><button type="button" value="서코우(CNSHK) / 중국;CNSHK"><span>서코우</span></button></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><button type="button" value="샤먼(CNXMN) / 중국;CNXMN"><span>샤먼</span></button></td>
+                                                    <td><button type="button" value="선전(CNSNZ) / 중국;CNSNZ"><span>선전</span></button></td>
+                                                    <td><button type="button" value="신강(CNXNG) / 중국;CNXNG"><span>신강</span></button></td>
+                                                    <td><button type="button" value="텐진(CNTSN) / 중국;CNTSN"><span>텐진</span></button></td>
+                                                    <td><button type="button" value="웨이하이(CNWEI) / 중국;CNWEI"><span>웨이하이</span></button></td>
+                                                </tr>
+                                                <tr>
+                                                    <th rowspan="2">동남아</th>
+                                                    <td><button type="button" value="하이퐁(VNHPH) / 베트남;VNHPH"><span>하이퐁</span></button></td>
+                                                    <td><button type="button" value="호치민(VNSGN) / 베트남;VNSGN"><span>호치민</span></button></td>
+                                                    <td><button type="button" value="가오슝(TWKHH) / 대만;TWKHH"><span>가오슝</span></button></td>
+                                                    <td><button type="button" value="지룽(TWKEE) / 대만;TWKEE"><span>지룽</span></button></td>
+                                                    <td><button type="button" value="싱가포르(SGSIN) / 싱가포르;SGSIN"><span>싱가포르</span></button></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><button type="button" value="자카르타(IDJKT) / 인도네시아;IDJKT"><span>자카르타</span></button></td>
+                                                    <td><button type="button" value="방콕(THBKK) / 태국;THBKK"><span>방콕</span></button></td>
+                                                    <td><button type="button" value="람차방(THBKK) / 태국;THBKK"><span>람차방</span></button></td>
+                                                    <td><button type="button" value="양곤(MMRGN) / 미얀마;MMRGN"><span>양곤</span></button></td>
+                                                    <td><button type="button" value="포트클랑(MYPKG) / 말레이시아;MYPKG"><span>포트클랑</span></button></td>
+                                                </tr>
+                                                <tr>
+                                                    <th rowspan="2">미주</th>
+                                                    <td><button type="button" value="롱비치(USLGB) / 미국;USLGB"><span>롱비치</span></button></td>
+                                                    <td><button type="button" value="뉴욕(USNYC) / 미국;USNYC"><span>뉴욕</span></button></td>
+                                                    <td><button type="button" value="로스엔젤레스(USLAX) / 미국;USLAX"><span>로스엔젤레스</span></button></td>
+                                                    <td><button type="button" value="타코마(USTIW) / 미국;USTIW"><span>타코마</span></button></td>
+                                                    <td><button type="button" value="시애틀(USSEA) / 미국;USSEA"><span>시애틀</span></button></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><button type="button" value="밴쿠버(CAVAN) / 캐나다;CAVAN"><span>밴쿠버</span></button></td>
+                                                    <td><button type="button" value="핼리팩스(CAHAL) / 캐나다;CAHAL"><span>핼리팩스</span></button></td>
+                                                    <td><button type="button" value="사바나(USSAV) / 미국;USSAV"><span>사바나</span></button></td>
+                                                    <td><button type="button" value="휴스턴(USHOU) / 미국;USHOU"><span>휴스턴</span></button></td>
+                                                    <td><button type="button" value="만사니요(MXZLO) / 멕시코;MXZLO"><span>만사니요</span></button></td>
+                                                </tr>
+                                                <tr>
+                                                    <th rowspan="2">유럽</th>
+                                                    <td><button type="button" value="함부르크(DEHAM) / 독일 ;DEHAM"><span>함부르크</span></button></td>
+                                                    <td><button type="button" value="코페르(SIKOP) / 슬로베니아 ;SIKOP"><span>코페르</span></button></td>
+                                                    <td><button type="button" value="로테르담(NLRTM) / 네덜란드 ;NLRTM"><span>로테르담</span></button></td>
+                                                    <td><button type="button" value="앤트워프(BEANR) / 벨기에 ;BEANR"><span>앤트워프</span></button></td>
+                                                    <td><button type="button" value="르아브르(FRLEH) / 프랑스 ;FRLEH"><span>르아브르</span></button></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><button type="button" value="브레머하펜(DEBRV) / 독일;DEBRV"><span>브레머하펜</span></button></td>
+                                                    <td><button type="button" value="제노바(ITGOA) / 이탈리아;ITGOA"><span>제노바</span></button></td>
+                                                    <td><button type="button" value="펠릭스토(GBFXT) / 영국;GBFXT"><span>펠릭스토</span></button></td>
+                                                    <td><button type="button" value="발렌시아(ESVLC) / 스페인;ESVLC"><span>발렌시아</span></button></td>
+                                                    <td><button type="button" value="바르셀로나(ESBCN) / 스페인;ESBCN"><span>바르셀로나</span></button></td>
+                                                </tr>
+                                                <tr>
+                                                    <th>대양주</th>
+                                                    <td><button type="button" value="애들레이드(AUADL) / 호주;AUADL"><span>애들레이드</span></button></td>
+                                                    <td><button type="button" value="멜버른(AUMEL) / 호주;AUMEL"><span>멜버른</span></button></td>
+                                                    <td><button type="button" value="시드니(AUSYD) / 호주;AUSYD"><span>시드니</span></button></td>
+                                                    <td><button type="button" value="브리즈번(AUBNE) / 호주;AUBNE"><span>브리즈번</span></button></td>
+                                                    <td><button type="button" value="오클랜드(NZAKL) / 뉴질랜드;NZAKL"><span>오클랜드</span></button></td>
+                                                </tr>
+                                                <tr>
+                                                    <th>서남아</th>
+                                                    <td><button type="button" value="나바쉐바(INNSA) / 인도;INNSA"><span>나바쉐바</span></button></td>
+                                                    <td><button type="button" value="첸나이(INMAA) / 인도;INMAA"><span>첸나이</span></button></td>
+                                                    <td><button type="button" value="뭄바이(INBOM) / 인도;INBOM"><span>뭄바이</span></button></td>
+                                                    <td><button type="button" value="치타공(BDCGP) / 방글라데시;BDCGP"><span>치타공</span></button></td>
+                                                    <td><button type="button" value="카라치(PKKHI) / 파키스탄;PKKHI"><span>카라치</span></button></td>
+                                                </tr>
+                                                <tr>
+                                                    <th>중동</th>
+                                                    <td><button type="button" value="반다르아바스(IRBND) / 이란;IRBND"><span>반다르아바스</span></button></td>
+                                                    <td><button type="button" value="이스탄불(TRIST) / 터키;TRIST"><span>이스탄불</span></button></td>
+                                                    <td><button type="button" value="제벨 알리(AEJEA) / 아랍에미리트 연합;AEJEA"><span>제벨 알리</span></button></td>
+                                                    <td><button type="button" value="제다(SAJED) / 사우디아라비아;SAJED"><span>제다</span></button></td>
+                                                    <td><button type="button" value="알렉산드리아(EGALY) / 이집트;EGALY"><span>알렉산드리아</span></button></td>
+                                                </tr>
+                                                <tr>
+                                                    <th>일본</th>
+                                                    <td><button type="button" value="고베(JPUKB) / 일본;JPUKB"><span>고베</span></button></td>
+                                                    <td><button type="button" value="오사카(JPOSA) / 일본;JPOSA"><span>오사카</span></button></td>
+                                                    <td><button type="button" value="도쿄(JPTYO) / 일본;JPTYO"><span>도쿄</span></button></td>
+                                                    <td><button type="button" value="요코하마(JPYOK) / 일본;JPYOK"><span>요코하마</span></button></td>
+                                                    <td><button type="button" value="나고야(JPNGO) / 일본;JPNGO"><span>나고야</span></button></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <button type="button" class="btns icon close" onclick="selectPopClose('#select_SEA_pop01');"><span class="blind">닫기</span></button>
+                            </div>
+                            <!-- select_pop -->
+                        </div>
+                        <!-- //int_box -->
+                    </div>
+                    <div class="col w1">
+                        <h4 class="title02 mo">Arrival</h4>
+                        <!-- int_box -->
+                        <div class="int_box border-animation">
+                            <input type="text" class="border-animation__inner" value="" placeholder="Arrival" onclick="selectPopOpen('#select_SEA_pop02');">
+                            <button type="button" class="btns icon delete"><span class="blind">삭제</span></button>
+                            <button type="button" class="btns icon down" onclick="selectPopOpen('#select_SEA_pop02');"><span class="blind">펼침</span></button>
+                            <!-- select_pop -->
+                            <div class="select_pop" id="select_SEA_pop02">
+                                <h3 class="title03">도착 도시 바로 선택 (한글 또는 영문 검색 가능)</h3>
+                                <div class="select_location">
+                                    <div class="scrollbar">
+                                        <table class="tbl_option" id="quick_SEA_PODCD">
+                                            <tbody>
+                                                <tr>
+                                                    <th>한국</th>
+                                                    <td><button type="button" value="부산(KRPUS) / 대한민국;KRPUS"><span>부산</span></button></td>
+                                                    <td><button type="button" value="인천(KRINC) / 대한민국;KRINC"><span>인천</span></button></td>
+                                                    <td><button type="button" value="평택(KRPTK) / 대한민국;KRPTK"><span>평택</span></button></td>
+                                                    <td><button type="button" value="울산(KRUSN) / 대한민국;KRUSN"><span>울산</span></button></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr class="has_rowspan">
+                                                    <th rowspan="2">중국</th>
+                                                    <td><button type="button" value="상하이(CNPDG) / 중국;CNPDG"><span>상하이</span></button></td>
+                                                    <td><button type="button" value="홍콩(HKHKG) / 홍콩;HKHKG"><span>홍콩</span></button></td>
+                                                    <td><button type="button" value="닝보(CNNGB) / 중국;CNNGB"><span>닝보</span></button></td>
+                                                    <td><button type="button" value="칭따오(CNQIN) / 중국;CNQIN"><span>칭따오</span></button></td>
+                                                    <td><button type="button" value="서코우(CNSHK) / 중국;CNSHK"><span>서코우</span></button></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><button type="button" value="샤먼(CNXMN) / 중국;CNXMN"><span>샤먼</span></button></td>
+                                                    <td><button type="button" value="선전(CNSNZ) / 중국;CNSNZ"><span>선전</span></button></td>
+                                                    <td><button type="button" value="신강(CNXNG) / 중국;CNXNG"><span>신강</span></button></td>
+                                                    <td><button type="button" value="텐진(CNTSN) / 중국;CNTSN"><span>텐진</span></button></td>
+                                                    <td><button type="button" value="웨이하이(CNWEI) / 중국;CNWEI"><span>웨이하이</span></button></td>
+                                                </tr>
+                                                <tr>
+                                                    <th rowspan="2">동남아</th>
+                                                    <td><button type="button" value="하이퐁(VNHPH) / 베트남;VNHPH"><span>하이퐁</span></button></td>
+                                                    <td><button type="button" value="호치민(VNSGN) / 베트남;VNSGN"><span>호치민</span></button></td>
+                                                    <td><button type="button" value="가오슝(TWKHH) / 대만;TWKHH"><span>가오슝</span></button></td>
+                                                    <td><button type="button" value="지룽(TWKEE) / 대만;TWKEE"><span>지룽</span></button></td>
+                                                    <td><button type="button" value="싱가포르(SGSIN) / 싱가포르;SGSIN"><span>싱가포르</span></button></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><button type="button" value="자카르타(IDJKT) / 인도네시아;IDJKT"><span>자카르타</span></button></td>
+                                                    <td><button type="button" value="방콕(THBKK) / 태국;THBKK"><span>방콕</span></button></td>
+                                                    <td><button type="button" value="람차방(THBKK) / 태국;THBKK"><span>람차방</span></button></td>
+                                                    <td><button type="button" value="양곤(MMRGN) / 미얀마;MMRGN"><span>양곤</span></button></td>
+                                                    <td><button type="button" value="포트클랑(MYPKG) / 말레이시아;MYPKG"><span>포트클랑</span></button></td>
+                                                </tr>
+                                                <tr>
+                                                    <th rowspan="2">미주</th>
+                                                    <td><button type="button" value="롱비치(USLGB) / 미국;USLGB"><span>롱비치</span></button></td>
+                                                    <td><button type="button" value="뉴욕(USNYC) / 미국;USNYC"><span>뉴욕</span></button></td>
+                                                    <td><button type="button" value="로스엔젤레스(USLAX) / 미국;USLAX"><span>로스엔젤레스</span></button></td>
+                                                    <td><button type="button" value="타코마(USTIW) / 미국;USTIW"><span>타코마</span></button></td>
+                                                    <td><button type="button" value="시애틀(USSEA) / 미국;USSEA"><span>시애틀</span></button></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><button type="button" value="밴쿠버(CAVAN) / 캐나다;CAVAN"><span>밴쿠버</span></button></td>
+                                                    <td><button type="button" value="핼리팩스(CAHAL) / 캐나다;CAHAL"><span>핼리팩스</span></button></td>
+                                                    <td><button type="button" value="사바나(USSAV) / 미국;USSAV"><span>사바나</span></button></td>
+                                                    <td><button type="button" value="휴스턴(USHOU) / 미국;USHOU"><span>휴스턴</span></button></td>
+                                                    <td><button type="button" value="만사니요(MXZLO) / 멕시코;MXZLO"><span>만사니요</span></button></td>
+                                                </tr>
+                                                <tr>
+                                                    <th rowspan="2">유럽</th>
+                                                    <td><button type="button" value="함부르크(DEHAM) / 독일 ;DEHAM"><span>함부르크</span></button></td>
+                                                    <td><button type="button" value="코페르(SIKOP) / 슬로베니아 ;SIKOP"><span>코페르</span></button></td>
+                                                    <td><button type="button" value="로테르담(NLRTM) / 네덜란드 ;NLRTM"><span>로테르담</span></button></td>
+                                                    <td><button type="button" value="앤트워프(BEANR) / 벨기에 ;BEANR"><span>앤트워프</span></button></td>
+                                                    <td><button type="button" value="르아브르(FRLEH) / 프랑스 ;FRLEH"><span>르아브르</span></button></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><button type="button" value="브레머하펜(DEBRV) / 독일;DEBRV"><span>브레머하펜</span></button></td>
+                                                    <td><button type="button" value="제노바(ITGOA) / 이탈리아;ITGOA"><span>제노바</span></button></td>
+                                                    <td><button type="button" value="펠릭스토(GBFXT) / 영국;GBFXT"><span>펠릭스토</span></button></td>
+                                                    <td><button type="button" value="발렌시아(ESVLC) / 스페인;ESVLC"><span>발렌시아</span></button></td>
+                                                    <td><button type="button" value="바르셀로나(ESBCN) / 스페인;ESBCN"><span>바르셀로나</span></button></td>
+                                                </tr>
+                                                <tr>
+                                                    <th>대양주</th>
+                                                    <td><button type="button" value="애들레이드(AUADL) / 호주;AUADL"><span>애들레이드</span></button></td>
+                                                    <td><button type="button" value="멜버른(AUMEL) / 호주;AUMEL"><span>멜버른</span></button></td>
+                                                    <td><button type="button" value="시드니(AUSYD) / 호주;AUSYD"><span>시드니</span></button></td>
+                                                    <td><button type="button" value="브리즈번(AUBNE) / 호주;AUBNE"><span>브리즈번</span></button></td>
+                                                    <td><button type="button" value="오클랜드(NZAKL) / 뉴질랜드;NZAKL"><span>오클랜드</span></button></td>
+                                                </tr>
+                                                <tr>
+                                                    <th>서남아</th>
+                                                    <td><button type="button" value="나바쉐바(INNSA) / 인도;INNSA"><span>나바쉐바</span></button></td>
+                                                    <td><button type="button" value="첸나이(INMAA) / 인도;INMAA"><span>첸나이</span></button></td>
+                                                    <td><button type="button" value="뭄바이(INBOM) / 인도;INBOM"><span>뭄바이</span></button></td>
+                                                    <td><button type="button" value="치타공(BDCGP) / 방글라데시;BDCGP"><span>치타공</span></button></td>
+                                                    <td><button type="button" value="카라치(PKKHI) / 파키스탄;PKKHI"><span>카라치</span></button></td>
+                                                </tr>
+                                                <tr>
+                                                    <th>중동</th>
+                                                    <td><button type="button" value="반다르아바스(IRBND) / 이란;IRBND"><span>반다르아바스</span></button></td>
+                                                    <td><button type="button" value="이스탄불(TRIST) / 터키;TRIST"><span>이스탄불</span></button></td>
+                                                    <td><button type="button" value="제벨 알리(AEJEA) / 아랍에미리트 연합;AEJEA"><span>제벨 알리</span></button></td>
+                                                    <td><button type="button" value="제다(SAJED) / 사우디아라비아;SAJED"><span>제다</span></button></td>
+                                                    <td><button type="button" value="알렉산드리아(EGALY) / 이집트;EGALY"><span>알렉산드리아</span></button></td>
+                                                </tr>
+                                                <tr>
+                                                    <th>일본</th>
+                                                    <td><button type="button" value="고베(JPUKB) / 일본;JPUKB"><span>고베</span></button></td>
+                                                    <td><button type="button" value="오사카(JPOSA) / 일본;JPOSA"><span>오사카</span></button></td>
+                                                    <td><button type="button" value="도쿄(JPTYO) / 일본;JPTYO"><span>도쿄</span></button></td>
+                                                    <td><button type="button" value="요코하마(JPYOK) / 일본;JPYOK"><span>요코하마</span></button></td>
+                                                    <td><button type="button" value="나고야(JPNGO) / 일본;JPNGO"><span>나고야</span></button></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <button type="button" class="btns icon close" onclick="selectPopClose('#select_SEA_pop02');"><span class="blind">닫기</span></button>
+                            </div>
+                            <!-- select_pop -->
+                        </div>
+                        <!-- //int_box -->
+                    </div>
+                    <div class="col w2">
+                        <button type="submit" class="btn_type1 search" onclick="fnMovePage('search_bar')"><span class="blind">검색</span></button>
+                    </div>
+                </div>
+            </div>
+            <!-- booking_write -->
+            <div class="booking_write">
+                <!-- left_area -->
+                <div class="left_area">
+                    <div class="bk_box">
+                        <!-- schedule_area -->
+                        <div class="schedule_area thead">
+                            <table class="schedule_list head">
+                                <colgroup>
+                                    <col class="w3" />
+                                    <col class="w1" />
+                                    <col class="w2" />
+                                    <col class="w2" />
+                                    <col class="w2" />
+                                    <col class="w2" />
+                                </colgroup>
+                                <thead class="booking_table_head">
+                                    <tr>
+                                        <th colspan="2">Carrier</th>
+                                        <th>ETD</th>
+                                        <th>ETA</th>
+                                        <th>D/Closing</th>
+                                        <th>C/Closing</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                        <ul class="schedule_list">
+                            <div class="scrollbar">
+                                <li>
+                                    <a href="#none" class="pc">
+                                        <div class="col company_img">
+                                            <span class="img"><img src="~/Images/logo/KMTC.png"></span>
+                                        </div>
+                                        <div class="col company">
+                                            KMTC ULSAN<br />2022S<br>3Days, Direct
+                                        </div>
+                                        <div class="col etd">
+                                            2020-10-22<br />18:00
+                                        </div>
+                                        <div class="col eta">
+                                            2020-10-22<br />18:00
+                                        </div>
+                                        <div class="col d_closing">
+                                            2020-10-22<br />18:00
+                                        </div>
+                                        <div class="col c_closing">
+                                            2020-10-22<br />18:00
+                                        </div>
+                                    </a>
+                                    <!-- mobile_layout -->
+                                    <div class="mobile_layout">
+                                        <div class="layout_type3">
+                                            <div class="row s1">
+                                                <img src="~/Images/tmp/company01.jpg" alt="">
+                                            </div>
+                                            <div class="row s2">
+                                                KMTC ULSAN 2022S
+                                            </div>
+                                            <div class="row s3">
+                                                <ul>
+                                                    <li>
+                                                        <em>Departure :</em>
+                                                        2020.10.29 (목) KRPUS
+                                                    </li>
+                                                    <li>
+                                                        <em>Arrival :</em>
+                                                        2020.11.02 (월) VNHPH
+                                                    </li>
+                                                    <li>
+                                                        <em>Doc Closing :</em>
+                                                        2020.10.27 (화) 15:00
+                                                    </li>
+                                                    <li>
+                                                        <em>Cargo Closing :</em>
+                                                        2020.10.27 (화) 19:00
+                                                    </li>
+                                                    <li>
+                                                        <em>T/time :</em>
+                                                        4 Days
+                                                    </li>
+                                                    <li>
+                                                        <em>T/S :</em>
+                                                        Direct
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <a href="#none" class="btn_type1">BOOKING</a>
+                                        </div>
+                                    </div>
+                                    <!-- //mobile_layout -->
+                                </li>
+                                <li>
+                                    <a href="#none" class="pc">
+                                        <div class="col company_img">
+                                            <span class="img"><img src="~/Images/logo/KMTC.png"></span>
+                                        </div>
+                                        <div class="col company">
+                                            <strong>KMTC ULSAN<br />2022S<br>3Days, Direct</strong>
+                                        </div>
+                                        <div class="col etd">
+                                            2020-10-22<br />18:00
+                                        </div>
+                                        <div class="col eta">
+                                            2020-10-22<br />18:00
+                                        </div>
+                                        <div class="col d_closing">
+                                            2020-10-22<br />18:00
+                                        </div>
+                                        <div class="col c_closing">
+                                            2020-10-22<br />18:00
+                                        </div>
+                                    </a>
+                                    <!-- mobile_layout -->
+                                    <div class="mobile_layout">
+                                        <div class="layout_type3">
+                                            <div class="row s1">
+                                                <img src="~/Images/tmp/company01.jpg" alt="">
+                                            </div>
+                                            <div class="row s2">
+                                                KMTC ULSAN 2022S
+                                            </div>
+                                            <div class="row s3">
+                                                <ul>
+                                                    <li>
+                                                        <em>Departure :</em>
+                                                        2020.10.29 (목) KRPUS
+                                                    </li>
+                                                    <li>
+                                                        <em>Arrival :</em>
+                                                        2020.11.02 (월) VNHPH
+                                                    </li>
+                                                    <li>
+                                                        <em>Doc Closing :</em>
+                                                        2020.10.27 (화) 15:00
+                                                    </li>
+                                                    <li>
+                                                        <em>Cargo Closing :</em>
+                                                        2020.10.27 (화) 19:00
+                                                    </li>
+                                                    <li>
+                                                        <em>T/time :</em>
+                                                        4 Days
+                                                    </li>
+                                                    <li>
+                                                        <em>T/S :</em>
+                                                        Direct
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <a href="#none" class="btn_type1">BOOKING</a>
+                                        </div>
+                                    </div>
+                                    <!-- //mobile_layout -->
+                                </li>
+                                <li>
+                                    <a href="#none" class="pc">
+                                        <div class="col company_img">
+                                            <span class="img"><img src="~/Images/logo/KMTC.png"></span>
+                                        </div>
+                                        <div class="col company">
+                                            <strong>KMTC ULSAN<br />2022S<br>3Days, Direct</strong>
+                                        </div>
+                                        <div class="col etd">
+                                            2020-10-22<br />18:00
+                                        </div>
+                                        <div class="col eta">
+                                            2020-10-22<br />18:00
+                                        </div>
+                                        <div class="col d_closing">
+                                            2020-10-22<br />18:00
+                                        </div>
+                                        <div class="col c_closing">
+                                            2020-10-22<br />18:00
+                                        </div>
+                                    </a>
+                                    <!-- mobile_layout -->
+                                    <div class="mobile_layout">
+                                        <div class="layout_type3">
+                                            <div class="row s1">
+                                                <img src="~/Images/tmp/company01.jpg" alt="">
+                                            </div>
+                                            <div class="row s2">
+                                                KMTC ULSAN 2022S
+                                            </div>
+                                            <div class="row s3">
+                                                <ul>
+                                                    <li>
+                                                        <em>Departure :</em>
+                                                        2020.10.29 (목) KRPUS
+                                                    </li>
+                                                    <li>
+                                                        <em>Arrival :</em>
+                                                        2020.11.02 (월) VNHPH
+                                                    </li>
+                                                    <li>
+                                                        <em>Doc Closing :</em>
+                                                        2020.10.27 (화) 15:00
+                                                    </li>
+                                                    <li>
+                                                        <em>Cargo Closing :</em>
+                                                        2020.10.27 (화) 19:00
+                                                    </li>
+                                                    <li>
+                                                        <em>T/time :</em>
+                                                        4 Days
+                                                    </li>
+                                                    <li>
+                                                        <em>T/S :</em>
+                                                        Direct
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <a href="#none" class="btn_type1">BOOKING</a>
+                                        </div>
+                                    </div>
+                                    <!-- //mobile_layout -->
+                                </li>
+                                <li>
+                                    <a href="#none" class="pc">
+                                        <div class="col company_img">
+                                            <span class="img"><img src="~/Images/logo/KMTC.png"></span>
+                                        </div>
+                                        <div class="col company">
+                                            <strong>KMTC ULSAN<br />2022S<br>3Days, Direct</strong>
+                                        </div>
+                                        <div class="col etd">
+                                            2020-10-22<br />18:00
+                                        </div>
+                                        <div class="col eta">
+                                            2020-10-22<br />18:00
+                                        </div>
+                                        <div class="col d_closing">
+                                            2020-10-22<br />18:00
+                                        </div>
+                                        <div class="col c_closing">
+                                            2020-10-22<br />18:00
+                                        </div>
+                                    </a>
+                                    <!-- mobile_layout -->
+                                    <div class="mobile_layout">
+                                        <div class="layout_type3">
+                                            <div class="row s1">
+                                                <img src="~/Images/tmp/company01.jpg" alt="">
+                                            </div>
+                                            <div class="row s2">
+                                                KMTC ULSAN 2022S
+                                            </div>
+                                            <div class="row s3">
+                                                <ul>
+                                                    <li>
+                                                        <em>Departure :</em>
+                                                        2020.10.29 (목) KRPUS
+                                                    </li>
+                                                    <li>
+                                                        <em>Arrival :</em>
+                                                        2020.11.02 (월) VNHPH
+                                                    </li>
+                                                    <li>
+                                                        <em>Doc Closing :</em>
+                                                        2020.10.27 (화) 15:00
+                                                    </li>
+                                                    <li>
+                                                        <em>Cargo Closing :</em>
+                                                        2020.10.27 (화) 19:00
+                                                    </li>
+                                                    <li>
+                                                        <em>T/time :</em>
+                                                        4 Days
+                                                    </li>
+                                                    <li>
+                                                        <em>T/S :</em>
+                                                        Direct
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <a href="#none" class="btn_type1">BOOKING</a>
+                                        </div>
+                                    </div>
+                                    <!-- //mobile_layout -->
+                                </li>
+                                <li>
+                                    <a href="#none" class="pc">
+                                        <div class="col company_img">
+                                            <span class="img"><img src="~/Images/logo/KMTC.png"></span>
+                                        </div>
+                                        <div class="col company">
+                                            <strong>KMTC ULSAN<br />2022S<br>3Days, Direct</strong>
+                                        </div>
+                                        <div class="col etd">
+                                            2020-10-22<br />18:00
+                                        </div>
+                                        <div class="col eta">
+                                            2020-10-22<br />18:00
+                                        </div>
+                                        <div class="col d_closing">
+                                            2020-10-22<br />18:00
+                                        </div>
+                                        <div class="col c_closing">
+                                            2020-10-22<br />18:00
+                                        </div>
+                                    </a>
+                                    <!-- mobile_layout -->
+                                    <div class="mobile_layout">
+                                        <div class="layout_type3">
+                                            <div class="row s1">
+                                                <img src="~/Images/tmp/company01.jpg" alt="">
+                                            </div>
+                                            <div class="row s2">
+                                                KMTC ULSAN 2022S
+                                            </div>
+                                            <div class="row s3">
+                                                <ul>
+                                                    <li>
+                                                        <em>Departure :</em>
+                                                        2020.10.29 (목) KRPUS
+                                                    </li>
+                                                    <li>
+                                                        <em>Arrival :</em>
+                                                        2020.11.02 (월) VNHPH
+                                                    </li>
+                                                    <li>
+                                                        <em>Doc Closing :</em>
+                                                        2020.10.27 (화) 15:00
+                                                    </li>
+                                                    <li>
+                                                        <em>Cargo Closing :</em>
+                                                        2020.10.27 (화) 19:00
+                                                    </li>
+                                                    <li>
+                                                        <em>T/time :</em>
+                                                        4 Days
+                                                    </li>
+                                                    <li>
+                                                        <em>T/S :</em>
+                                                        Direct
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <a href="#none" class="btn_type1">BOOKING</a>
+                                        </div>
+                                    </div>
+                                    <!-- //mobile_layout -->
+                                </li>
+                                <li>
+                                    <a href="#none" class="pc">
+                                        <div class="col company_img">
+                                            <span class="img"><img src="~/Images/logo/KMTC.png"></span>
+                                        </div>
+                                        <div class="col company">
+                                            <strong>KMTC ULSAN<br />2022S<br>3Days, Direct</strong>
+                                        </div>
+                                        <div class="col etd">
+                                            2020-10-22<br />18:00
+                                        </div>
+                                        <div class="col eta">
+                                            2020-10-22<br />18:00
+                                        </div>
+                                        <div class="col d_closing">
+                                            2020-10-22<br />18:00
+                                        </div>
+                                        <div class="col c_closing">
+                                            2020-10-22<br />18:00
+                                        </div>
+                                    </a>
+                                    <!-- mobile_layout -->
+                                    <div class="mobile_layout">
+                                        <div class="layout_type3">
+                                            <div class="row s1">
+                                                <img src="~/Images/tmp/company01.jpg" alt="">
+                                            </div>
+                                            <div class="row s2">
+                                                KMTC ULSAN 2022S
+                                            </div>
+                                            <div class="row s3">
+                                                <ul>
+                                                    <li>
+                                                        <em>Departure :</em>
+                                                        2020.10.29 (목) KRPUS
+                                                    </li>
+                                                    <li>
+                                                        <em>Arrival :</em>
+                                                        2020.11.02 (월) VNHPH
+                                                    </li>
+                                                    <li>
+                                                        <em>Doc Closing :</em>
+                                                        2020.10.27 (화) 15:00
+                                                    </li>
+                                                    <li>
+                                                        <em>Cargo Closing :</em>
+                                                        2020.10.27 (화) 19:00
+                                                    </li>
+                                                    <li>
+                                                        <em>T/time :</em>
+                                                        4 Days
+                                                    </li>
+                                                    <li>
+                                                        <em>T/S :</em>
+                                                        Direct
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <a href="#none" class="btn_type1">BOOKING</a>
+                                        </div>
+                                    </div>
+                                    <!-- //mobile_layout -->
+                                </li>
+                                <li>
+                                    <a href="#none" class="pc">
+                                        <div class="col company_img">
+                                            <span class="img"><img src="~/Images/logo/KMTC.png"></span>
+                                        </div>
+                                        <div class="col company">
+                                            <strong>KMTC ULSAN<br />2022S<br>3Days, Direct</strong>
+                                        </div>
+                                        <div class="col etd">
+                                            2020-10-22<br />18:00
+                                        </div>
+                                        <div class="col eta">
+                                            2020-10-22<br />18:00
+                                        </div>
+                                        <div class="col d_closing">
+                                            2020-10-22<br />18:00
+                                        </div>
+                                        <div class="col c_closing">
+                                            2020-10-22<br />18:00
+                                        </div>
+                                    </a>
+                                    <!-- mobile_layout -->
+                                    <div class="mobile_layout">
+                                        <div class="layout_type3">
+                                            <div class="row s1">
+                                                <img src="~/Images/tmp/company01.jpg" alt="">
+                                            </div>
+                                            <div class="row s2">
+                                                KMTC ULSAN 2022S
+                                            </div>
+                                            <div class="row s3">
+                                                <ul>
+                                                    <li>
+                                                        <em>Departure :</em>
+                                                        2020.10.29 (목) KRPUS
+                                                    </li>
+                                                    <li>
+                                                        <em>Arrival :</em>
+                                                        2020.11.02 (월) VNHPH
+                                                    </li>
+                                                    <li>
+                                                        <em>Doc Closing :</em>
+                                                        2020.10.27 (화) 15:00
+                                                    </li>
+                                                    <li>
+                                                        <em>Cargo Closing :</em>
+                                                        2020.10.27 (화) 19:00
+                                                    </li>
+                                                    <li>
+                                                        <em>T/time :</em>
+                                                        4 Days
+                                                    </li>
+                                                    <li>
+                                                        <em>T/S :</em>
+                                                        Direct
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <a href="#none" class="btn_type1">BOOKING</a>
+                                        </div>
+                                    </div>
+                                    <!-- //mobile_layout -->
+                                </li>
+                                <li>
+                                    <a href="#none" class="pc">
+                                        <div class="col company_img">
+                                            <span class="img"><img src="~/Images/logo/KMTC.png"></span>
+                                        </div>
+                                        <div class="col company">
+                                            <strong>KMTC ULSAN<br />2022S<br>3Days, Direct</strong>
+                                        </div>
+                                        <div class="col etd">
+                                            2020-10-22<br />18:00
+                                        </div>
+                                        <div class="col eta">
+                                            2020-10-22<br />18:00
+                                        </div>
+                                        <div class="col d_closing">
+                                            2020-10-22<br />18:00
+                                        </div>
+                                        <div class="col c_closing">
+                                            2020-10-22<br />18:00
+                                        </div>
+                                    </a>
+                                    <!-- mobile_layout -->
+                                    <div class="mobile_layout">
+                                        <div class="layout_type3">
+                                            <div class="row s1">
+                                                <img src="~/Images/tmp/company01.jpg" alt="">
+                                            </div>
+                                            <div class="row s2">
+                                                KMTC ULSAN 2022S
+                                            </div>
+                                            <div class="row s3">
+                                                <ul>
+                                                    <li>
+                                                        <em>Departure :</em>
+                                                        2020.10.29 (목) KRPUS
+                                                    </li>
+                                                    <li>
+                                                        <em>Arrival :</em>
+                                                        2020.11.02 (월) VNHPH
+                                                    </li>
+                                                    <li>
+                                                        <em>Doc Closing :</em>
+                                                        2020.10.27 (화) 15:00
+                                                    </li>
+                                                    <li>
+                                                        <em>Cargo Closing :</em>
+                                                        2020.10.27 (화) 19:00
+                                                    </li>
+                                                    <li>
+                                                        <em>T/time :</em>
+                                                        4 Days
+                                                    </li>
+                                                    <li>
+                                                        <em>T/S :</em>
+                                                        Direct
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <a href="#none" class="btn_type1">BOOKING</a>
+                                        </div>
+                                    </div>
+                                    <!-- //mobile_layout -->
+                                </li>
+                                <li>
+                                    <a href="#none" class="pc">
+                                        <div class="col company_img">
+                                            <span class="img"><img src="~/Images/logo/KMTC.png"></span>
+                                        </div>
+                                        <div class="col company">
+                                            <strong>KMTC ULSAN<br />2022S<br>3Days, Direct</strong>
+                                        </div>
+                                        <div class="col etd">
+                                            2020-10-22<br />18:00
+                                        </div>
+                                        <div class="col eta">
+                                            2020-10-22<br />18:00
+                                        </div>
+                                        <div class="col d_closing">
+                                            2020-10-22<br />18:00
+                                        </div>
+                                        <div class="col c_closing">
+                                            2020-10-22<br />18:00
+                                        </div>
+                                    </a>
+                                    <!-- mobile_layout -->
+                                    <div class="mobile_layout">
+                                        <div class="layout_type3">
+                                            <div class="row s1">
+                                                <img src="~/Images/tmp/company01.jpg" alt="">
+                                            </div>
+                                            <div class="row s2">
+                                                KMTC ULSAN 2022S
+                                            </div>
+                                            <div class="row s3">
+                                                <ul>
+                                                    <li>
+                                                        <em>Departure :</em>
+                                                        2020.10.29 (목) KRPUS
+                                                    </li>
+                                                    <li>
+                                                        <em>Arrival :</em>
+                                                        2020.11.02 (월) VNHPH
+                                                    </li>
+                                                    <li>
+                                                        <em>Doc Closing :</em>
+                                                        2020.10.27 (화) 15:00
+                                                    </li>
+                                                    <li>
+                                                        <em>Cargo Closing :</em>
+                                                        2020.10.27 (화) 19:00
+                                                    </li>
+                                                    <li>
+                                                        <em>T/time :</em>
+                                                        4 Days
+                                                    </li>
+                                                    <li>
+                                                        <em>T/S :</em>
+                                                        Direct
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <a href="#none" class="btn_type1">BOOKING</a>
+                                        </div>
+                                    </div>
+                                    <!-- //mobile_layout -->
+                                </li>
+                                <li>
+                                    <a href="#none" class="pc">
+                                        <div class="col company_img">
+                                            <span class="img"><img src="~/Images/logo/KMTC.png"></span>
+                                        </div>
+                                        <div class="col company">
+                                            <strong>KMTC ULSAN<br />2022S<br>3Days, Direct</strong>
+                                        </div>
+                                        <div class="col etd">
+                                            2020-10-22<br />18:00
+                                        </div>
+                                        <div class="col eta">
+                                            2020-10-22<br />18:00
+                                        </div>
+                                        <div class="col d_closing">
+                                            2020-10-22<br />18:00
+                                        </div>
+                                        <div class="col c_closing">
+                                            2020-10-22<br />18:00
+                                        </div>
+                                    </a>
+                                    <!-- mobile_layout -->
+                                    <div class="mobile_layout">
+                                        <div class="layout_type3">
+                                            <div class="row s1">
+                                                <img src="~/Images/tmp/company01.jpg" alt="">
+                                            </div>
+                                            <div class="row s2">
+                                                KMTC ULSAN 2022S
+                                            </div>
+                                            <div class="row s3">
+                                                <ul>
+                                                    <li>
+                                                        <em>Departure :</em>
+                                                        2020.10.29 (목) KRPUS
+                                                    </li>
+                                                    <li>
+                                                        <em>Arrival :</em>
+                                                        2020.11.02 (월) VNHPH
+                                                    </li>
+                                                    <li>
+                                                        <em>Doc Closing :</em>
+                                                        2020.10.27 (화) 15:00
+                                                    </li>
+                                                    <li>
+                                                        <em>Cargo Closing :</em>
+                                                        2020.10.27 (화) 19:00
+                                                    </li>
+                                                    <li>
+                                                        <em>T/time :</em>
+                                                        4 Days
+                                                    </li>
+                                                    <li>
+                                                        <em>T/S :</em>
+                                                        Direct
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <a href="#none" class="btn_type1">BOOKING</a>
+                                        </div>
+                                    </div>
+                                    <!-- //mobile_layout -->
+                                </li>
+                                <li>
+                                    <a href="#none" class="pc">
+                                        <div class="col company_img">
+                                            <span class="img"><img src="~/Images/logo/KMTC.png"></span>
+                                        </div>
+                                        <div class="col company">
+                                            <strong>KMTC ULSAN<br />2022S<br>3Days, Direct</strong>
+                                        </div>
+                                        <div class="col etd">
+                                            2020-10-22<br />18:00
+                                        </div>
+                                        <div class="col eta">
+                                            2020-10-22<br />18:00
+                                        </div>
+                                        <div class="col d_closing">
+                                            2020-10-22<br />18:00
+                                        </div>
+                                        <div class="col c_closing">
+                                            2020-10-22<br />18:00
+                                        </div>
+                                    </a>
+                                    <!-- mobile_layout -->
+                                    <div class="mobile_layout">
+                                        <div class="layout_type3">
+                                            <div class="row s1">
+                                                <img src="~/Images/tmp/company01.jpg" alt="">
+                                            </div>
+                                            <div class="row s2">
+                                                KMTC ULSAN 2022S
+                                            </div>
+                                            <div class="row s3">
+                                                <ul>
+                                                    <li>
+                                                        <em>Departure :</em>
+                                                        2020.10.29 (목) KRPUS
+                                                    </li>
+                                                    <li>
+                                                        <em>Arrival :</em>
+                                                        2020.11.02 (월) VNHPH
+                                                    </li>
+                                                    <li>
+                                                        <em>Doc Closing :</em>
+                                                        2020.10.27 (화) 15:00
+                                                    </li>
+                                                    <li>
+                                                        <em>Cargo Closing :</em>
+                                                        2020.10.27 (화) 19:00
+                                                    </li>
+                                                    <li>
+                                                        <em>T/time :</em>
+                                                        4 Days
+                                                    </li>
+                                                    <li>
+                                                        <em>T/S :</em>
+                                                        Direct
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <a href="#none" class="btn_type1">BOOKING</a>
+                                        </div>
+                                    </div>
+                                    <!-- //mobile_layout -->
+                                </li>
+                                <li>
+                                    <a href="#none" class="pc">
+                                        <div class="col company_img">
+                                            <span class="img"><img src="~/Images/logo/KMTC.png"></span>
+                                        </div>
+                                        <div class="col company">
+                                            <strong>KMTC ULSAN<br />2022S<br>3Days, Direct</strong>
+                                        </div>
+                                        <div class="col etd">
+                                            2020-10-22<br />18:00
+                                        </div>
+                                        <div class="col eta">
+                                            2020-10-22<br />18:00
+                                        </div>
+                                        <div class="col d_closing">
+                                            2020-10-22<br />18:00
+                                        </div>
+                                        <div class="col c_closing">
+                                            2020-10-22<br />18:00
+                                        </div>
+                                    </a>
+                                    <!-- mobile_layout -->
+                                    <div class="mobile_layout">
+                                        <div class="layout_type3">
+                                            <div class="row s1">
+                                                <img src="~/Images/tmp/company01.jpg" alt="">
+                                            </div>
+                                            <div class="row s2">
+                                                KMTC ULSAN 2022S
+                                            </div>
+                                            <div class="row s3">
+                                                <ul>
+                                                    <li>
+                                                        <em>Departure :</em>
+                                                        2020.10.29 (목) KRPUS
+                                                    </li>
+                                                    <li>
+                                                        <em>Arrival :</em>
+                                                        2020.11.02 (월) VNHPH
+                                                    </li>
+                                                    <li>
+                                                        <em>Doc Closing :</em>
+                                                        2020.10.27 (화) 15:00
+                                                    </li>
+                                                    <li>
+                                                        <em>Cargo Closing :</em>
+                                                        2020.10.27 (화) 19:00
+                                                    </li>
+                                                    <li>
+                                                        <em>T/time :</em>
+                                                        4 Days
+                                                    </li>
+                                                    <li>
+                                                        <em>T/S :</em>
+                                                        Direct
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <a href="#none" class="btn_type1">BOOKING</a>
+                                        </div>
+                                    </div>
+                                    <!-- //mobile_layout -->
+                                </li>
+                                <li>
+                                    <a href="#none" class="pc">
+                                        <div class="col company_img">
+                                            <span class="img"><img src="~/Images/logo/KMTC.png"></span>
+                                        </div>
+                                        <div class="col company">
+                                            <strong>KMTC ULSAN<br />2022S<br>3Days, Direct</strong>
+                                        </div>
+                                        <div class="col etd">
+                                            2020-10-22<br />18:00
+                                        </div>
+                                        <div class="col eta">
+                                            2020-10-22<br />18:00
+                                        </div>
+                                        <div class="col d_closing">
+                                            2020-10-22<br />18:00
+                                        </div>
+                                        <div class="col c_closing">
+                                            2020-10-22<br />18:00
+                                        </div>
+                                    </a>
+                                    <!-- mobile_layout -->
+                                    <div class="mobile_layout">
+                                        <div class="layout_type3">
+                                            <div class="row s1">
+                                                <img src="~/Images/tmp/company01.jpg" alt="">
+                                            </div>
+                                            <div class="row s2">
+                                                KMTC ULSAN 2022S
+                                            </div>
+                                            <div class="row s3">
+                                                <ul>
+                                                    <li>
+                                                        <em>Departure :</em>
+                                                        2020.10.29 (목) KRPUS
+                                                    </li>
+                                                    <li>
+                                                        <em>Arrival :</em>
+                                                        2020.11.02 (월) VNHPH
+                                                    </li>
+                                                    <li>
+                                                        <em>Doc Closing :</em>
+                                                        2020.10.27 (화) 15:00
+                                                    </li>
+                                                    <li>
+                                                        <em>Cargo Closing :</em>
+                                                        2020.10.27 (화) 19:00
+                                                    </li>
+                                                    <li>
+                                                        <em>T/time :</em>
+                                                        4 Days
+                                                    </li>
+                                                    <li>
+                                                        <em>T/S :</em>
+                                                        Direct
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <a href="#none" class="btn_type1">BOOKING</a>
+                                        </div>
+                                    </div>
+                                    <!-- //mobile_layout -->
+                                </li>
+                            </div>
+                        </ul>
+                        <!-- //schedule_area -->
+                    </div>
+                </div>
+                <!-- //left_area -->
+                <!-- right_area -->
+                <div class="right_area">
+                    <div class="bk_box">
+                        <!-- row -->
+                        @*<div class="row">
+                            <h4 class="title02">Cargo</h4>
+                            <div class="int_box">
+                                <input type="text" value="" onclick="selectPopOpen('#select_pop01');">
+                                <button type="button" class="btns icon delete"><span class="blind">삭제</span></button>
+                                <button type="button" class="btns icon container" onclick="selectPopOpen('#select_pop01');"><span class="blind">펼침</span></button>
+                                <!-- select_pop -->
+                                <div class="select_pop cargo" id="select_pop01">
+                                    <ul class="select_cargo">
+                                        <li>
+                                            <a href="#none">
+                                                <strong class="tit">20 ft</strong>
+                                                Fits up to 28,300kg &amp; 33m³
+                                            </a>
+                                            <div class="count">
+                                                <button type="button" class="btn_vary dec" onclick="decrease(this);"><span class="blind">감소</span></button>
+                                                <input type="number" value="" name="" pattern="[0-9]*" class="int" placeholder="0">
+                                                <button type="button" class="btn_vary inc" onclick="increase(this);"><span class="blind">증가</span></button>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <a href="#none">
+                                                <strong class="tit">40 ft</strong>
+                                                Fits up to 28,800kg &amp; 67m³
+                                            </a>
+                                            <div class="count">
+                                                <button type="button" class="btn_vary dec" onclick="decrease(this);"><span class="blind">감소</span></button>
+                                                <input type="number" value="" name="" pattern="[0-9]*" class="int" placeholder="0">
+                                                <button type="button" class="btn_vary inc" onclick="increase(this);"><span class="blind">증가</span></button>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <a href="#none">
+                                                <strong class="tit">40 ft HC</strong>
+                                                Fits up to 28,690kg &amp; 76m³
+                                            </a>
+                                            <div class="count">
+                                                <button type="button" class="btn_vary dec" onclick="decrease(this);"><span class="blind">감소</span></button>
+                                                <input type="number" value="" name="" pattern="[0-9]*" class="int" placeholder="0">
+                                                <button type="button" class="btn_vary inc" onclick="increase(this);"><span class="blind">증가</span></button>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <a href="#none">
+                                                <strong class="tit">45 ft HC</strong>
+                                                Fits up to 27,650kg &amp; 85m³
+                                            </a>
+                                            <div class="count">
+                                                <button type="button" class="btn_vary dec" onclick="decrease(this);"><span class="blind">감소</span></button>
+                                                <input type="number" value="" name="" pattern="[0-9]*" class="int" placeholder="0">
+                                                <button type="button" class="btn_vary inc" onclick="increase(this);"><span class="blind">증가</span></button>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <a href="#none">
+                                                <strong class="tit">LCL</strong>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- select_pop -->
+                            </div>
+                        </div>*@
+                        <!-- //row -->
+                        <!-- row -->
+                        <div class="row">
+                            @*<h4 class="title02">Item</h4>*@
+                            <div class="int_box type1">
+                                <input type="text" value="" placeholder="Item">
+                                <button type="button" class="btns icon delete"><span class="blind">삭제</span></button>
+                            </div>
+                        </div>
+                        <!-- //row -->
+                        <!-- row -->
+                        <div class="row">
+                            <div class="grid_fluid type3">
+                                <div class="grid_col">
+                                    @*<h4 class="title02">Qty</h4>*@
+                                    <div class="int_box type1">
+                                        <input type="text" value="" placeholder="Qty">
+                                        <button type="button" class="btns icon delete"><span class="blind">삭제</span></button>
+                                    </div>
+                                </div>
+                                <div class="grid_col">
+                                    @*<h4 class="title02">Gross Weight (kg)</h4>*@
+                                    <div class="int_box type1">
+                                        <input type="text" value="" placeholder="G/W (kg)">
+                                        <button type="button" class="btns icon delete"><span class="blind">삭제</span></button>
+                                    </div>
+                                </div>
+                                <div class="grid_col">
+                                    @*<h4 class="title02">CBM</h4>*@
+                                    <div class="int_box type1">
+                                        <input type="text" value="" placeholder="CBM">
+                                        <button type="button" class="btns icon delete"><span class="blind">삭제</span></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- //row -->
+                        <!-- row -->
+                        <div class="row">
+                            @*<h4 class="title02">Remark</h4>*@
+                            <textarea class="txtarea" placeholder="Remark"></textarea>
+                        </div>
+                        <!-- //row -->
+                        <!-- row -->
+                        <div class="row">
+                            <!-- file_box -->
+                            <div class="file_box">
+                                <label for="upload_btn" class="btn_file btn_type1">+ 첨부파일</label>
+                                <input type="file" id="upload_btn" class="upload_btn" multiple="multiple">
+                            </div>
+                            <!-- //file_box -->
+                            
+                            <form name="uploadForm" id="uploadForm" class="upload_form" enctype="multipart/form-data" method="post">
+
+                                <div id="dropZone">
+                                    <div id="fileDragDesc"> 파일을 드래그 해주세요. </div>
+                                    <div class="scrollbar_filelist">
+                                        <table id="fileListTable">
+                                            <tbody id="fileTableTbody" class="fileTableTbody">
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+                            </form>
+                            
+                        </div>
+                        <div class="row">
+                            <table class="booking_view" style="display:none">
+                                <colgroup>
+                                    <col class="w1"/>
+                                    <col class="w2"/>
+                                </colgroup>
+                                <tbody class="detail">
+                                    <tr>
+                                        <td>
+                                            반입지 :<br />경상남도 창원시 진해구 신항 8로 321
+                                        </td>
+                                        <td>예상견적가<br /><h1><strong>USD 140</strong></h1></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            담당자:<br />홍길동 대리 (XXX-XXXX-XXXX)
+                                        </td>
+                                        <td>
+                                            <div class="bot_btn"><button type="submit" class="btn_type1">확정</button></div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- //row -->
+                    </div>
+                </div>
+                <!-- //right_area -->
+            </div>
+            <!-- //booking_write -->
+        </div>
+    </section>
+    @Scripts.Render("~/Scripts/js/Sub/Booking.js")
+}

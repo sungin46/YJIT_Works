@@ -1,0 +1,552 @@
+﻿<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <title>PRIME</title>
+    @Styles.Render("~/Content/fonts.css")
+    @Styles.Render("~/Content/media.css")
+    @Styles.Render("~/Content/custom.css")
+    @Styles.Render("~/Content/API/font-awesome/css/font-awesome.min.css")
+    @Styles.Render("~/Content/API/fullpage/fullpage.css")
+
+    @Scripts.Render("~/Scripts/Pub/jquery-3.3.1.min.js")
+    @Scripts.Render("~/Scripts/Pub/slick.min.js")
+    @Scripts.Render("~/Scripts/Pub/jquery.autocomplete.js")
+    @Scripts.Render("~/Scripts/Pub/ion.rangeSlider.min.js")
+    @Scripts.Render("~/Scripts/Pub/jquery.slimscroll.min.js")
+    @Scripts.Render("~/Scripts/Pub/jquery.datetimepicker.full.js")
+    @Scripts.Render("~/Scripts/Pub/common.js")
+    @Scripts.Render("~/Scripts/js/common/Comm.js")
+    @Scripts.Render("~/Scripts/js/common/_layout.js")
+    @Scripts.Render("~/Scripts/API/jquery.AutoComplete.js")
+    @Scripts.Render("~/Scripts/API/scrolloverflow.js")
+    
+    <link rel="stylesheet" href="/Content/themes/base/jquery-ui.css">
+</head>
+<body>
+
+    <!-- wrap -->
+    <div id="wrap">
+        <header id="header" style="display: block;" class="">
+            <div class="fixed_in type1">
+                <div class="top_row">
+                    <h1 class="logo"><a href="/">PRIME</a></h1>
+                    <div class="search_top border-animation">
+                        <input type="text" id="search_Top_Tarcking" class="border-animation__inner" name="" value="" placeholder="B/L No, Container No">
+                        <button type="button" class="btn_search"><span class="blind">검색</span></button>
+                    </div>
+                    <div class="user_box">
+                        <button type="button" class="name">로그인</button>
+                        <div class="user_link">
+                            <ul>
+                                <li><a href="@Url.Action("MyBoard","MyBoard")"><img src="~/Images/icn_board02.png" /><br />My Board<br />　</a></li>
+                                <li><a href="#none"><img src="~/Images/icn_Regist.png" /><br />정보수정<br />　</a></li>
+                                <li><a href="#none"><img src="~/Images/icn_memberInfo.png" /><br />회원관리<br />　</a></li>
+                                <li><a href="#none"><img src="~/Images/icn_logout.png" /><br />로그아웃<br />　</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <button type="button" id="hamberger"><span class="btn_total"></span></button>
+                    <button type="button" id="checkerboard"></button>
+                </div>
+                <!-- total_menu -->
+                <nav class="total_menu">
+                    <ul class="lnb">
+                        <div class="search_top_mo border-animation">
+                            <input type="text" id="search_Top_Tarcking" class="border-animation__inner" name="" value="" placeholder="B/L No, Container No">
+                            <button type="button" class="btn_search"><span class="blind">검색</span></button>
+                        </div>
+                        <li>
+                            <a href="@Url.Action("Schedule","Schedule")">서비스 스케줄</a>
+                            <div class="sub_depth">
+                                <ul>
+                                    <li><a href="@Url.Action("Schedule","Schedule")">서비스 스케줄</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Regist","Booking")">부킹관리</a>
+                            <div class="sub_depth">
+                                <ul>
+                                    <li><a href="@Url.Action("Regist","Booking")">부킹등록</a></li>
+                                    <li><a href="@Url.Action("Inquiry","Booking")">부킹조회</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Tracking","Tracking")">Tracking</a>
+                            <div class="sub_depth">
+                                <ul>
+                                    <li><a href="@Url.Action("Tracking","Tracking")">화물추적</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("BLDash","Document")">문서관리</a>
+                            <div class="sub_depth">
+                                <ul>
+                                    <li><a href="@Url.Action("BLDash","Document")">B/L 대시보드</a></li>
+                                    <li><a href="@Url.Action("Invoice","Document")">Invoice 조회</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="mo">
+                            <a href="">로그인</a>
+                            <div class="sub_depth">
+                                <ul>
+                                    <li><a href="@Url.Action("MyBoard","MyBoard")">My Board</a></li>
+                                    <li><a href="">정보수정</a></li>
+                                    <li><a href="">회원관리</a></li>
+                                    <li><a href="">로그아웃</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
+                <!-- //total_menu -->
+                <div class="menu_pop">
+                    <div class="scrollbar">
+                        <ul class="menu_layer">
+                            <li><a href="@Url.Action("Tracking","Tracking")"><img src="~/Images/icn_tracking.png" /><br />화물추적<br>　</a></li>
+                            <li><a href="@Url.Action("Schedule","Schedule")"><img src="~/Images/icn_schedule.png" /><br />서비스<br>스케줄</a></li>
+                            <li><a href="@Url.Action("Regist","Booking")"><img src="~/Images/icn_bkg_input.png" /><br />부킹등록<br>　</a></li>
+                            <li><a href="@Url.Action("Inquiry","Booking")"><img src="~/Images/icn_bkg_search.png" /><br />부킹조회<br>　</a></li>
+                            <li><a href="@Url.Action("BLDash","Document")"><img src="~/Images/icn_bl_dashboard.png" /><br />B/L<br>대시보드</a></li>
+                            <li><a href="@Url.Action("Invoice","Document")"><img src="~/Images/icn_inv.png" /><br />Invoice<br>조회</a></li>
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        @RenderSection("container", required: false)
+
+        <footer id="footer">
+            <div class="inner fixed_in type1">
+                <strong class="logo">PRIME</strong>
+                <!-- etc_link -->
+                <ul class="etc_link">
+                    <li><a href="#none">서비스 이용약관</a></li>
+                    <li><a href="#none">개인정보처리방침</a></li>
+                    <li><a href="#none">Contact US</a></li>
+                </ul>
+                <!-- //etc_link -->
+                <address>
+                    <table>
+                        <tbody>
+                            <tr>
+                                <th>주소</th>
+                                <td>서울특별시 금천구 가산디지털2로 123, 313호(가산동, 월드메르디앙2차)</td>
+                            </tr>
+                            <tr>
+                                <th>대표번호</th>
+                                <td>1522.7422</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </address>
+                <p class="copy">Copyright ⓒ Yangjae Information Technology Co., Ltd. All rights Reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- loading -->
+    <div class="loading" id="ProgressBar_Loading" style="display:none">
+        <div class="ispinner ispinner-large">
+            <div class="ispinner-blade"></div>
+            <div class="ispinner-blade"></div>
+            <div class="ispinner-blade"></div>
+            <div class="ispinner-blade"></div>
+            <div class="ispinner-blade"></div>
+            <div class="ispinner-blade"></div>
+            <div class="ispinner-blade"></div>
+            <div class="ispinner-blade"></div>
+            <div class="ispinner-blade"></div>
+            <div class="ispinner-blade"></div>
+            <div class="ispinner-blade"></div>
+            <div class="ispinner-blade"></div>
+        </div>
+    </div>
+    <div class="layer_zone delivery_pop" id="delivery_pop">
+        <div class="layer_wrap">
+            <div class="layer_inwrap">
+                <article class="layer_cont">
+                    <div class="search_top">
+                        <input type="text" id="Input_layer_Tracking" name="" value="" placeholder="Container No를 입력하세요." autocomplete="off">
+                        <button type="button" id="btn_layer_Tracking" class="btn_search"><span class="blind">검색</span></button>
+                    </div>
+                    <!-- delivery_status -->
+                    <div class="delivery_status ds" id="layer_delivery_mo">
+                        <ul class="delivery_step export">
+                            <li class="on layer">
+                                <div class="step_box">
+                                    <div class="col">
+                                        <em class="step">공 컨테이너 반출</em>
+                                    </div>
+                                    <div class="col">
+                                        <span class="icn blue"><i class="img01"><i class="rounding"></i></i></span>
+                                        <strong class="location"></strong>
+                                        <p class="date">2020.12.01 <span>03:0000</span></p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="on layer">
+                                <div class="step_box">
+                                    <div class="col">
+                                        <em class="step">터미널 반입</em>
+                                    </div>
+                                    <div class="col">
+                                        <span class="icn blue"><i class="img02"><i class="rounding"></i></i></span>
+                                        <strong class="location"></strong>
+                                        <p class="date">2020.12.01 <span>03:0000</span></p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="on now layer">
+                                <div class="step_box">
+                                    <div class="col">
+                                        <em class="step">컨테이너 선적</em>
+                                    </div>
+                                    <div class="col">
+                                        <span class="icn red"><i class="img03"><i class="rounding rounding_blue blinkcss"></i></i></span>
+                                        <strong class="location"></strong>
+                                        <p class="date">2020.12.01 <span>03:0000</span></p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="layer">
+                                <div class="step_box">
+                                    <div class="col">
+                                        <em class="step">출항</em>
+                                    </div>
+                                    <div class="col">
+                                        <span class="icn"><i class="img04"><i class="rounding"></i></i></span>
+                                        <strong class="location"></strong>
+                                        <p class="date"><span></span></p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="layer">
+                                <div class="step_box">
+                                    <div class="col">
+                                        <em class="step">도착</em>
+                                    </div>
+                                    <div class="col">
+                                        <span class="icn"><i class="img05"><i class="rounding"></i></i></span>
+                                        <strong class="location"></strong>
+                                        <p class="date"><span></span></p>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- //delivery_status -->
+                    <!-- list_type1 -->
+                    <div class="layer_list">
+                        <div class="scrollbar">
+                            <table class="list_type1 mb0">
+                                <colgroup class="pc">
+                                    <col>
+                                    <col>
+                                    <col>
+                                    <col>
+                                    <col class="w8">
+                                    <col class="w1">
+                                </colgroup>
+                                <thead class="head">
+                                    <tr class="row">
+                                        <th><button type="button">House B/L</button></th>
+                                        <th><button type="button">Container No</button></th>
+                                        <th><button type="button">Master B/L</button></th>
+                                        <th>Status</th>
+                                        <th><button type="button">Last Location</button></th>
+                                        <th><button type="button">Doc</button></th>
+                                    </tr>
+                                </thead>
+                            </table>
+                            <div id="layer_tracking_scrollbar">
+                                <table class="list_type1 mb0">
+                                    <colgroup class="pc">
+                                        <col>
+                                        <col>
+                                        <col>
+                                        <col>
+                                        <col class="w8">
+                                        <col class="w1">
+                                    </colgroup>
+                                    <tbody id="layer_delivery_list">
+                                        <tr class="row" data-row="row_1" style="background-color:#f5f5f5">
+                                            <td>CELXMN20090120</td>
+                                            <td>SEGU3276118</td>
+                                            <td>KMTCXMN138300</td>
+                                            <td>컨테이너 선적</td>
+                                            <td>    		2020.12.01 03:0000    	</td>
+                                            <td>    	</td>
+                                            <!-- mobile_layout -->
+                                            <td class="mobile_layout" colspan="6">
+                                                <div class="layout_type5">
+                                                    <div class="row s1">
+                                                        <div class="col w1">House B/L :</div>
+                                                        <div class="col">CELXMN20090120</div>
+                                                    </div>
+                                                    <div class="row s2">
+                                                        <table>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <th>Container No :</th>
+                                                                    <td>SEGU3276118</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>Status :</th>
+                                                                    <td>KMTCXMN138300</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>Last Location :</th>
+                                                                    <td>
+                                                                        2020.12.01 03:0000
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>Doc :</th>
+                                                                    <td>								</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <!-- //mobile_layout -->
+                                            <input type="hidden" name="hdn_layer_cntrNo" value="SEGU3276118">
+                                            <input type="hidden" name="hdn_layer_hblNo" value="CELXMN20090120">
+                                        </tr>
+                                        <tr class="row" data-row="row_1">
+                                            <td>CELXMN20090120</td>
+                                            <td>SEGU3276199</td>
+                                            <td>KMTCXMN138300</td>
+                                            <td>도착</td>
+                                            <td>    		2020.12.01 03:0000    	</td>
+                                            <td>    	</td>
+                                            <!-- mobile_layout -->
+                                            <td class="mobile_layout" colspan="6">
+                                                <div class="layout_type5">
+                                                    <div class="row s1">
+                                                        <div class="col w1">House B/L :</div>
+                                                        <div class="col">CELXMN20090120</div>
+                                                    </div>
+                                                    <div class="row s2">
+                                                        <table>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <th>Container No :</th>
+                                                                    <td>SEGU3276199</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>Status :</th>
+                                                                    <td>KMTCXMN138300</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>Last Location :</th>
+                                                                    <td>    								2020.12.01 03:0000    							</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>Doc :</th>
+                                                                    <td>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <!-- //mobile_layout -->
+                                            <input type="hidden" name="hdn_layer_cntrNo" value="SEGU3276199">
+                                            <input type="hidden" name="hdn_layer_hblNo" value="CELXMN20090120">
+                                        </tr>
+                                        <tr class="row" data-row="row_1">
+                                            <td>CELXMN20090120</td>
+                                            <td>SEGU3276145</td>
+                                            <td>KMTCXMN138300</td>
+                                            <td>컨테이너 반출</td>
+                                            <td>    		2020.12.01 03:0000    	</td>
+                                            <td>    	</td>
+                                            <!-- mobile_layout -->
+                                            <td class="mobile_layout" colspan="6">
+                                                <div class="layout_type5">
+                                                    <div class="row s1">
+                                                        <div class="col w1">House B/L :</div>
+                                                        <div class="col">CELXMN20090120</div>
+                                                    </div>
+                                                    <div class="row s2">
+                                                        <table>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <th>Container No :</th>
+                                                                    <td>SEGU3276145</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>Status :</th>
+                                                                    <td>KMTCXMN138300</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>Last Location :</th>
+                                                                    <td>    								2020.12.01 03:0000    							</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>Doc :</th>
+                                                                    <td>								</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <!-- //mobile_layout -->
+                                            <input type="hidden" name="hdn_layer_cntrNo" value="SEGU3276145">
+                                            <input type="hidden" name="hdn_layer_hblNo" value="CELXMN20090120">
+                                        </tr>
+                                        <tr class="row" data-row="row_1">
+                                            <td>CELXMN20090120</td>
+                                            <td>SEGU3276167</td>
+                                            <td>KMTCXMN138300</td>
+                                            <td>컨테이너 반출</td>
+                                            <td>    		2020.12.01 03:0000    	</td>
+                                            <td>    	</td>
+                                            <!-- mobile_layout -->
+                                            <td class="mobile_layout" colspan="6">
+                                                <div class="layout_type5">
+                                                    <div class="row s1">
+                                                        <div class="col w1">House B/L :</div>
+                                                        <div class="col">CELXMN20090120</div>
+                                                    </div>
+                                                    <div class="row s2">
+                                                        <table>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <th>Container No :</th>
+                                                                    <td>SEGU3276167</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>Status :</th>
+                                                                    <td>KMTCXMN138300</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>Last Location :</th>
+                                                                    <td>    								2020.12.01 03:0000    							</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>Doc :</th>
+                                                                    <td>								</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <!-- //mobile_layout -->
+                                            <input type="hidden" name="hdn_layer_cntrNo" value="SEGU3276167">
+                                            <input type="hidden" name="hdn_layer_hblNo" value="CELXMN20090120">
+                                        </tr>
+                                        <tr class="row" data-row="row_1">
+                                            <td>CELXMN20090120</td>
+                                            <td>SEGU3276123</td>
+                                            <td>KMTCXMN138300</td>
+                                            <td>입항</td>
+                                            <td>    		2020.12.01 03:0000    	</td>
+                                            <td>    	</td>
+                                            <!-- mobile_layout -->
+                                            <td class="mobile_layout" colspan="6">
+                                                <div class="layout_type5">
+                                                    <div class="row s1">
+                                                        <div class="col w1">House B/L :</div>
+                                                        <div class="col">CELXMN20090120</div>
+                                                    </div>
+                                                    <div class="row s2">
+                                                        <table>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <th>Container No :</th>
+                                                                    <td>SEGU3276123</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>Status :</th>
+                                                                    <td>KMTCXMN138300</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>Last Location :</th>
+                                                                    <td>    								2020.12.01 03:0000    							</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>Doc :</th>
+                                                                    <td>								</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <!-- //mobile_layout -->
+                                            <input type="hidden" name="hdn_layer_cntrNo" value="SEGU3276123">
+                                            <input type="hidden" name="hdn_layer_hblNo" value="CELXMN20090120">
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" class="btns icon type3" onclick="layerClose('#delivery_pop');"><span class="blind">닫기</span></button>
+                    <button type="button" class="btns icon close type1 mo" onclick="layerClose('#delivery_pop');"><span>검색 닫기</span></button>
+                </article>
+            </div>
+        </div>
+    </div>
+    <!-- //layer_zone -->
+    <!-- layer_zone -->
+    <div class="layer_zone2 alert_type2" id="alert01">
+        <div class="layer_wrap2">
+            <div class="layer_inwrap2">
+                <article class="layer_cont2">
+                    <div class="layer_tit">
+                        <h1 class="tit2"></h1>
+                    </div>
+                    <!-- alert_cont -->
+                    <div class="alert_cont2">
+                        <div class="inner">
+                            데이터가 삭제 되었습니다.
+                        </div>
+                    </div>
+                    <!-- //alert_cont -->
+                    <!-- btn_w -->
+                    <div class="btn_w">
+                        <button type="button" class="btns radius cr1 loginChk" id="alert_confirm" onclick="layerClose('#alert01');">확인</button>
+                    </div>
+                    <!-- //btn_w -->
+                    <button type="button" class="btn_close close loginChk" id="alert_close" onclick="layerClose('#alert01');"><span class="blind">닫기</span></button>
+                </article>
+            </div>
+        </div>
+    </div>
+    <!-- //layer_zone -->
+
+    <div class="layer_zone3 alert_type3" id="youtube_layer">
+        <div class="layer_wrap3">
+            <div class="layer_inwrap3">
+                <button type="button" class="btn_close close loginChk" id="alert_close" onclick="layerClose('#youtube_layer');"><span class="blind">닫기</span></button>
+                <article class="layer_cont3">
+                    <!-- alert_cont -->
+                    <div class="alert_cont3">
+                        <div class="inner">
+                            <iframe width="100%" height="100%" src="https://www.youtube.com/embed/qAZBUpJoY6k" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                    <!-- //alert_cont -->
+                </article>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

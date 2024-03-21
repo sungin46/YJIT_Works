@@ -1,0 +1,551 @@
+﻿
+@{
+    ViewBag.Title = "Booking";
+    ViewBag.Sub = "Inquiry";
+}
+
+@section Container {
+
+    <section class="container inquiry" id="container">
+        <div class="sub_visual">
+            <h2 class="subtitle">부킹조회</h2>
+        </div>
+        <div class="sub_cover">
+
+            <div class="fixed_in type2">
+                <div class="search_area">
+                    <!-- search_bar -->
+                    <div class="search_bar inquiry">
+                        <div class="col w4">
+                            <input type="radio" name="vehicle" id="vehicle01" checked="checked">
+                            <label for="vehicle01" class="switch_label">해운</label>
+                        </div>
+                        <div class="col w4">
+                            <input type="radio" name="vehicle" id="vehicle02">
+                            <label for="vehicle02" class="switch_label">항공</label>
+                        </div>
+                        <div class="col w1">
+                            <h4 class="title02 mo">Date</h4>
+                            <div class="int_box border-animation">
+                                <select class="select border-animation__inner" required="">
+                                    <option value="" default="">Booking Date / ETD / ETA</option>
+                                    <option value="">Booking Date</option>
+                                    <option value="">ETD</option>
+                                    <option value="">ETA</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col w5">
+                            <div class="int_box start_date border-animation">
+                                <input type="text" value="" placeholder="XXXX-XX-XX" class="date border-animation__inner">
+                                <button type="button" class="btns icon calendar"><i class="fa fa-calendar-check-o"></i><span class="blind">달력</span></button>
+                            </div>
+                        </div>
+                        <div class="col w5">
+                            <div class="int_box end_date border-animation">
+                                <input type="text" value="" placeholder="XXXX-XX-XX" class="date border-animation__inner">
+                                <button type="button" class="btns icon calendar"><i class="fa fa-calendar-check-o"></i><span class="blind">달력</span></button>
+                            </div>
+                        </div>
+                        <div class="col w2">
+                            <button type="submit" class="btn_type1 search"><span class="blind">검색</span></button>
+                        </div>
+                    </div>
+                    <!-- //search_bar -->
+                    <button type="button" class="btn_type3 btn_detail"><span>상세 검색</span></button>
+                    <!-- search_detail -->
+                    <div class="search_detail">
+                        <div class="row grid_fluid type2">
+                            <div class="grid_col">
+                                <h4 class="title06">Departure</h4>
+                                <!-- int_box -->
+                                <div class="int_box">
+                                    <input type="text" value="" placeholder="Departure">
+                                    <button type="button" class="btns icon delete"><span class="blind">삭제</span></button>
+                                    <button type="button" class="btns icon down"><span class="blind">펼침</span></button>
+                                </div>
+                                <!-- //int_box -->
+                            </div>
+                            <div class="grid_col">
+                                <h4 class="title06">Arrival</h4>
+                                <!-- int_box -->
+                                <div class="int_box">
+                                    <input type="text" value="" placeholder="Arrival">
+                                    <button type="button" class="btns icon delete"><span class="blind">삭제</span></button>
+                                    <button type="button" class="btns icon down"><span class="blind">펼침</span></button>
+                                </div>
+                                <!-- //int_box -->
+                            </div>
+                            <div class="grid_col">
+                                <h4 class="title06">Booking Status</h4>
+                                <!-- int_box -->
+                                <div class="int_box">
+                                    <input type="text" value="" placeholder="Status">
+                                    <button type="button" class="btns icon delete"><span class="blind">삭제</span></button>
+                                    <button type="button" class="btns icon down"><span class="blind">펼침</span></button>
+                                </div>
+                                <!-- //int_box -->
+                            </div>
+                            <div class="grid_col">
+                                <h4 class="title06">Booking No</h4>
+                                <!-- int_box -->
+                                <div class="int_box">
+                                    <input type="text" value="" placeholder="Booking No">
+                                    <button type="button" class="btns icon delete"><span class="blind">삭제</span></button>
+                                    <button type="button" class="btns icon down"><span class="blind">펼침</span></button>
+                                </div>
+                                <!-- //int_box -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- //search_detail -->
+                </div>
+                <!-- list_type1 -->
+                <table class="list_type1 auto">
+                    <colgroup class="pc">
+                        <col>
+                        <col>
+                        <col>
+                        <col>
+                        <col>
+                        <col>
+                        <col>
+                        <col class="w4">
+                    </colgroup>
+                    <thead class="head">
+                        <tr class="row">
+                            <th><button type="button">Status</button></th>
+                            <th><button type="button">Carrier</button></th>
+                            <th><button type="button" class="desc">Vessel</button></th>
+                            <th><button type="button" class="desc">Departure</button></th>
+                            <th><button type="button">Arrival</button></th>
+                            <th><button type="button">Cargo</button></th>
+                            <th><button type="button">Price</button></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="row" data-row="row_1">
+                            <td><span class="status">승인</span></td>
+                            <td><img src="~/Images/tmp/company01.jpg" alt=""></td>
+                            <td>
+                                KMTC ULSAN<br>
+                                2022S
+                            </td>
+                            <td>
+                                Busan, Korea<br>
+                                2020.10.29 (목)
+                            </td>
+                            <td>
+                                Shanghai, China<br>
+                                2020.11.02 (월)
+                            </td>
+                            <td>40 ft HC x4</td>
+                            <td>
+                                USD<br>
+                                190
+                            </td>
+                            <td>
+                                <div class="grid_fluid has_btn">
+                                    <div class="grid_col"><button type="button" class="btn_type7 approve" onclick="layerPopup('#booking_pop');">상세</button></div>
+                                </div>
+                            </td>
+                            <!-- mobile_layout -->
+                            <td class="mobile_layout" colspan="8">
+                                <div class="layout_type3">
+                                    <div class="row s1">
+                                        <img src="~/Images/tmp/company01.jpg" alt="">
+                                    </div>
+                                    <div class="row s5">
+                                        <div class="col"><span class="status">승인</span></div>
+                                        <div class="col">KMTC ULSAN 2022S</div>
+                                    </div>
+                                    <div class="row s3">
+                                        <ul>
+                                            <li>
+                                                <em>Departure :</em>
+                                                Busan, Korea<br>2020.10.29 (목)
+                                            </li>
+                                            <li>
+                                                <em>Arrival :</em>
+                                                Shanghai, China<br>2020.11.02 (월)
+                                            </li>
+                                            <li>
+                                                <em>Cargo :</em>
+                                                40 ft HC x4
+                                            </li>
+                                            <li>
+                                                <em>Price :</em>
+                                                USD 190
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="row">
+                                        <div class="grid_fluid has_btn">
+                                            <div class="grid_col"><button type="button" class="btn_type7 approve" onclick="layerPopup('#booking_pop');">상세</button></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <!-- //mobile_layout -->
+                        </tr>
+                        <tr class="related_info" id="row_1">
+                            <td colspan="8">
+                                <ul class="etc_info">
+                                    <li class="item">
+                                        <em>반입지 :</em>
+                                        test
+                                    </li>
+                                    <li class="item">
+                                        <em>담당자</em>
+                                        test
+                                    </li>
+                                    <li class="item">
+                                        <em>비고</em>
+                                        test
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr class="row" data-row="row_2">
+                            <td><span class="status">승인</span></td>
+                            <td><img src="~/Images/tmp/company02.jpg" alt=""></td>
+                            <td>
+                                KMTC ULSAN<br>
+                                2022S
+                            </td>
+                            <td>
+                                Busan, Korea<br>
+                                2020.10.29 (목)
+                            </td>
+                            <td>
+                                Shanghai, China<br>
+                                2020.11.02 (월)
+                            </td>
+                            <td>40 ft HC x4</td>
+                            <td>
+                                USD<br>
+                                230
+                            </td>
+                            <td>
+                                <div class="grid_fluid has_btn">
+                                    <div class="grid_col"><button type="button" class="btn_type7 approve" onclick="layerPopup('#booking_pop');">상세</button></div>
+                                </div>
+                            </td>
+                            <!-- mobile_layout -->
+                            <td class="mobile_layout" colspan="8">
+                                <div class="layout_type3">
+                                    <div class="row s1">
+                                        <img src="~/Images/tmp/company02.jpg" alt="">
+                                    </div>
+                                    <div class="row s5">
+                                        <div class="col"><span class="status">승인</span></div>
+                                        <div class="col">KMTC ULSAN 2022S</div>
+                                    </div>
+                                    <div class="row s3">
+                                        <ul>
+                                            <li>
+                                                <em>Departure :</em>
+                                                Busan, Korea<br>2020.10.29 (목)
+                                            </li>
+                                            <li>
+                                                <em>Arrival :</em>
+                                                Shanghai, China<br>2020.11.02 (월)
+                                            </li>
+                                            <li>
+                                                <em>Cargo :</em>
+                                                40 ft HC x4
+                                            </li>
+                                            <li>
+                                                <em>Price :</em>
+                                                USD 190
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="row">
+                                        <div class="grid_fluid has_btn">
+                                            <div class="grid_col"><button type="button" class="btn_type7 approve" onclick="layerPopup('#booking_pop');">상세</button></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <!-- //mobile_layout -->
+                        </tr>
+                        <tr class="related_info" id="row_2">
+                            <td colspan="8">
+                                <ul class="etc_info">
+                                    <li class="item">
+                                        <em>반입지 :</em>
+                                        test
+                                    </li>
+                                    <li class="item">
+                                        <em>담당자</em>
+                                        test
+                                    </li>
+                                    <li class="item">
+                                        <em>비고</em>
+                                        test
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr class="row" data-row="row_3">
+                            <td><span class="status cancel">취소</span></td>
+                            <td><img src="~/Images/tmp/company03.jpg" alt=""></td>
+                            <td>
+                                KMTC ULSAN<br>
+                                2022S
+                            </td>
+                            <td>
+                                Busan, Korea<br>
+                                2020.10.29 (목)
+                            </td>
+                            <td>
+                                Shanghai, China<br>
+                                2020.11.02 (월)
+                            </td>
+                            <td>40 ft HC x4</td>
+                            <td>
+                                USD<br>
+                                230
+                            </td>
+                            <td>
+                                <div class="grid_fluid has_btn">
+                                    <div class="grid_col"><button type="button" class="btn_type7" onclick="layerPopup('#booking_pop');">상세</button></div>
+                                    <div class="grid_col"><a href="#none" class="btn_type7 orange">Cancel</a></div>
+                                </div>
+                            </td>
+                            <!-- mobile_layout -->
+                            <td class="mobile_layout" colspan="8">
+                                <div class="layout_type3">
+                                    <div class="row s1">
+                                        <img src="~/Images/tmp/company03.jpg" alt="">
+                                    </div>
+                                    <div class="row s5">
+                                        <div class="col"><span class="status cancel">취소</span></div>
+                                        <div class="col">KMTC ULSAN 2022S</div>
+                                    </div>
+                                    <div class="row s3">
+                                        <ul>
+                                            <li>
+                                                <em>Departure :</em>
+                                                Busan, Korea<br>2020.10.29 (목)
+                                            </li>
+                                            <li>
+                                                <em>Arrival :</em>
+                                                Shanghai, China<br>2020.11.02 (월)
+                                            </li>
+                                            <li>
+                                                <em>Cargo :</em>
+                                                40 ft HC x4
+                                            </li>
+                                            <li>
+                                                <em>Price :</em>
+                                                USD 190
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="row">
+                                        <div class="grid_fluid has_btn">
+                                            <div class="grid_col"><button type="button" class="btn_type7" onclick="layerPopup('#booking_pop');">상세</button></div>
+                                            <div class="grid_col"><a href="#none" class="btn_type7 orange">Cancel</a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <!-- //mobile_layout -->
+                        </tr>
+                        <tr class="related_info" id="row_3">
+                            <td colspan="8">
+                                <ul class="etc_info">
+                                    <li class="item">
+                                        <em>반입지 :</em>
+                                        test
+                                    </li>
+                                    <li class="item">
+                                        <em>담당자</em>
+                                        test
+                                    </li>
+                                    <li class="item">
+                                        <em>비고</em>
+                                        test
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr class="row" data-row="row_4">
+                            <td></td>
+                            <td><img src="~/Images/tmp/company01.jpg" alt=""></td>
+                            <td>
+                                KMTC ULSAN<br>
+                                2022S
+                            </td>
+                            <td>
+                                Busan, Korea<br>
+                                2020.10.29 (목)
+                            </td>
+                            <td>
+                                Shanghai, China<br>
+                                2020.11.02 (월)
+                            </td>
+                            <td>40 ft HC x4</td>
+                            <td>
+                                USD<br>
+                                230
+                            </td>
+                            <td>
+                                <div class="grid_fluid has_btn">
+                                    <div class="grid_col"><button type="button" class="btn_type7" onclick="layerPopup('#booking_pop');">상세</button></div>
+                                    <div class="grid_col"><a href="#none" class="btn_type7 orange">Cancel</a></div>
+                                </div>
+                            </td>
+                            <!-- mobile_layout -->
+                            <td class="mobile_layout" colspan="8">
+                                <div class="layout_type3">
+                                    <div class="row s1">
+                                        <img src="~/Images/tmp/company01.jpg" alt="">
+                                    </div>
+                                    <div class="row s5">
+                                        <div class="col">KMTC ULSAN 2022S</div>
+                                    </div>
+                                    <div class="row s3">
+                                        <ul>
+                                            <li>
+                                                <em>Departure :</em>
+                                                Busan, Korea<br>2020.10.29 (목)
+                                            </li>
+                                            <li>
+                                                <em>Arrival :</em>
+                                                Shanghai, China<br>2020.11.02 (월)
+                                            </li>
+                                            <li>
+                                                <em>Cargo :</em>
+                                                40 ft HC x4
+                                            </li>
+                                            <li>
+                                                <em>Price :</em>
+                                                USD 190
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="row">
+                                        <div class="grid_fluid has_btn">
+                                            <div class="grid_col"><button type="button" class="btn_type7" onclick="layerPopup('#booking_pop');">상세</button></div>
+                                            <div class="grid_col"><a href="#none" class="btn_type7 orange">Cancel</a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <!-- //mobile_layout -->
+                        </tr>
+                        <tr class="related_info" id="row_4">
+                            <td colspan="8">
+                                <ul class="etc_info">
+                                    <li class="item">
+                                        <em>반입지 :</em>
+                                        test
+                                    </li>
+                                    <li class="item">
+                                        <em>담당자</em>
+                                        test
+                                    </li>
+                                    <li class="item">
+                                        <em>비고</em>
+                                        test
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <!-- //list_type1 -->
+                <div class="center_area">
+                    <button type="button" class="btn_type4"><span>더보기</span></button>
+                </div>
+
+                <!-- layer_zone -->
+                <div class="layer_zone booking_pop" id="booking_pop">
+                    <div class="layer_wrap">
+                        <div class="layer_inwrap">
+                            <article class="layer_cont">
+                                <h2 class="booking_no">Booking No : <em>BKG1234567890</em></h2>
+                                <div class="booking_cont">
+                                    <div class="left_area">
+                                        <div class="booking_info">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <em class="tit">Port of Loading :</em>
+                                                    Busan, Korea (KRPUS) <br>
+                                                    2020-10-22
+                                                </div>
+                                                <div class="col arrow"><img src="images/icn_arrow03.png" alt="" class="pc"><img src="images/icn_arrow05.png" alt="" class="mo"></div>
+                                                <div class="col">
+                                                    <em class="tit">Port of Discharging :</em>
+                                                    Shanghai, China (CNSHA) <br>
+                                                    2020-10-25
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col">
+                                                    <em class="tit">Vessel / Voyage :</em>
+                                                    KMTC ULSAN / 2022S
+                                                </div>
+                                                <div class="col empty"></div>
+                                                <div class="col">
+                                                    <em class="tit">T/time / T/S : </em>
+                                                    2 Days / Direct
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col">
+                                                    <em class="tit">Doc Closing : </em>
+                                                    2020-10-20 18:00
+                                                </div>
+                                                <div class="col empty"></div>
+                                                <div class="col">
+                                                    <em class="tit">Cargo Closing : </em>
+                                                    2020-10-20 18:00
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <ul class="booking_info">
+                                            <li>
+                                                <em class="tit">반입지 : </em>
+                                                경상남도 창원시 진해구 신항 8로 321
+                                            </li>
+                                            <li>
+                                                <em class="tit">담당자 : </em>
+                                                홍길동 대리 (XXX-XXX-XXXX)
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="right_area">
+                                        <ul class="booking_info">
+                                            <li>
+                                                <em class="tit">Cargo :</em>
+                                                40 ft HC Container   x2
+                                            </li>
+                                            <li>
+                                                <em class="tit">Item :</em>
+                                                iPhone<br>
+                                                20 Qty, 10kg, 100 CBM
+                                            </li>
+                                        </ul>
+                                        <div class="quotation">
+                                            <em class="tit">Quotation</em>
+                                            USD 140
+                                        </div>
+                                        <div class="bot_btn"><a href="#none" class="btn_type7 orange">Cancel</a></div>
+                                    </div>
+                                </div>
+                                <button type="button" class="btns icon close type2" onclick="layerClose('#delivery_pop');"><span class="blind">검색 닫기</span></button>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+                <!-- //layer_zone -->
+            </div>
+        </div>
+    </section>
+    @Scripts.Render("~/Scripts/js/Main/Main.js")
+}

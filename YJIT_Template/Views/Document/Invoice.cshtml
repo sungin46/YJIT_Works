@@ -1,0 +1,457 @@
+﻿
+@{
+    ViewBag.Title = "Document";
+    ViewBag.Sub = "Invoice";
+}
+
+@section Container {
+
+
+    <section class="container invoice" id="container">
+        <div class="sub_visual">
+            <h2 class="subtitle">Invoice 조회</h2>
+        </div>
+        <div class="sub_cover">
+            <div class="fixed_in type2">
+                <div class="search_area">
+                    <!-- search_bar -->
+                    <div class="search_bar invoice">
+                        <!-- inner -->
+                        <div class="inner">
+                            <div class="col w4">
+                                <input type="radio" name="vehicle" id="vehicle01" checked="checked">
+                                <label for="vehicle01" class="switch_label">해운</label>
+                            </div>
+                            <div class="col w4">
+                                <input type="radio" name="vehicle" id="vehicle02">
+                                <label for="vehicle02" class="switch_label">항공</label>
+                            </div>
+                            <div class="col w4">
+                                <div class="int_box border-animation">
+                                    <select class="select border-animation__inner" required="">
+                                        <option value="" default="">Export</option>
+                                        <option value="">Import</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col w4">
+                                <div class="int_box border-animation">
+                                    <select class="select border-animation__inner" required="">
+                                        <option value="" default="">ETD</option>
+                                        <option value="">ETA</option>
+                                        <option value="">ETD~ETA</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col w5">
+                                <div class="int_box start_date border-animation">
+                                    <input type="text" value="" placeholder="XXXX-XX-XX" class="date border-animation__inner">
+                                    <button type="button" class="btns icon calendar"><i class="fa fa-calendar-check-o"></i><span class="blind">달력</span></button>
+                                </div>
+                            </div>
+                            <span class="col"> ~ </span>
+                            <div class="col w5">
+                                <div class="int_box end_date border-animation">
+                                    <input type="text" value="" placeholder="XXXX-XX-XX" class="date border-animation__inner">
+                                    <button type="button" class="btns icon calendar"><i class="fa fa-calendar-check-o"></i><span class="blind">달력</span></button>
+                                </div>
+                            </div>
+                            <div class="col w2 pc">
+                                <button type="submit" class="btn_type1 search"><span class="blind">검색</span></button>
+                            </div>
+                        </div>
+                        <!-- //inner -->
+                        <!-- inner -->
+                        <div class="inner">
+                            <div class="col w1">
+                                <div class="int_box border-animation">
+                                    <input type="text" value="" placeholder="Departure" class="border-animation__inner">
+                                    <button type="button" class="btns icon delete"><span class="blind">삭제</span></button>
+                                    <button type="button" class="btns icon down"><span class="blind">펼침</span></button>
+                                </div>
+                            </div>
+                            <div class="col w1">
+                                <div class="int_box border-animation">
+                                    <input type="text" value="" placeholder="Arrival" class="border-animation__inner">
+                                    <button type="button" class="btns icon delete"><span class="blind">삭제</span></button>
+                                    <button type="button" class="btns icon down"><span class="blind">펼침</span></button>
+                                </div>
+                            </div>
+                            <div class="col w8">
+                                <div class="int_box type1 border-animation">
+                                    <input type="text" value="" placeholder="House B/L No" class="border-animation__inner">
+                                    <button type="button" class="btns icon delete"><span class="blind">삭제</span></button>
+                                </div>
+                            </div>
+                            <div class="col w2 mo">
+                                <button type="submit" class="btn_type1 search"><span class="blind">검색</span></button>
+                            </div>
+                        </div>
+                        <!-- //inner -->
+                    </div>
+                    <!-- //search_bar -->
+                </div>
+                <!-- list_type1 -->
+                <table class="list_type1 auto">
+                    <colgroup class="column">
+                        <col>
+                        <col>
+                        <col>
+                        <col>
+                        <col>
+                        <col>
+                        <col>
+                        <col class="w2">
+                    </colgroup>
+                    <thead class="head">
+                        <tr class="row">
+                            <th><button type="button">Export Import</button></th>
+                            <th><button type="button">House B/L</button></th>
+                            <th><button type="button" class="desc">Total Amount</button></th>
+                            <th><button type="button" class="desc">Departure</button></th>
+                            <th><button type="button">Arrival</button></th>
+                            <th><button type="button">Onboard</button></th>
+                            <th><button type="button">Invoice Date</button></th>
+                            <th>Info</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="row" data-row="row_1">
+                            <td>
+                                <span class="trade import ship">Import</span>
+                            </td>
+                            <td>YJS201000002</td>
+                            <td>KRW 11,748</td>
+                            <td>
+                                Busan, Korea<br>
+                                2020.10.29 (목)
+                            </td>
+                            <td>
+                                HO CHI MINH CITY, Vietnam<br>
+                                2020.11.02 (월)
+                            </td>
+                            <td>2020.10.29</td>
+                            <td>2020.10.29</td>
+                            <td><button type="button" class="btn_type7" onclick="layerPopup('#invoice_pop');">Invoice 출력</button></td>
+                            <!-- mobile_layout -->
+                            <td class="mobile_layout">
+                                <div class="layout_type5">
+                                    <div class="row s1">
+                                        <div class="col w1"><span class="trade import ship">Import</span></div>
+                                        <div class="col">YJS201000002</div>
+                                    </div>
+                                    <div class="row s2">
+                                        <table>
+                                            <tbody>
+                                                <tr>
+                                                    <th>Departure :</th>
+                                                    <td>Busan, Korea<br> 2020.10.29 (목)</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Arrival :</th>
+                                                    <td>Ho Chi Minh City, Vietnam <br>2020.11.02 (월)</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Consignee :</th>
+                                                    <td>Yangjae Information<br> Technology Co., Ltd</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Last Location :</th>
+                                                    <td>Arrival At Discharging Port</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <button type="button" class="btn_type7" onclick="layerPopup('#invoice_pop');">Invoice 출력</button>
+                                </div>
+                            </td>
+                            <!-- //mobile_layout -->
+                        </tr>
+                        <tr class="related_info" id="row_1">
+                            <td colspan="8">
+                                <ul class="etc_info">
+                                    <li class="item">
+                                        <em>반입지 :</em>
+                                        인터지스7부두
+                                    </li>
+                                    <li class="item">
+                                        <em>담당자</em>
+                                        김성은 부장
+                                    </li>
+                                    <li class="item">
+                                        <em>비고</em>
+                                        출항 전 보고 제도 시행으로 인해 Closing 연장불가
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr class="row" data-row="row_2">
+                            <td>
+                                <span class="trade export ship">Export</span>
+                            </td>
+                            <td>YJS201000003</td>
+                            <td>KRW 371,940</td>
+                            <td>
+                                Incheon, Korea<br>
+                                2020.10.29 (목)
+                            </td>
+                            <td>
+                                Shanghai, China<br>
+                                2020.11.02 (월)
+                            </td>
+                            <td>2020.10.29</td>
+                            <td>2020.10.29</td>
+                            <td><button type="button" class="btn_type7" onclick="layerPopup('#invoice_pop');">Invoice 출력</button></td>
+                            <!-- mobile_layout -->
+                            <td class="mobile_layout">
+                                <div class="layout_type5">
+                                    <div class="row s1">
+                                        <div class="col w1"><span class="trade export ship">Import</span></div>
+                                        <div class="col">YJS201000002</div>
+                                    </div>
+                                    <div class="row s2">
+                                        <table>
+                                            <tbody>
+                                                <tr>
+                                                    <th>Departure :</th>
+                                                    <td>Busan, Korea<br> 2020.10.29 (목)</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Arrival :</th>
+                                                    <td>Ho Chi Minh City, Vietnam <br>2020.11.02 (월)</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Consignee :</th>
+                                                    <td>Yangjae Information<br> Technology Co., Ltd</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Last Location :</th>
+                                                    <td>Arrival At Discharging Port</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <button type="button" class="btn_type7" onclick="layerPopup('#invoice_pop');">Invoice 출력</button>
+                                </div>
+                            </td>
+                            <!-- //mobile_layout -->
+                        </tr>
+                        <tr class="related_info" id="row_2">
+                            <td colspan="8">
+                                <ul class="etc_info">
+                                    <li class="item">
+                                        <em>반입지 :</em>
+                                        인터지스7부두
+                                    </li>
+                                    <li class="item">
+                                        <em>담당자</em>
+                                        김성은 부장
+                                    </li>
+                                    <li class="item">
+                                        <em>비고</em>
+                                        출항 전 보고 제도 시행으로 인해 Closing 연장불가
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr class="row" data-row="row_3">
+                            <td>
+                                <span class="trade import airline">Import</span>
+                            </td>
+                            <td>YJS201000002</td>
+                            <td>KRW 11,748</td>
+                            <td>
+                                Busan, Korea<br>
+                                2020.10.29 (목)
+                            </td>
+                            <td>
+                                HO CHI MINH CITY, Vietnam<br>
+                                2020.11.02 (월)
+                            </td>
+                            <td>2020.10.29</td>
+                            <td>2020.10.29</td>
+                            <td><button type="button" class="btn_type7" onclick="layerPopup('#invoice_pop');">Invoice 출력</button></td>
+                            <!-- mobile_layout -->
+                            <td class="mobile_layout">
+                                <div class="layout_type5">
+                                    <div class="row s1">
+                                        <div class="col w1"><span class="trade import airline">Import</span></div>
+                                        <div class="col">YJS201000002</div>
+                                    </div>
+                                    <div class="row s2">
+                                        <table>
+                                            <tbody>
+                                                <tr>
+                                                    <th>Departure :</th>
+                                                    <td>Busan, Korea<br> 2020.10.29 (목)</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Arrival :</th>
+                                                    <td>Ho Chi Minh City, Vietnam <br>2020.11.02 (월)</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Consignee :</th>
+                                                    <td>Yangjae Information<br> Technology Co., Ltd</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Last Location :</th>
+                                                    <td>Arrival At Discharging Port</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <button type="button" class="btn_type7" onclick="layerPopup('#invoice_pop');">Invoice 출력</button>
+                                </div>
+                            </td>
+                            <!-- //mobile_layout -->
+                        </tr>
+                        <tr class="related_info" id="row_3">
+                            <td colspan="8">
+                                <ul class="etc_info">
+                                    <li class="item">
+                                        <em>반입지 :</em>
+                                        인터지스7부두
+                                    </li>
+                                    <li class="item">
+                                        <em>담당자</em>
+                                        김성은 부장
+                                    </li>
+                                    <li class="item">
+                                        <em>비고</em>
+                                        출항 전 보고 제도 시행으로 인해 Closing 연장불가
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr class="row" data-row="row_4">
+                            <td>
+                                <span class="trade export airline">Export</span>
+                            </td>
+                            <td>YJS201000002</td>
+                            <td>KRW 371,940</td>
+                            <td>
+                                Busan, Korea<br>
+                                2020.10.29 (목)
+                            </td>
+                            <td>
+                                HO CHI MINH CITY, Vietnam<br>
+                                2020.11.02 (월)
+                            </td>
+                            <td>2020.10.29</td>
+                            <td>2020.10.29</td>
+                            <td><button type="button" class="btn_type7" onclick="layerPopup('#invoice_pop');">Invoice 출력</button></td>
+                            <!-- mobile_layout -->
+                            <td class="mobile_layout">
+                                <div class="layout_type5">
+                                    <div class="row s1">
+                                        <div class="col w1"><span class="trade export airline">Export</span></div>
+                                        <div class="col">YJS201000002</div>
+                                    </div>
+                                    <div class="row s2">
+                                        <table>
+                                            <tbody>
+                                                <tr>
+                                                    <th>Departure :</th>
+                                                    <td>Busan, Korea<br> 2020.10.29 (목)</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Arrival :</th>
+                                                    <td>Ho Chi Minh City, Vietnam <br>2020.11.02 (월)</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Consignee :</th>
+                                                    <td>Yangjae Information<br> Technology Co., Ltd</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Last Location :</th>
+                                                    <td>Arrival At Discharging Port</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <button type="button" class="btn_type7" onclick="layerPopup('#invoice_pop');">Invoice 출력</button>
+                                </div>
+                            </td>
+                            <!-- //mobile_layout -->
+                        </tr>
+                        <tr class="related_info" id="row_4">
+                            <td colspan="8">
+                                <ul class="etc_info">
+                                    <li class="item">
+                                        <em>반입지 :</em>
+                                        인터지스7부두
+                                    </li>
+                                    <li class="item">
+                                        <em>담당자</em>
+                                        김성은 부장
+                                    </li>
+                                    <li class="item">
+                                        <em>비고</em>
+                                        출항 전 보고 제도 시행으로 인해 Closing 연장불가
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <!-- //list_type1 -->
+                <div class="center_area">
+                    <button type="button" class="btn_type4"><span>더보기</span></button>
+                </div>
+
+                <!-- layer_zone -->
+                <div class="layer_zone bl_pop" id="invoice_pop">
+                    <div class="layer_wrap">
+                        <div class="layer_inwrap">
+                            <article class="layer_cont">
+                                <div class="layer_title2">
+                                    <h1 class="tit">Invoice 출력</h1>
+                                </div>
+                                <!-- bl_output -->
+                                <div class="bl_output">
+                                    <!-- col_left -->
+                                    <div class="col_left">
+                                        <div class="btn_area">
+                                            <button type="button" class="btn_type5 red">출력</button>
+                                            <button type="button" class="btn_type5">닫기</button>
+                                        </div>
+                                        <!-- output_area -->
+                                        <div class="output_area">
+
+                                        </div>
+                                        <!-- //output_area -->
+                                    </div>
+                                    <!-- //col_left -->
+                                    <!-- col_right -->
+                                    <div class="col_right">
+                                        <div class="tit_row">
+                                            <h2 class="tit">수정요청사항</h2>
+                                            <button type="submit" class="btn_type5 blue">저장</button>
+                                        </div>
+                                        <!-- edit_list -->
+                                        <div class="edit_list">
+                                            <div class="item">
+                                                <h3 class="tit">1차 수정요청</h3>
+                                                <input type="text" value="Shipper 정보가 잘못되었습니다.">
+                                            </div>
+                                            <div class="item">
+                                                <h3 class="tit">2차 수정요청</h3>
+                                                <input type="text" value="마트정보를 바꿔주세요.">
+                                            </div>
+                                        </div>
+                                        <!-- //edit_list -->
+                                    </div>
+                                    <!-- //col_right -->
+                                </div>
+                                <!-- //bl_output -->
+                                <button type="button" class="btns icon close type2 white" onclick="layerClose('#invoice_pop');"><span class="blind">닫기</span></button>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+                <!-- //layer_zone -->
+            </div>
+        </div>
+    </section>
+    @Scripts.Render("~/Scripts/js/Main/Main.js")
+}
