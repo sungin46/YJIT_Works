@@ -1,0 +1,307 @@
+﻿@{ // Main 언어 설정
+    string setLang = "";
+    if (HttpContext.Current.Session["Language"] == null)
+    {
+        setLang = "KO";
+    }
+    else
+    {
+        setLang = HttpContext.Current.Session["Language"].ToString();
+    }
+
+    if (string.IsNullOrEmpty(setLang))
+    {
+        setLang = "KO";
+    }
+}
+
+<!DOCTYPE html>
+@if (setLang.Equals("EN"))  //언어 설정이 영어 일 경우
+{
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta name="format-detection" content="telephone=no">
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="http://www.ckpanasia.com" />
+    <meta property="og:title" content="CK PAN-ASIA C.F.C" />
+    <meta property="og:description" content="CK PAN-ASIA C.F.C" />
+    <meta property="og:image" content="http://www.ckpanasia.com/Images/meta_image.jpg" />
+    @*<meta property="og:image" content="http://211.53.135.191:8041/Images/meta_image.jpg" />*@
+    <meta property="og:site_name" content="CK PAN-ASIA C.F.C" />
+    <title>CK PAN ASIA C.F.C</title>
+    <link href="~/Content/css/fonts.css" rel="stylesheet">
+    <link href="~/Content/css/media.css" rel="stylesheet">
+    <script src="~/Scripts/js/jquery-2.2.3.min.js"></script>
+    <script src="~/Scripts/js/slick.min.js"></script>
+    <script src="~/Scripts/js/waypoints.min.js"></script>
+    <script src="~/Scripts/js/common.js"></script>
+    <script src="~/Scripts/js/Common/Comm.js"></script>
+    @Scripts.Render("~/Scripts/API/jquery.scrollbar.min.js")
+    @Scripts.Render("~/Scripts/API/jquery.slimscroll.min.js")
+    @Scripts.Render("~/Scripts/API/slick.min.js")
+
+    @Styles.Render("~/Content/API/slick.css")
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.typekit.net/ngb5ouj.css">
+
+    <script type="text/javascript">
+        $(function () {
+            $(".com").click(function () {
+                var id = this.name;
+                location.replace("/Customer/Support?seq=" + id);
+            })
+        })
+    </script>
+</head>
+<body class="eng">
+    <!-- wrap -->
+    <div id="wrap">
+        <!-- header -->
+        <header id="header">
+            @*<div id="navi_bg"></div>*@
+            <div class="inner">
+                <h1 class="logo"><a href="javascript:void(0)" onclick="fnMovePage('Top')"><span class="hidden">CK PAN ASIA C.F.C</span></a></h1>
+                <ul class="lnb">
+                    <li>
+                        <a href="javascript:void(0)" onclick="fnMovePage('Welcome')" id="menu1"><p><span>Welcome Manager</span></p></a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)" onclick="fnMovePage('Greeting')" id="menu2"><p><span>Company Introduction</span></p></a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)" onclick="fnMovePage('Business')" id="menu3"><p><span>Business Area</span></p></a>
+                    </li>
+                    <li>
+                        <a href="http://cs.ckpanasia.com/" target="_blank"><p><span>Schedule</span></p></a>
+                    </li>
+                </ul>
+                <div class="lang_box">
+                    <button class="btn_lang">ENG</button>
+                    <ul>
+                        <li><a href="@Url.Action("SetLang", "Language", new { Controller = "Language", strLang = "KO" })">KOR</a></li>
+                    </ul>
+                </div>
+                <a href="#total_nav" id="hamberger"><span class="btn_total"></span></a>
+                <!-- total_menu -->
+                <nav class="total_menu">
+                    <div class="dim"></div>
+                    <div class="total_nav" id="total_nav">
+                        <div class="nav_tit">
+                            <a href="javascript:void(0)" class="nav_logo" onclick="fnMovePage('Top')"><span class="hidden">CK PAN ASIA C.F.C</span></a>
+                            <button type="button" class="close"><span class="blind">닫기</span></button>
+                        </div>
+                        <ul class="menu">
+                            <li>
+                                <a href="javascript:void(0)" onclick="fnMovePage('Welcome')">Welcome Manager</a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)" onclick="fnMovePage('Greeting')">Company Introduction</a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)" onclick="fnMovePage('Business')">Business Area</a>
+                            </li>
+                            <li>
+                                <a href="http://cs.ckpanasia.com/" target="_blank" style="padding-top:0.625rem; line-height:1.5;">Schedule<br /><span style="display:block;line-height:1.3; padding-bottom:0.625rem;">(Please sign up through our welcome manager for use)</span></a>
+                            </li>
+                            <li class="language mo">
+                                <a class="lang on" href="javascript:void(0)"><p><span>ENG</span></p></a>
+                                <a class="lang" href="@Url.Action("SetLang", "Language", new { Controller = "Language", strLang = "KO" })"><p><span>KOR</span></p></a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+                <!-- //total_menu -->
+            </div>
+        </header>
+        <!-- //header -->
+        <!-- container -->
+        @RenderSection("container", required: false)
+        <!-- //container -->
+        <ul class="fab">
+            <li class="icn_sch" onclick="window.open('http://cs.ckpanasia.com/')">
+                <p>Schedule</p>
+            </li>
+            <li class="icn_welcome" onclick="fnMovePage('Welcome')">
+                <p>Welcome<br />Manager</p>
+            </li>
+            <li class="icn_top">
+                <button type="button" class="btn_top" id="btnTop" onclick="$('html,body').stop().animate({ scrollTop: 0 }, 500);">Move to<br />Top</button>
+            </li>
+        </ul>
+    </div>
+    <!-- alert 레이어 팝업 -->
+    <div class="layer_zone alert_type" id="alert01">
+        <div class="layer_wrap">
+            <div class="layer_inwrap">
+                <article class="layer_cont">
+                    <!-- alert_cont -->
+                    <div class="alert_cont">
+                        <div class="inner">
+                            데이터가 삭제 되었습니다.
+                        </div>
+                    </div>
+                    <!-- //alert_cont -->
+                    <!-- btn_w -->
+                    <div class="btn_w">
+                        <button type="button" class="btns radius cr1 loginChk" id="alert_confirm" onclick="layerClose('#alert01');">Confirm</button>
+                    </div>
+                    <!-- //btn_w -->
+                    <button type="button" class="btn_close close loginChk" id="alert_close" onclick="layerClose('#alert01');"><span class="blind">Close</span></button>
+                </article>
+            </div>
+        </div>
+    </div>
+    <div class="hidden"><img src="~/Images/meta_image.jpg" /></div>
+</body>
+</html>
+
+}
+else
+{
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta name="format-detection" content="telephone=no">
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="http://www.ckpanasia.com" />
+    <meta property="og:title" content="CK PAN-ASIA C.F.C" />
+    <meta property="og:description" content="CK PAN-ASIA C.F.C" />
+    <meta property="og:image" content="http://www.ckpanasia.com/Images/meta_image.jpg" />
+    @*<meta property="og:image" content="http://211.53.135.191:8041/Images/meta_image.jpg" />*@
+    <meta property="og:site_name" content="CK PAN-ASIA C.F.C" />
+    <title>CK PAN ASIA C.F.C</title>
+    <link href="~/Content/css/fonts.css" rel="stylesheet">
+    <link href="~/Content/css/media.css" rel="stylesheet">
+    <script src="~/Scripts/js/jquery-2.2.3.min.js"></script>
+    <script src="~/Scripts/js/slick.min.js"></script>
+    <script src="~/Scripts/js/waypoints.min.js"></script>
+    <script src="~/Scripts/js/common.js"></script>
+    <script src="~/Scripts/js/Common/Comm.js"></script>
+    @Scripts.Render("~/Scripts/API/jquery.scrollbar.min.js")
+    @Scripts.Render("~/Scripts/API/jquery.slimscroll.min.js")
+    @Scripts.Render("~/Scripts/API/slick.min.js")
+
+    @Styles.Render("~/Content/API/slick.css")
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.typekit.net/ngb5ouj.css">
+
+    <script type="text/javascript">
+        $(function () {
+            $(".com").click(function () {
+                var id = this.name;
+                location.replace("/Customer/Support?seq=" + id);
+            })
+        })
+    </script>
+</head>
+<body>
+    <!-- wrap -->
+    <div id="wrap">
+        <!-- header -->
+        <header id="header">
+            @*<div id="navi_bg"></div>*@
+            <div class="inner">
+                <h1 class="logo"><a href="javascript:void(0)" onclick="fnMovePage('Top')"><span class="hidden">CK PAN ASIA C.F.C</span></a></h1>
+                <ul class="lnb">
+                    <li>
+                        <a href="javascript:void(0)" onclick="fnMovePage('Welcome')" id="menu1"><p><span>웰컴매니저</span></p></a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)" onclick="fnMovePage('Greeting')" id="menu2"><p><span>회사소개</span></p></a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)" onclick="fnMovePage('Business')" id="menu3"><p><span>사업분야</span></p></a>
+                    </li>
+                    <li>
+                        <a href="http://cs.ckpanasia.com/" target="_blank"><p><span>스케줄</span></p></a>
+                    </li>
+                </ul>
+                <div class="lang_box">
+                    <button class="btn_lang">KOR</button>
+                    <ul>
+                        <li><a href="@Url.Action("SetLang", "Language", new { Controller = "Language", strLang = "EN" })">ENG</a></li>
+                    </ul>
+                </div>
+                <a href="#total_nav" id="hamberger"><span class="btn_total"></span></a>
+                <!-- total_menu -->
+                <nav class="total_menu">
+                    <div class="dim"></div>
+                    <div class="total_nav" id="total_nav">
+                        <div class="nav_tit">
+                            <a href="javascript:void(0)" class="nav_logo" onclick="fnMovePage('Top')"><span class="hidden">CK PAN ASIA C.F.C</span></a>
+                            <button type="button" class="close"><span class="blind">닫기</span></button>
+                        </div>
+                        <ul class="menu">
+                            <li>
+                                <a href="javascript:void(0)" onclick="fnMovePage('Welcome')">웰컴매니저</a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)" onclick="fnMovePage('Greeting')">회사소개</a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)" onclick="fnMovePage('Business')">사업분야</a>
+                            </li>
+                            <li>
+                                <a href="http://cs.ckpanasia.com/" style="padding-top:0.625rem; line-height:1.5;" target="_blank">스케줄<br /><span style="display:block;line-height:1.3; padding-bottom:0.625rem;">(웰컴매니저를 통한 회원가입 후 이용)</span></a>
+                            </li>
+                            <li class="language mo">
+                                <a class="lang on" href="javascript:void(0)"><p><span>KOR</span></p></a>
+                                <a class="lang" href="@Url.Action("SetLang", "Language", new { Controller = "Language", strLang = "EN" })"><p><span>ENG</span></p></a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+                <!-- //total_menu -->
+            </div>
+        </header>
+        <!-- //header -->
+        <!-- container -->
+        @RenderSection("container", required: false)
+        <!-- //container -->
+        <ul class="fab">
+            <li class="icn_sch" onclick="window.open('http://cs.ckpanasia.com/')">
+                <p>스케줄</p>
+            </li>
+            <li class="icn_welcome" onclick="fnMovePage('Welcome')">
+                <p>웰컴 매니저</p>
+            </li>
+            <li class="icn_top">
+                <button type="button" class="btn_top" onclick="$('html,body').stop().animate({ scrollTop: 0 }, 500);">Top 이동</button>
+            </li>
+        </ul>
+    </div>
+
+    <!-- alert 레이어 팝업 -->
+    <div class="layer_zone alert_type" id="alert01">
+        <div class="layer_wrap">
+            <div class="layer_inwrap">
+                <article class="layer_cont">
+                    <!-- alert_cont -->
+                    <div class="alert_cont">
+                        <div class="inner">
+                            데이터가 삭제 되었습니다.
+                        </div>
+                    </div>
+                    <!-- //alert_cont -->
+                    <!-- btn_w -->
+                    <div class="btn_w">
+                        <button type="button" class="btns radius cr1 loginChk" id="alert_confirm" onclick="layerClose('#alert01');">확인</button>
+                    </div>
+                    <!-- //btn_w -->
+                    <button type="button" class="btn_close close loginChk" id="alert_close" onclick="layerClose('#alert01');"><span class="blind">닫기</span></button>
+                </article>
+            </div>
+        </div>
+    </div>
+
+    <div class="hidden"><img src="~/Images/meta_image.jpg" /></div>
+</body>
+</html>
+
+}
+
