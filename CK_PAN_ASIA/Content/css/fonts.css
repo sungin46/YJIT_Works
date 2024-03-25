@@ -1,0 +1,110 @@
+
+@font-face {
+    font-family: 'NanumSquare';
+    src: url('/Content/css/fonts/NanumSquareL.eot');
+    src: url('/Content/css/fonts/NanumSquareL.eot?#iefix') format('embedded-opentype');
+    src: url('/Content/css/fonts/NanumSquareL.woff2') format('woff2');
+    src: url('/Content/css/fonts/NanumSquareL.woff') format('woff');
+    src: url('/Content/css/fonts/NanumSquareL.ttf') format('truetype');
+    src: url('/Content/css/fonts/NanumSquareL.svg#NanumSquare') format('svg');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'NanumSquare';
+    src: url('/Content/css/fonts/NanumSquareR.eot');
+    src: url('/Content/css/fonts/NanumSquareR.eot?#iefix') format('embedded-opentype');
+    src: url('/Content/css/fonts/NanumSquareR.woff2') format('woff2');
+    src: url('/Content/css/fonts/NanumSquareR.woff') format('woff');
+    src: url('/Content/css/fonts/NanumSquareR.ttf') format('truetype');
+    src: url('/Content/css/fonts/NanumSquareR.svg#NanumSquare') format('svg');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'NanumSquare';
+    src: url('/Content/css/fonts/NanumSquareB.eot');
+    src: url('/Content/css/fonts/NanumSquareB.eot?#iefix') format('embedded-opentype'),
+         url('/Content/css/fonts/NanumSquareB.woff2') format('woff2'),
+         url('/Content/css/fonts/NanumSquareB.woff') format('woff'),
+         url('/Content/css/fonts/NanumSquareB.ttf') format('truetype'),
+         url('/Content/css/fonts/NanumSquareB.svg#NanumSquare') format('svg');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'NanumSquare';
+    src: url('/Content/css/fonts/NanumSquareEB.eot');
+    src: url('/Content/css/fonts/NanumSquareEB.eot?#iefix') format('embedded-opentype'),
+         url('/Content/css/fonts/NanumSquareEB.woff2') format('woff2'),
+         url('/Content/css/fonts/NanumSquareEB.woff') format('woff'),
+         url('/Content/css/fonts/NanumSquareEB.ttf') format('truetype'),
+         url('/Content/css/fonts/NanumSquareEB.svg#NanumSquare') format('svg');
+    font-weight: 800;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Pretendard';
+    font-weight: 900;
+    font-style: normal;
+    src: local('Pretendard Black'), url('/Content/css/fonts/Pretendard-Black.woff2') format('woff2'), url('/Content/css/fonts/Pretendard-Black.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    font-weight: 800;
+    font-style: normal;
+    src: local('Pretendard ExtraBold'), url('/Content/css/fonts/Pretendard-ExtraBold.woff2') format('woff2'), url('/Content/css/fonts/Pretendard-ExtraBold.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    font-weight: 700;
+    font-style: normal;
+    src: local('Pretendard Bold'), url('/Content/css/fonts/Pretendard-Bold.woff2') format('woff2'), url('/Content/css/fonts/Pretendard-Bold.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    font-weight: 600;
+    font-style: normal;
+    src: local('Pretendard SemiBold'), url('/Content/css/fonts/Pretendard-SemiBold.woff2') format('woff2'), url('/Content/css/fonts/Pretendard-SemiBold.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    font-weight: 500;
+    font-style: normal;
+    src: local('Pretendard Medium'), url('/Content/css/fonts/Pretendard-Medium.woff2') format('woff2'), url('/Content/css/fonts/Pretendard-Medium.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    font-weight: 400;
+    font-style: normal;
+    src: local('Pretendard Regular'), url('/Content/css/fonts/Pretendard-Regular.woff2') format('woff2'), url('/Content/css/fonts/Pretendard-Regular.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    font-weight: 300;
+    font-style: normal;
+    src: local('Pretendard Light'), url('/Content/css/fonts/Pretendard-Light.woff2') format('woff2'), url('/Content/css/fonts/Pretendard-Light.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    font-weight: 200;
+    font-style: normal;
+    src: local('Pretendard ExtraLight'), url('/Content/css/fonts/Pretendard-ExtraLight.woff2') format('woff2'), url('/Content/css/fonts/Pretendard-ExtraLight.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    font-weight: 100;
+    font-style: normal;
+    src: local('Pretendard Thin'), url('/Content/css/fonts/Pretendard-Thin.woff2') format('woff2'), url('/Content/css/fonts/Pretendard-Thin.woff') format('woff');
+}
